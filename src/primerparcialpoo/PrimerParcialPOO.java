@@ -18,7 +18,7 @@ public class PrimerParcialPOO {
         Huesped hola = new Huesped();
         hola.obtenerContacto();
         hola.mostrarContactos();
-        
+        hola.generarIDHuesped();
         // TODO code application logic here
     }
     
