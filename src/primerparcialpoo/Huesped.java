@@ -7,7 +7,7 @@ package primerparcialpoo;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.UUID;
+import java.util.UUID; //Esta madre sirve para generar codigos alfa numericos aleatorios
 
 /**
  *
@@ -49,7 +49,7 @@ public class Huesped { //extends Tarjeta{
     public void generarIDHuesped() {
         
         
-        for(int i=0;i<contactos.size();i+=2){
+        for(int i=0;i<contactos.size();i++){
             String iDHuesped = UUID.randomUUID().toString().toUpperCase().substring(0, 6);
             IDHuesped.add(iDHuesped);
         
@@ -64,6 +64,7 @@ public class Huesped { //extends Tarjeta{
         for (int i = 0; i < size; i++) {
             System.out.println("\t\t---Huesped " + (cont) + "---");
             System.out.println("Correo Electronico: " + contactos.get(i) + "\nTelefono: " + contactos.get(++i));
+            System.out.println("ID Huesped: "+IDHuesped.get(i));
             cont++;
             //System.out.println("Telefono: "+contactos.get(i+1));
         }
