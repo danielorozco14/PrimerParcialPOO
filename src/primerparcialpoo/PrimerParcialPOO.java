@@ -17,8 +17,9 @@ public class PrimerParcialPOO {
     public static void main(String[] args) {
         Huesped hola = new Huesped();
         hola.obtenerContacto();
-        hola.mostrarContactos();
         hola.generarIDHuesped();
+        hola.mostrarContactos();
+        
         // TODO code application logic here
     }
     
