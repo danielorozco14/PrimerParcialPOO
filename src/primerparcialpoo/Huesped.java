@@ -7,6 +7,7 @@ package primerparcialpoo;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.UUID;
 
 /**
  *
@@ -15,10 +16,10 @@ import java.util.Scanner;
 public class Huesped { //extends Tarjeta{
 
     public String contacto;
-    private int idHuesped;
+    private String idHuesped;
 
     private ArrayList<String> contactos;
-    private ArrayList<Integer> IDHuesped;
+    private ArrayList<String> IDHuesped;
 
     public Huesped() {
         contactos = new ArrayList<>(); //Inicializando el ArrayList que contendra los contactos en el constructor
@@ -45,6 +46,17 @@ public class Huesped { //extends Tarjeta{
 
     }
 
+    public void generarIDHuesped() {
+        
+        
+        for(int i=0;i<contactos.size();i+=2){
+            String iDHuesped = UUID.randomUUID().toString().toUpperCase().substring(0, 6);
+            IDHuesped.add(iDHuesped);
+        
+        }
+        
+    }
+
     public void mostrarContactos() {
         System.out.println();
         int cont = 1;
@@ -55,10 +67,5 @@ public class Huesped { //extends Tarjeta{
             cont++;
             //System.out.println("Telefono: "+contactos.get(i+1));
         }
-    }
-
-    public static String crearUUID() {
-
-        return java.util.UUID.randomUUID().toString();
     }
 }
