@@ -15,6 +15,9 @@ public class PrimerParcialPOO {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Huesped hola = new Huesped();
+        hola.obtenerContacto();
+        hola.mostrarContactos();
         
         // TODO code application logic here
     }
