@@ -116,8 +116,9 @@ public class Validaciones {
 
     }
     
-    public boolean ValidarDui(char[] Dui){
-        if (Dui.length == 10){
+    public boolean ValidarDui(String Dui){
+        char[] DuiC = Dui.toCharArray();//TelefonoC es en caracteres
+        if (DuiC.length == 10){
             return true;
             /*String aux;
             aux = null;
