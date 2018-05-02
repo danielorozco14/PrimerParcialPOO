@@ -98,6 +98,7 @@ public class Validaciones {
         try{
             int TelefonoI = Integer.parseInt(Telefono);//Telefono I es el telefono en enteros
             if ( TelefonoC.length > 8 || TelefonoC.length < 8){
+                
                 System.out.println("\t\t***** Ingrese un numero de telefono valido (8 digitos) *****");
                 return false;
             }
