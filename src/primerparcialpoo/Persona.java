@@ -48,6 +48,15 @@ public class Persona {
         this.DUI = DUI;
     }
 
+    @Override
+    public String toString() {
+        return "Persona{" + "Nombre=" + Nombre + ", FechaNacimiento=" + FechaNacimiento + ", DUI=" + DUI + '}';
+    }
+
+    
+    
+    
+    
     public void ObtenerDatos() {
         Validaciones validar = new Validaciones();
 
@@ -68,12 +77,20 @@ public class Persona {
         if (validar.ValidarDui(DUIS) == true) {
             System.out.println("AGREGACION EXITOSA");
         } else {
+
             do {
-                System.out.println("Ingrese su documento único de identidad DUI por favor: ");
+                System.out.println("Ingrese su documento único de identidad DUI correctamente por favor: ");
                 dUI = obtenerDatos.nextLine();
             } while (validar.ValidarDui(DUIS) != true);
             DUIS = dUI.toCharArray();
         }
+        
+        System.out.println("\t\t----- Mostrando Contactos -----");
+        for (char datos : DUIS) {
+            System.out.print(datos);
+        }
+        System.out.println();
     }
-
+    
+    
 }
