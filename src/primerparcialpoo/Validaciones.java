@@ -18,7 +18,7 @@ package primerparcialpoo;
 */
 //sintaxis para las fechas dd/mm/aaaa
 public class Validaciones {
-
+    
     public boolean MaximoTiempoReservacion(int CantDias){//Validacion de tiempo de reservacion
         if (CantDias > 7){
             System.out.println("No puede registrarse por mas de 7 dias");
@@ -85,7 +85,6 @@ public class Validaciones {
                         System.out.println("Su correo es valido");
                         return true;
                     }
-                    
                     return true;
                 }
             }
@@ -97,13 +96,15 @@ public class Validaciones {
         char[] TelefonoC = Telefono.toCharArray();//TelefonoC es en caracteres
         try{
             int TelefonoI = Integer.parseInt(Telefono);//Telefono I es el telefono en enteros
-            if (8 > TelefonoC.length){
+            if ( TelefonoC.length > 8 || TelefonoC.length < 8){
+                
+                System.out.println("\t\t***** Ingrese un numero de telefono valido (8 digitos) *****");
                 return false;
             }
             return true;
         }
         catch(NumberFormatException e){
-            System.out.println("Su telefono tiene que contener solo numeros Intente de nuevo");
+            System.out.println("\t\t***** Su telefono tiene que contener solo numeros.Intente de nuevo *****");
             
             return false;
         }
