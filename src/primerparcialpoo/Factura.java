@@ -11,7 +11,7 @@ package primerparcialpoo;
 import java.util.Objects;
 import java.util.UUID; 
 /**
- @author karic <00002517@uca.edu.sv>
+ @author karicha <00002517@uca.edu.sv>
  */
 
 //CLASE FACTURA
