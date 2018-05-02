@@ -20,7 +20,6 @@ public class PrimerParcialPOO {
         hola.generarIDHuesped();
         hola.mostrarContactos();
         
-        // TODO code application logic here
     }
     
 }
