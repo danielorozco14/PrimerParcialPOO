@@ -54,12 +54,27 @@ public class Huesped { //extends Tarjeta{
 
     public void obtenerContacto() {
         Huesped añadirDatos = new Huesped();
+        Validaciones Validar = new Validaciones();
         Scanner infoContacto = new Scanner(System.in);
 
         System.out.println("\t\t----- Ingresar Datos de Contacto ----- ");
 
         System.out.print("Ingrese su correo electronico: ");
-        añadirDatos.setCorreo(infoContacto.nextLine());
+        String Correo = infoContacto.nextLine();
+
+        if (Validar.ValidarCorreo(Correo) == true) {
+            añadirDatos.setCorreo(Correo);
+        } 
+        else {
+            do 
+            {
+                System.out.print("Ingrese su correo electronico: ");
+                Correo = infoContacto.nextLine();
+            } while (Validar.ValidarCorreo(Correo)!=true);
+            
+            añadirDatos.setCorreo(Correo);
+
+        }
 
         System.out.print("Ingrese su numero de telefono: ");
         añadirDatos.setTelefono(infoContacto.nextLine());
@@ -90,10 +105,10 @@ public class Huesped { //extends Tarjeta{
             Scanner cambiar = new Scanner(System.in);
             if (huesped.getIdHuesped().equals(id) && cont == 0) {
 
-                System.out.println("Este huesped existe: " +"Correo: " + huesped.getCorreo() + " " + "Telefono: " + huesped.getTelefono());
+                System.out.println("Este huesped existe: " + "Correo: " + huesped.getCorreo() + " " + "Telefono: " + huesped.getTelefono());
 
             } else if (huesped.getIdHuesped().equals(id) && cont != 0) {
-                System.out.println("Este huesped existe: " +"Correo: " + huesped.getCorreo() + " " + "Telefono: " + huesped.getTelefono());
+                System.out.println("Este huesped existe: " + "Correo: " + huesped.getCorreo() + " " + "Telefono: " + huesped.getTelefono());
 
             } else if (huesped.getIdHuesped().equals(id) == false) {
                 cont1++;
