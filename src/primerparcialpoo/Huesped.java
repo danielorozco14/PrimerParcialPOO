@@ -49,18 +49,18 @@ public class Huesped { //extends Tarjeta{
 
     
     public void obtenerContacto() {
-        Huesped add=new Huesped();
+        Huesped añadirDatos=new Huesped();
         Scanner infoContacto = new Scanner(System.in);
         for (int i = 0; i < 2; i++) {
             System.out.println("\t\t----- Ingresar Datos de Contacto ----- ");
 
             System.out.print("Ingrese su correo electronico: ");
-            add.setCorreo(infoContacto.nextLine());
+            añadirDatos.setCorreo(infoContacto.nextLine());
             
             System.out.print("Ingrese su numero de telefono: ");
-            add.setTelefono(infoContacto.nextLine());
+            añadirDatos.setTelefono(infoContacto.nextLine());
            
-            contactos.add(add);
+            contactos.add(añadirDatos);
         }
         
     }
