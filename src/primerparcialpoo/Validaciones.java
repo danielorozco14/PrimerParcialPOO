@@ -89,7 +89,8 @@ public class Validaciones {
             return true;
         }
         catch(NumberFormatException e){
-            System.out.println("Su telefono tiene que contener solo numeros intente denuevo");
+            System.out.println("Su telefono tiene que contener solo numeros.Intente de nuevo");
+            
             return false;
         }
     }
