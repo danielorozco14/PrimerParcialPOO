@@ -81,17 +81,18 @@ public class Validaciones {
     }
     public boolean ValidarTelefono(String Telefono){
         char[] TelefonoC = Telefono.toCharArray();//TelefonoC es en caracteres
-        if (8 > TelefonoC.length){
-            return false;
-        }
         try{
             int TelefonoI = Integer.parseInt(Telefono);//Telefono I es el telefono en enteros
+            if (8 > TelefonoC.length){
+                return false;
+            }
             return true;
         }
         catch(NumberFormatException e){
-            System.out.println("Su telefono tiene que contener solo numeros.Intente de nuevo");
+            System.out.println("Su telefono tiene que contener solo numeros Intente de nuevo");
             
             return false;
         }
+
     }
 }
