@@ -18,7 +18,7 @@ package primerparcialpoo;
 */
 //sintaxis para las fechas dd/mm/aaaa
 public class Validaciones {
-
+    
     public boolean MaximoTiempoReservacion(int CantDias){//Validacion de tiempo de reservacion
         if (CantDias > 7){
             System.out.println("No puede registrarse por mas de 7 dias");
