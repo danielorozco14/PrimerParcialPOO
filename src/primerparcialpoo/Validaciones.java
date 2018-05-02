@@ -62,6 +62,13 @@ public class Validaciones {
 */
         return true;
     }
+    public boolean ValidarPaquete(String Paquete){
+        if ("Premium".equals(Paquete) || "Basico".equals(Paquete) || "Sin paquete".equals(Paquete)){
+            return true;
+        }
+        System.out.println("Usted no ha escogido un paquete valido");
+        return false;
+    }
     public boolean ValidarCorreo(String Correo){
         char[] CorreoC = Correo.toCharArray();//Correo simplificado a caracteres
         for (int i=0; i<CorreoC.length; i++){
@@ -86,5 +93,4 @@ public class Validaciones {
             return false;
         }
     }
-
 }
