@@ -15,15 +15,12 @@ import java.util.UUID; //Esta madre sirve para generar codigos alfa numericos al
  */
 public class Huesped { //extends Tarjeta{
 
-    private String correo, telefono;
-    private String idHuesped;
+    private String correo, telefono, idHuesped;
 
     private ArrayList<Huesped> contactos;//ARRAY QUE CONTIENE EL TELEFONO Y EL CORREO DEL HUESPED
-    private ArrayList<String> IDHuesped;//ARRAY QUE CONTIENE LOS ID DE LOS HUESPEDES GENERADOS
 
     public Huesped() {
         contactos = new ArrayList<>(); //Inicializando el ArrayList que contendra los contactos en el constructor
-        IDHuesped = new ArrayList<>(); //Inicializando el ArrayList que contendra los ID en el constructor
     }
 
     public String getCorreo() {
@@ -55,11 +52,6 @@ public class Huesped { //extends Tarjeta{
         return "Huesped{" + "correo=" + correo + ", telefono=" + telefono + ", idHuesped=" + idHuesped + '}';
     }
 
-//     public String generarIDHuesped() {
-//
-//        String iDHuesped = UUID.randomUUID().toString().toUpperCase().substring(0, 6);
-//        return iDHuesped;
-//     }
     public void obtenerContacto() {
         Huesped añadirDatos = new Huesped();
         Scanner infoContacto = new Scanner(System.in);
@@ -82,23 +74,34 @@ public class Huesped { //extends Tarjeta{
         for (Huesped Contactos : contactos) {
             System.out.println(Contactos.toString());
         }
-        System.out.println("CANTIDAD DE ID'S: " + IDHuesped.size());
+
     }
 
     public void encontrarContactos() {
-        Scanner idhuesped = new Scanner(System.in);
-        System.out.println("\nIngrese el ID del huesped: ");
-        String ID = idhuesped.nextLine();
-        int cont = 0;
+        Huesped Search = new Huesped();
+        Scanner buscar = new Scanner(System.in);
 
-        for (String huesped : IDHuesped) {
+        System.out.println("Ingrese el ID del huesped a buscar: ");
+        String id = buscar.nextLine();
 
-            if (huesped.equals(ID)) {
-                System.out.println("\t\t---Huesped " + (cont) + "---");
-                //System.out.println("Correo Electronico: " + contactos.get() + "\nTelefono: " + contactos.get(++i));
-                break;
+        int cont = 0, cont1 = 0;
+
+        for (Huesped huesped : contactos) {
+            Scanner cambiar = new Scanner(System.in);
+            if (huesped.getIdHuesped().equals(id) && cont == 0) {
+
+                System.out.println("Este huesped existe: " +"Correo: " + huesped.getCorreo() + " " + "Telefono: " + huesped.getTelefono());
+
+            } else if (huesped.getIdHuesped().equals(id) && cont != 0) {
+                System.out.println("Este huesped existe: " +"Correo: " + huesped.getCorreo() + " " + "Telefono: " + huesped.getTelefono());
+
+            } else if (huesped.getIdHuesped().equals(id) == false) {
+                cont1++;
+                if (contactos.size() == cont1) {
+                    System.out.println("No existe este ID en el registro o el huesped aun  no ha sido registrado");
+                }
             }
-
+            cont++;
         }
     }
 
