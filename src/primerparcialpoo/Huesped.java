@@ -75,9 +75,19 @@ public class Huesped { //extends Tarjeta{
             añadirDatos.setCorreo(Correo);
 
         }
-
         System.out.print("Ingrese su numero de telefono: ");
-        añadirDatos.setTelefono(infoContacto.nextLine());
+        String Telefono= infoContacto.nextLine();
+        
+        if(Validar.ValidarTelefono(Telefono)== true){
+            añadirDatos.setTelefono(Telefono);
+        }
+        else{
+            do{
+                System.out.print("Ingrese su numero de telefono: ");
+                Telefono= infoContacto.nextLine();
+            }while(Validar.ValidarTelefono(Telefono)!=true);
+            añadirDatos.setTelefono(Telefono);
+        }
 
         añadirDatos.setIdHuesped(UUID.randomUUID().toString().toUpperCase().substring(0, 6));
 
