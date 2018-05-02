@@ -7,7 +7,7 @@ package primerparcialpoo;
 
 /**
  *
- * @author Roberto
+ * @author karicha <00002517>
  */
 
 //CLASE RESERVACIONES
