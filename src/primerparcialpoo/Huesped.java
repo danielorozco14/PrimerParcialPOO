@@ -15,7 +15,7 @@ import java.util.UUID; //Esta madre sirve para generar codigos alfa numericos al
  */
 public class Huesped { //extends Tarjeta{
 
-    private String correo,telefono;    
+    private String correo, telefono;
     private String idHuesped;
 
     private ArrayList<Huesped> contactos;//ARRAY QUE CONTIENE EL TELEFONO Y EL CORREO DEL HUESPED
@@ -42,45 +42,51 @@ public class Huesped { //extends Tarjeta{
         this.telefono = telefono;
     }
 
-    @Override
-    public String toString() {
-        return "Huesped{" + "correo=" + correo + ", telefono=" + telefono + ", idHuesped=" + idHuesped  + '}';
+    public String getIdHuesped() {
+        return idHuesped;
     }
 
+    public void setIdHuesped(String idHuesped) {
+        this.idHuesped = idHuesped;
+    }
+
+    @Override
+    public String toString() {
+        return "Huesped{" + "correo=" + correo + ", telefono=" + telefono + ", idHuesped=" + idHuesped + '}';
+    }
     
+//     public String generarIDHuesped() {
+//
+//        String iDHuesped = UUID.randomUUID().toString().toUpperCase().substring(0, 6);
+//        return iDHuesped;
+//     }
+     
+     
     public void obtenerContacto() {
-        Huesped añadirDatos=new Huesped();
+        Huesped añadirDatos = new Huesped();
         Scanner infoContacto = new Scanner(System.in);
         for (int i = 0; i < 2; i++) {
             System.out.println("\t\t----- Ingresar Datos de Contacto ----- ");
 
             System.out.print("Ingrese su correo electronico: ");
             añadirDatos.setCorreo(infoContacto.nextLine());
-            
+
             System.out.print("Ingrese su numero de telefono: ");
             añadirDatos.setTelefono(infoContacto.nextLine());
-           
+
+            añadirDatos.setIdHuesped(UUID.randomUUID().toString().toUpperCase().substring(0, 6));
+
             contactos.add(añadirDatos);
-        }
-        
-    }
-
-    public void generarIDHuesped() {
-
-        for (int i = 0; i < contactos.size(); i++) {
-            String iDHuesped = UUID.randomUUID().toString().toUpperCase().substring(0, 6);
-            IDHuesped.add(iDHuesped);
-
         }
 
     }
 
     public void mostrarContactos() {
         System.out.println("\t\t----- Mostrando Contactos -----");
-        for (Huesped e : contactos) {
-            System.out.println(e.toString());
+        for (Huesped Contactos : contactos) {
+            System.out.println(Contactos.toString());
         }
-        System.out.println("CANTIDAD DE ID'S: "+IDHuesped.size());
+        System.out.println("CANTIDAD DE ID'S: " + IDHuesped.size());
     }
 
     public void encontrarContactos() {
@@ -90,7 +96,7 @@ public class Huesped { //extends Tarjeta{
         int cont = 0;
 
         for (String huesped : IDHuesped) {
-            
+
             if (huesped.equals(ID)) {
                 System.out.println("\t\t---Huesped " + (cont) + "---");
                 //System.out.println("Correo Electronico: " + contactos.get() + "\nTelefono: " + contactos.get(++i));
@@ -101,5 +107,3 @@ public class Huesped { //extends Tarjeta{
     }
 
 }
-
-
