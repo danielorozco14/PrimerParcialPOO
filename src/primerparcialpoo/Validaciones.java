@@ -85,7 +85,6 @@ public class Validaciones {
                         System.out.println("Su correo es valido");
                         return true;
                     }
-                    
                     return true;
                 }
             }
