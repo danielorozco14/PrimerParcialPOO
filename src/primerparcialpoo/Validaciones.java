@@ -35,7 +35,7 @@ public class Validaciones {
         return true;
     }
     public boolean ValidarCorreo(String Correo){
-        char[] CorreoC = Correo.toCharArray();
+        char[] CorreoC = Correo.toCharArray();//Correo simplificado a caracteres
         for (int i=0; i<CorreoC.length; i++){
             if (CorreoC[i] == '@'){
                 return true;
@@ -45,9 +45,15 @@ public class Validaciones {
         return false;
     }
     public boolean ValidarTelefono(String Telefono){
-        char[] TelefonoC = Telefono.toCharArray();
-
+        char[] TelefonoC = Telefono.toCharArray();//TelefonoC es en caracteres
         if (8 > TelefonoC.length){
+            return false;
+        }
+        try{
+            int TelefonoI = Integer.parseInt(Telefono);//Telefono I es el telefono en enteros
+        }
+        catch(NumberFormatException e){
+            System.out.println("Su telefono tiene que contener solo numeros intente denuevo");
             return false;
         }
         return true;
