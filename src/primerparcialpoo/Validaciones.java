@@ -26,6 +26,7 @@ public class Validaciones {
         }
         return true;
     }
+    
     public boolean HabitacionReservada(char[] Habitacion){//Validacion que la habitacion exista
         char[] Pisos = {'A','B','C','D','E','F'};
         for (int i=0; i<7; i++){
@@ -40,6 +41,7 @@ public class Validaciones {
         }
         return true;
     }
+    
     public boolean ValidarCantidadDeReservaciones(String Nombre, String FechaIngresada){// validador de cantidad de reservaciones, aun hay que cambiar parametros para que reciva la lista de reservaciones
         char[] FechaIngresadaC = FechaIngresada.toCharArray();//Fecha Ingresada se convierte en arreglo
         int DiaI, DiaE, MesI, MesE, AnioI, AnioE; //DiaI=DiaIngresado, DiaE=DiaExistente
@@ -62,6 +64,7 @@ public class Validaciones {
 */
         return true;
     }
+    
     public boolean ValidarPaquete(String Paquete){
         if ("Premium".equals(Paquete) || "Basico".equals(Paquete) || "Sin paquete".equals(Paquete)){
             return true;
@@ -69,6 +72,7 @@ public class Validaciones {
         System.out.println("Usted no ha escogido un paquete valido");
         return false;
     }
+    
     public boolean ValidarCorreo(String Correo){
         char[] CorreoC = Correo.toCharArray();//Correo simplificado a caracteres
         for (int i=0; i<CorreoC.length; i++){
@@ -92,6 +96,7 @@ public class Validaciones {
         System.out.println("Su correo no es valido");
         return false;
     }
+    
     public boolean ValidarTelefono(String Telefono){
         char[] TelefonoC = Telefono.toCharArray();//TelefonoC es en caracteres
         try{
@@ -109,5 +114,17 @@ public class Validaciones {
             return false;
         }
 
+    }
+    
+    public boolean ValidarDui(char[] Dui){
+        if (Dui.length == 10){
+            return true;
+            /*String aux;
+            aux = null;
+            for (int i = 0; i < 9; i++){
+                aux = new StringBuilder().append(aux).append(Dui[i]).toString();
+        }*/
+        }
+    return false;
     }
 }
