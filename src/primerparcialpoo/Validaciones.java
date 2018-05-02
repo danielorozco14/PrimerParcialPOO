@@ -51,12 +51,12 @@ public class Validaciones {
         }
         try{
             int TelefonoI = Integer.parseInt(Telefono);//Telefono I es el telefono en enteros
+            return true;
         }
         catch(NumberFormatException e){
             System.out.println("Su telefono tiene que contener solo numeros intente denuevo");
             return false;
         }
-        return true;
     }
 
 }
