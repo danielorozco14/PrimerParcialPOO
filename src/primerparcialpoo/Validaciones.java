@@ -73,7 +73,21 @@ public class Validaciones {
         char[] CorreoC = Correo.toCharArray();//Correo simplificado a caracteres
         for (int i=0; i<CorreoC.length; i++){
             if (CorreoC[i] == '@'){
-                return true;
+                String aux;
+                aux = null;
+                for (i = i; i<=CorreoC.length; i++){
+                    aux = new StringBuilder().append(aux).append(CorreoC[i]).toString();
+                    if (CorreoC[i] == '.'){
+                        System.out.println("Su correo no posee un dominio correcto");
+                        return false;
+                    }
+                    if ("outlook".equals(aux) || "gmail".equals(aux) || "Outlook".equals(aux) || "Gmail".equals(aux) || "yahoo".equals(aux) || "Yahoo".equals(aux)){
+                        System.out.println("Su correo es valido");
+                        return true;
+                    }
+                    
+                    return true;
+                }
             }
         }
         System.out.println("Su correo no es valido");
@@ -81,17 +95,20 @@ public class Validaciones {
     }
     public boolean ValidarTelefono(String Telefono){
         char[] TelefonoC = Telefono.toCharArray();//TelefonoC es en caracteres
-        if (8 > TelefonoC.length){
-            return false;
-        }
         try{
             int TelefonoI = Integer.parseInt(Telefono);//Telefono I es el telefono en enteros
+            if ( TelefonoC.length > 8 || TelefonoC.length < 8){
+                
+                System.out.println("\t\t***** Ingrese un numero de telefono valido (8 digitos) *****");
+                return false;
+            }
             return true;
         }
         catch(NumberFormatException e){
-            System.out.println("Su telefono tiene que contener solo numeros.Intente de nuevo");
+            System.out.println("\t\t***** Su telefono tiene que contener solo numeros.Intente de nuevo *****");
             
             return false;
         }
+
     }
 }
