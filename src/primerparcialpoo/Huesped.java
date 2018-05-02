@@ -54,31 +54,27 @@ public class Huesped { //extends Tarjeta{
     public String toString() {
         return "Huesped{" + "correo=" + correo + ", telefono=" + telefono + ", idHuesped=" + idHuesped + '}';
     }
-    
+
 //     public String generarIDHuesped() {
 //
 //        String iDHuesped = UUID.randomUUID().toString().toUpperCase().substring(0, 6);
 //        return iDHuesped;
 //     }
-     
-     
     public void obtenerContacto() {
         Huesped añadirDatos = new Huesped();
         Scanner infoContacto = new Scanner(System.in);
-        for (int i = 0; i < 2; i++) {
-            System.out.println("\t\t----- Ingresar Datos de Contacto ----- ");
 
-            System.out.print("Ingrese su correo electronico: ");
-            añadirDatos.setCorreo(infoContacto.nextLine());
+        System.out.println("\t\t----- Ingresar Datos de Contacto ----- ");
 
-            System.out.print("Ingrese su numero de telefono: ");
-            añadirDatos.setTelefono(infoContacto.nextLine());
+        System.out.print("Ingrese su correo electronico: ");
+        añadirDatos.setCorreo(infoContacto.nextLine());
 
-            añadirDatos.setIdHuesped(UUID.randomUUID().toString().toUpperCase().substring(0, 6));
+        System.out.print("Ingrese su numero de telefono: ");
+        añadirDatos.setTelefono(infoContacto.nextLine());
 
-            contactos.add(añadirDatos);
-        }
+        añadirDatos.setIdHuesped(UUID.randomUUID().toString().toUpperCase().substring(0, 6));
 
+        contactos.add(añadirDatos);
     }
 
     public void mostrarContactos() {
