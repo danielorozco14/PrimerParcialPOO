@@ -124,7 +124,20 @@ public class Validaciones {
             aux = null;
             for (int i = 0; i < 9; i++){
                 aux = new StringBuilder().append(aux).append(Dui[i]).toString();
-        }*/
+                try{
+                    int auxn = Integer.parseInt(aux);//Se convierte el numero del aux de string a int, auxn es el aux en int
+                    acum += Character.getNumericValue(Dui[i]) * i++;//aqui vamos a tener el valor como entero de las partes del dui
+                }
+                catch(NumberFormatException e){
+                    System.out.println("\t\t***** Su dui no puede contener letras*****");
+                    return false;
+                }
+                acum %= 10;
+                acum = 10-acum;
+                if (acum == Character.getNumericValue(Dui[10])){
+                    return true;
+                }
+            }
         }
     return false;
     }
