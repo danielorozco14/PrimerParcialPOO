@@ -19,7 +19,7 @@ public class PrimerParcialPOO {
         hola.obtenerContacto();
         hola.generarIDHuesped();
         hola.mostrarContactos();
-        
+        hola.encontrarContactos();
     }
     
 }
