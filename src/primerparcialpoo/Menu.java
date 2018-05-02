@@ -29,15 +29,16 @@ public class Menu {
         System.out.println("----- Menu -----");
         System.out.println("1. Agregar Huesped");
         System.out.println("2. Mostrar Huespedes");
-        System.out.println("3. Salir");
+        System.out.println("3. Encontrar Huespedes");
+        System.out.println("4. Salir");
     }
 
     public void mostrar() {
-        int opcion = 4;
+        int opcion = 5;
         Scanner leer = new Scanner(System.in);
         Huesped huesped = new Huesped();
 
-        while (opcion != 3) {
+        while (opcion != 4) {
             opciones();
             try {
                 opcion = leer.nextInt();
@@ -50,7 +51,10 @@ public class Menu {
                         huesped.mostrarContactos();
                         break;
                     case 3:
-                        System.out.println("Adios :(");
+                        huesped.encontrarContactos();
+                        break;
+                    case 4:
+                        System.out.println("\t\tPROGRAMA FINALIZADO");
                         break;
                     default:
                         System.out.println("Por favor ingrese una opcion valida");
