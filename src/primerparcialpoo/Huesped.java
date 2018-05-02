@@ -7,7 +7,7 @@ package primerparcialpoo;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.UUID;
+import java.util.UUID; //Esta madre sirve para generar codigos alfa numericos aleatorios
 
 /**
  *
@@ -15,57 +15,95 @@ import java.util.UUID;
  */
 public class Huesped { //extends Tarjeta{
 
-    public String contacto;
+    private String correo, telefono;
     private String idHuesped;
 
-    private ArrayList<String> contactos;
-    private ArrayList<String> IDHuesped;
+    private ArrayList<Huesped> contactos;//ARRAY QUE CONTIENE EL TELEFONO Y EL CORREO DEL HUESPED
+    private ArrayList<String> IDHuesped;//ARRAY QUE CONTIENE LOS ID DE LOS HUESPEDES GENERADOS
 
     public Huesped() {
         contactos = new ArrayList<>(); //Inicializando el ArrayList que contendra los contactos en el constructor
         IDHuesped = new ArrayList<>(); //Inicializando el ArrayList que contendra los ID en el constructor
     }
 
-    public String obtenerContacto() {
+    public String getCorreo() {
+        return correo;
+    }
 
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getIdHuesped() {
+        return idHuesped;
+    }
+
+    public void setIdHuesped(String idHuesped) {
+        this.idHuesped = idHuesped;
+    }
+
+    @Override
+    public String toString() {
+        return "Huesped{" + "correo=" + correo + ", telefono=" + telefono + ", idHuesped=" + idHuesped + '}';
+    }
+    
+//     public String generarIDHuesped() {
+//
+//        String iDHuesped = UUID.randomUUID().toString().toUpperCase().substring(0, 6);
+//        return iDHuesped;
+//     }
+     
+     
+    public void obtenerContacto() {
+        Huesped añadirDatos = new Huesped();
         Scanner infoContacto = new Scanner(System.in);
         for (int i = 0; i < 2; i++) {
             System.out.println("\t\t----- Ingresar Datos de Contacto ----- ");
 
             System.out.print("Ingrese su correo electronico: ");
-            contacto = infoContacto.nextLine();
-            contactos.add(contacto);
+            añadirDatos.setCorreo(infoContacto.nextLine());
 
             System.out.print("Ingrese su numero de telefono: ");
-            contacto = infoContacto.nextLine();
-            contactos.add(contacto);
+            añadirDatos.setTelefono(infoContacto.nextLine());
+
+            añadirDatos.setIdHuesped(UUID.randomUUID().toString().toUpperCase().substring(0, 6));
+
+            contactos.add(añadirDatos);
         }
-        String a = "hola";
 
-        return a;
-
-    }
-
-    public void generarIDHuesped() {
-        
-        
-        for(int i=0;i<contactos.size();i+=2){
-            String iDHuesped = UUID.randomUUID().toString().toUpperCase().substring(0, 6);
-            IDHuesped.add(iDHuesped);
-        
-        }
-        
     }
 
     public void mostrarContactos() {
-        System.out.println();
-        int cont = 1;
-        int size = contactos.size();
-        for (int i = 0; i < size; i++) {
-            System.out.println("\t\t---Huesped " + (cont) + "---");
-            System.out.println("Correo Electronico: " + contactos.get(i) + "\nTelefono: " + contactos.get(++i));
-            cont++;
-            //System.out.println("Telefono: "+contactos.get(i+1));
+        System.out.println("\t\t----- Mostrando Contactos -----");
+        for (Huesped Contactos : contactos) {
+            System.out.println(Contactos.toString());
+        }
+        System.out.println("CANTIDAD DE ID'S: " + IDHuesped.size());
+    }
+
+    public void encontrarContactos() {
+        Scanner idhuesped = new Scanner(System.in);
+        System.out.println("\nIngrese el ID del huesped: ");
+        String ID = idhuesped.nextLine();
+        int cont = 0;
+
+        for (String huesped : IDHuesped) {
+
+            if (huesped.equals(ID)) {
+                System.out.println("\t\t---Huesped " + (cont) + "---");
+                //System.out.println("Correo Electronico: " + contactos.get() + "\nTelefono: " + contactos.get(++i));
+                break;
+            }
+
         }
     }
+
 }
