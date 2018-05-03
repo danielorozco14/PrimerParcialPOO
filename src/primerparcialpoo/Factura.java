@@ -52,7 +52,14 @@ public class Factura {
         this.TotalAPagar += this.servicios.getPrecioHabitacion()+this.servicios.getVariacionTemporada();
 
     }
-
+    
+    /*
+    Este método viene a complementar al método equals 
+    y sirve para comparar objetos de una forma más rápida 
+    en estructuras Hash ya que únicamente nos devuelve un número entero. 
+    Cuando Java compara dos objetos en estructuras de tipo hash (HashMap, HashSet etc) 
+    primero invoca al método hashcode y luego el equals.
+    */
     @Override
     public int hashCode() {
         int hash = 7;
