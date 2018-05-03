@@ -7,7 +7,7 @@ Y contará con los metodos:
 2. Generarle un ID a la factura
 */
 package primerparcialpoo;
-
+// borrar cuando se suba
 import java.util.Objects;
 import java.util.UUID; 
 /**
