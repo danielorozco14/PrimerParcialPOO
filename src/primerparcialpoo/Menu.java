@@ -13,6 +13,7 @@ import java.util.Scanner;
  * @author Daniel Alejandro Orozco Orellana <00200617@uca.edu.sv>
  */
 public class Menu {
+
     private static Menu menu;
 
     private Menu() {
@@ -30,26 +31,24 @@ public class Menu {
         System.out.println("1. Agregar Huesped");
         System.out.println("2. Mostrar Huespedes");
         System.out.println("3. Encontrar Huespedes");
-        System.out.println("4. Añadir persona");
-        System.out.println("5. Mostrar persona");
-        System.out.println("6. Mostrar total de la factura del huesped");
-        System.out.println("7. Salir");
+        System.out.println("4. Mostrar total de la factura del huesped");
+        System.out.println("5. Salir");
     }
 
     public void mostrar() {
-        int opcion = 8;
+        int opcion = 6;
         Scanner leer = new Scanner(System.in);
         Huesped huesped = new Huesped();
         Persona persona = new Persona();
         Factura factura = new Factura();
-        while (opcion != 7) {
+        while (opcion != 5) {
             opciones();
             try {
                 opcion = leer.nextInt();
 
                 switch (opcion) {
                     case 1:
-                        huesped.obtenerContacto();
+                        huesped.ObtenerDatosHuesped();
                         break;
                     case 2:
                         huesped.mostrarContactos();
@@ -57,19 +56,14 @@ public class Menu {
                     case 3:
                         huesped.encontrarContactos();
                         break;
-                    case 6:
+                    case 5:
                         System.out.println("\t\tPROGRAMA FINALIZADO");
                         break;
+
                     case 4:
-                        persona.ObtenerDatos();
-                        break;
-                    case 5:
-                        persona.mostrarDatos();
-                        break;
-                    case 7:
                         factura.TotalPagar();
                         break;
-                          
+
                     default:
                         System.out.println("Por favor ingrese una opcion valida");
                 }
