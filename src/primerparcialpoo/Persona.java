@@ -5,18 +5,15 @@
  */
 package primerparcialpoo;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
 /**
  *
  * @author karic <00002517>
  */
-//CLASE PERSONA
+//CLASE PERSONA SOLO SERA UNA PLANTILLA 
 public class Persona {
 
     protected String Nombre;
-    protected String FechaNacimiento; //ESTA WEA VA SERVIR PARA EL METODO DE FECHA. 
+    protected String FechaNacimiento; //SERVIRA PARA EL METODO DE FECHA. 
     protected String DUI;
     protected String Tarjeta;
     protected String Correo;
@@ -79,7 +76,7 @@ public class Persona {
     }
     
 
-    
+   
     //OBTENER DATOS DE PERSONA Y GUARDARLOS
 //    public void ObtenerDatos() {
 //        Validaciones validar = new Validaciones();

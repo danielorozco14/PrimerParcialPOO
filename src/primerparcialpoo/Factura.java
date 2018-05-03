@@ -1,16 +1,13 @@
 /*
-Clase Factura que tendra los atributos:
-1. idFactura
-2.Total 
-Y contará con los metodos:
-1.Total a pagar
-2. Generarle un ID a la factura
+Clase Factura contendra el total monetario de de los servicios adquiridos por el huesped.
+
  */
 package primerparcialpoo;
-// borrar cuando se suba
+
 
 import java.util.Objects;
-import java.util.UUID;
+import java.util.UUID; //ESTA IMPORTACION NOS AYUDARA PARA GENERAR DE MANERA RANDOM EL ID DE FACTURA,
+//YA QUE GENERA CODIGOS ALFANUMERICOS.
 
 /**
  * @author karicha <00002517@uca.edu.sv>
