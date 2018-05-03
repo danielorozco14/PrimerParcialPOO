@@ -14,13 +14,13 @@ import java.util.Scanner;
  */
 //CLASE PERSONA
 public class Persona {
-
+    //ATRIBUTOS
     protected String Nombre;
-    protected String FechaNacimiento; //ESTA WEA VA SERVIR PARA EL METODO DE FECHA. AUN NO ES NECESARIA!!
+    protected String FechaNacimiento; //SERVIRA PARA EL METODO DE FECHA 
     protected String DUI;
     protected ArrayList<Persona> Datos;
+    
     //CONSTRUCTOR PERSONA
-
     public Persona() {
         Datos = new ArrayList<>(); //INCIALIZAMOS LA LISTA DATOS
 
@@ -67,8 +67,22 @@ public class Persona {
         System.out.println("-----------------------------");
 
         System.out.println("Ingrese su Fecha de Nacimiento por favor: ");
-        datosPersona.setFechaNacimiento(obtenerDatos.nextLine());
+        String fechaNacimiento = obtenerDatos.nextLine();
+        if (validar.ValidarDui(fechaNacimiento) == true) {
+            System.out.println("AGREGACION EXITOSA");
+            datosPersona.setDUI(fechaNacimiento);
 
+        } else {
+            do {
+                System.out.print("Ingrese su fecha de nacimiento correctamente por favor: ");
+                fechaNacimiento = obtenerDatos.nextLine();
+            } while ((validar.ValidarFecha(fechaNacimiento)) != true);
+
+            datosPersona.setFechaNacimiento(fechaNacimiento);
+        }
+        
+        
+        
         System.out.println("------------------------------");
         System.out.println("Ingrese su documento único de identidad DUI por favor: ");
         String dui = obtenerDatos.nextLine();
@@ -89,7 +103,7 @@ public class Persona {
 
     }
 
-    //METODO MOSTRAR DATOS 
+    //MOSTRAR DATOS 
     public void mostrarDatos() {
         System.out.println("----- Mostrando datos de persona -----");
         for (Persona pers : Datos) {
