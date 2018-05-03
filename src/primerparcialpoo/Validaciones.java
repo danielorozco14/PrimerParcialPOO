@@ -186,11 +186,21 @@ public class Validaciones {
                             '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}',
                             ':', ';', '"', '<', '>', ',', '.', '/', '?', '|', '`', '~'};
         char[] NombreC = Nombre.toCharArray();
-        for (int i = 0; i < NombreC.length; i++){
-            for (int i2 = 0; i < Caracteres.length; i++){
-                if (NombreC[i] == Caracteres[i2]){
-                   return false;
-                } 
+        int aux1, aux2;
+        try{
+            for (int i = 0; i <= NombreC.length; i++){
+                for (int i2 = 0; i <= Caracteres.length; i++){
+                    if (NombreC[i] == Caracteres[i2]){
+                       return false;
+                    } 
+                }
+            }
+        }
+        catch(ArrayIndexOutOfBoundsException e){
+            aux1 = NombreC[NombreC.length] -1;
+            aux2 = Caracteres[Caracteres.length] -1;
+            if (aux1 == aux2){
+                return false;
             }
         }
         return true;
