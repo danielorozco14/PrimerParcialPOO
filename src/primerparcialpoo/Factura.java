@@ -6,7 +6,8 @@ package primerparcialpoo;
 
 
 import java.util.Objects;
-import java.util.UUID;
+import java.util.UUID; //ESTA IMPORTACION NOS AYUDARA PARA GENERAR DE MANERA RANDOM EL ID DE FACTURA,
+//YA QUE GENERA CODIGOS ALFANUMERICOS.
 
 /**
  * @author karicha <00002517@uca.edu.sv>
