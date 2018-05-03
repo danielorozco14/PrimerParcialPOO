@@ -81,13 +81,13 @@ public class Validaciones {
                 aux = null;
                 for (i = i; i<=CorreoC.length; i++){
                     aux = new StringBuilder().append(aux).append(CorreoC[i]).toString();
-                    if (CorreoC[i] == '.'){
-                        System.out.println("Su correo no posee un dominio correcto");
-                        return false;
-                    }
                     if ("outlook".equals(aux) || "gmail".equals(aux) || "Outlook".equals(aux) || "Gmail".equals(aux) || "yahoo".equals(aux) || "Yahoo".equals(aux)){
                         System.out.println("Su correo es valido");
                         return true;
+                    }
+                    if (CorreoC[i] == '.'){
+                        System.out.println("Su correo no posee un dominio correcto");
+                        return false;
                     }
                     return true;
                 }
@@ -119,14 +119,14 @@ public class Validaciones {
     public boolean ValidarDui(String Dui){
         char[] DuiC = Dui.toCharArray();//TelefonoC es en caracteres
         if (DuiC.length == 10){
-            return true;
-            /**String aux;
+            String aux;
             aux = null;
+            int acum =0;
             for (int i = 0; i < 9; i++){
-                aux = new StringBuilder().append(aux).append(Dui[i]).toString();
+                aux = new StringBuilder().append(aux).append(DuiC[i]).toString();
                 try{
                     int auxn = Integer.parseInt(aux);//Se convierte el numero del aux de string a int, auxn es el aux en int
-                    acum += Character.getNumericValue(Dui[i]) * i++;//aqui vamos a tener el valor como entero de las partes del dui
+                    acum += Character.getNumericValue(DuiC[i]) * i++;//aqui vamos a tener el valor como entero de las partes del dui
                 }
                 catch(NumberFormatException e){
                     System.out.println("\t\t***** Su dui no puede contener letras*****");
@@ -134,15 +134,30 @@ public class Validaciones {
                 }
                 acum %= 10;
                 acum = 10-acum;
-                if (acum == Character.getNumericValue(Dui[10])){
+                if (acum == Character.getNumericValue(DuiC[10])){
                     return true;
                 }
             }
         }
-    /return false;
-    }**/
-            
+    return false;
+    }
+    
+    public boolean ValidarFecha(String Fecha){
+        char[] FechaC = Fecha.toCharArray();
+        for (int i = 0; i<FechaC.length; i++){ 
         }
         return false;
     }
+    public boolean ValidarTarjeta(String Tarjeta){
+        try{
+            Integer.parseInt(Tarjeta);
+            System.out.println("Su tarjeta ha sido ingresada con exito");
+            return true;
+        }
+        catch(NumberFormatException e){
+            System.out.println("Su tarjeta no es valida");
+            return false;
+        }
+    }
 }
+
