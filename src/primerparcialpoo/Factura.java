@@ -20,8 +20,8 @@ import java.util.UUID;
 public class Factura {
 
     //ATRIBUTOS
-    private final Reservaciones reservacion;
-    private final String idFactura;
+    private  Reservaciones reservacion;
+    private  String idFactura;
     private double TotalAPagar;
 
     //CONSTRUCTOR DE FACTURA
