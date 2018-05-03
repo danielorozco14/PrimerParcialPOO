@@ -144,10 +144,31 @@ public class Validaciones {
     
     public boolean ValidarFecha(String Fecha){
         char[] FechaC = Fecha.toCharArray();
-        for (int i = 0; i<FechaC.length; i++){ 
+        String aux;
+        aux = null;
+        for (int i = 0; i<2; i++){ 
+            aux = new StringBuilder().append(aux).append(FechaC[i]).toString();
+            try{
+                if (Integer.parseInt(aux) > 0 && Integer.parseInt(aux) < 32){
+                    aux = null;
+                    for(i = 3; i < 6; i++){
+                        aux = new StringBuilder().append(aux).append(FechaC[i]).toString();
+                        if(Integer.parseInt(aux) > 0 && Integer.parseInt(aux) < 13){
+                            aux = null;
+                            for(i = 7; i < 10; i++){
+                                aux = new StringBuilder().append(aux).append(FechaC[i]).toString();
+                            }
+                        }
+                    }
+                }
+            }
+            catch(NumberFormatException e){
+                
+            }
         }
         return false;
     }
+    
     public boolean ValidarTarjeta(String Tarjeta){
         try{
             Integer.parseInt(Tarjeta);
@@ -158,6 +179,21 @@ public class Validaciones {
             System.out.println("Su tarjeta no es valida");
             return false;
         }
+    }
+    
+    public boolean ValidarNombre(String Nombre){
+        char[] Caracteres = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '!', '@', '#', '$',
+                            '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}',
+                            ':', ';', '"', '<', '>', ',', '.', '/', '?', '|', '`', '~'};
+        char[] NombreC = Nombre.toCharArray();
+        for (int i = 0; i <= NombreC.length; i++){
+            for (int i2 = 0; i <= Caracteres.length; i++){
+               if (NombreC[i] == Caracteres[i2]){
+                   return false;
+                } 
+            }
+        }
+        return true;
     }
 }
 
