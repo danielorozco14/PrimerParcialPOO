@@ -55,7 +55,7 @@ public class Persona {
     public String toString() {
         return "Persona{" + "Nombre=" + Nombre + ", FechaNacimiento=" + FechaNacimiento + ", DUI=" + DUI + '}';
     }
-
+    //OBTENER DATOS DE PERSONA Y GUARDARLOS
     public void ObtenerDatos() {
         Validaciones validar = new Validaciones();
         Persona datosPersona = new Persona();
@@ -91,7 +91,7 @@ public class Persona {
 
     //METODO MOSTRAR DATOS 
     public void mostrarDatos() {
-        System.out.println("\t\t----- Mostrando datos de persona -----");
+        System.out.println("----- Mostrando datos de persona -----");
         for (Persona pers : Datos) {
             System.out.println(pers.toString());
         }
