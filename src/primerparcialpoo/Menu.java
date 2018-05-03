@@ -32,15 +32,17 @@ public class Menu {
         System.out.println("3. Encontrar Huespedes");
         System.out.println("4. Añadir persona");
         System.out.println("5. Mostrar persona");
-        System.out.println("6. Salir");
+        System.out.println("6. Mostrar total de la factura del huesped");
+        System.out.println("7. Salir");
     }
 
     public void mostrar() {
-        int opcion = 7;
+        int opcion = 8;
         Scanner leer = new Scanner(System.in);
         Huesped huesped = new Huesped();
         Persona persona = new Persona();
-        while (opcion != 6) {
+        Factura factura = new Factura();
+        while (opcion != 7) {
             opciones();
             try {
                 opcion = leer.nextInt();
@@ -63,6 +65,9 @@ public class Menu {
                         break;
                     case 5:
                         persona.mostrarDatos();
+                        break;
+                    case 7:
+                        factura.TotalPagar();
                         break;
                           
                     default:
