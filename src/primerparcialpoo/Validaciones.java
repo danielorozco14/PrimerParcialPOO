@@ -188,9 +188,14 @@ public class Validaciones {
         char[] NombreC = Nombre.toCharArray();
         for (int i = 0; i <= NombreC.length; i++){
             for (int i2 = 0; i <= Caracteres.length; i++){
-               if (NombreC[i] == Caracteres[i2]){
+                String aux1, aux2;
+                aux1 = new StringBuilder(NombreC[i]).toString();
+                aux2 = new StringBuilder(Caracteres[i2]).toString();
+                if (aux1 == aux2){
                    return false;
-                } 
+                }
+                aux1 = null;
+                aux2 = null;
             }
         }
         return true;
