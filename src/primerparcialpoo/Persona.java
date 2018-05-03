@@ -89,7 +89,7 @@ public class Persona {
 
     }
 
-    //METODO MOSTRAR DATOS 
+    //MOSTRAR DATOS 
     public void mostrarDatos() {
         System.out.println("----- Mostrando datos de persona -----");
         for (Persona pers : Datos) {
