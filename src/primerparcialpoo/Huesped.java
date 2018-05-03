@@ -45,20 +45,18 @@ public class Huesped extends Persona {
 
         System.out.print("INGRESE SU NOMBRE: ");
         String nombre = infoHuesped.nextLine();
-        addDatos.setNombre(nombre);
-//        if (Validar.ValidarCorreo(Correo) == true) {
-//            addDatos.setNombre(Correo);
-//        } 
-//        else {
-//            do 
-//            {
-//                System.out.print("Ingrese su correo electronico: ");
-//                Correo = infoHuesped.nextLine();
-//            } while (Validar.ValidarCorreo(Correo)!=true);
-//            
-//            addDatos.setCorreo(Correo);
-//
-//        }
+        //addDatos.setNombre(nombre);
+        if (Validar.ValidarNombre(nombre) == true) {
+            addDatos.setNombre(nombre);
+        } else {
+            do {
+                System.out.print("Ingrese su nombre correctamente: ");
+                nombre = infoHuesped.nextLine();
+            } while (Validar.ValidarNombre(nombre) != true);
+
+            addDatos.setNombre(nombre);
+
+        }
 
         System.out.print("INGRESE SU FECHA DE NACIMIENTO: ");
         String fechaNac = infoHuesped.nextLine();
