@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author karic <00002517>
  */
-//CLASE PERSONA
+//CLASE PERSONA SOLO SERA UNA PLANTILLA 
 public class Persona {
 
     protected String Nombre;
@@ -78,7 +78,7 @@ public class Persona {
     }
     
 
-    
+   
     //OBTENER DATOS DE PERSONA Y GUARDARLOS
 //    public void ObtenerDatos() {
 //        Validaciones validar = new Validaciones();
