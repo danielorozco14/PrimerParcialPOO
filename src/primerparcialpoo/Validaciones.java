@@ -116,11 +116,11 @@ public class Validaciones {
 
     }
     
-    public boolean ValidarDui(char[] Dui){
-        if (Dui.length == 10){
-            String aux;
-            int acum;
-            acum = 0;
+    public boolean ValidarDui(String Dui){
+        char[] DuiC = Dui.toCharArray();//TelefonoC es en caracteres
+        if (DuiC.length == 10){
+            return true;
+            /**String aux;
             aux = null;
             for (int i = 0; i < 9; i++){
                 aux = new StringBuilder().append(aux).append(Dui[i]).toString();
@@ -139,7 +139,11 @@ public class Validaciones {
                 }
             }
         }
-    return false;
+    /return false;
+    }**/
+            
+        }
+        return false;
     }
     
     public boolean ValidarFecha(String Fecha){
