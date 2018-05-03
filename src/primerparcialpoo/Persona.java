@@ -67,8 +67,22 @@ public class Persona {
         System.out.println("-----------------------------");
 
         System.out.println("Ingrese su Fecha de Nacimiento por favor: ");
-        datosPersona.setFechaNacimiento(obtenerDatos.nextLine());
+        String fechaNacimiento = obtenerDatos.nextLine();
+        if (validar.ValidarDui(fechaNacimiento) == true) {
+            System.out.println("AGREGACION EXITOSA");
+            datosPersona.setDUI(fechaNacimiento);
 
+        } else {
+            do {
+                System.out.print("Ingrese su fecha de nacimiento correctamente por favor: ");
+                fechaNacimiento = obtenerDatos.nextLine();
+            } while ((validar.ValidarFecha(fechaNacimiento)) != true);
+
+            datosPersona.setFechaNacimiento(fechaNacimiento);
+        }
+        
+        
+        
         System.out.println("------------------------------");
         System.out.println("Ingrese su documento único de identidad DUI por favor: ");
         String dui = obtenerDatos.nextLine();
