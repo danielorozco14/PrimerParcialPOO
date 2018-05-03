@@ -18,7 +18,7 @@ public class Habitacion {
     private String TipoHabitacion,EstadoHabitacion;
     private float PrecioHabitacion;
     private float VariacionTemporada;//Los precios varian por temporadas seria en porcentages
-    private ArrayList<Habitacion> HabitacionA;
+    private final ArrayList<Habitacion> HabitacionA;
     
     public Habitacion(){
         HabitacionA = new ArrayList<>();
