@@ -7,11 +7,11 @@ Y contará con los metodos:
 2. Generarle un ID a la factura
 */
 package primerparcialpoo;
-
+// borrar cuando se suba
 import java.util.Objects;
 import java.util.UUID; 
 /**
- @author kar <00002517@uca.edu.sv>
+ @author karicha <00002517@uca.edu.sv>
  */
 
 //CLASE FACTURA
@@ -74,6 +74,3 @@ public class Factura {
     
 }   
     
-
-
-
