@@ -5,8 +5,6 @@
  */
 package primerparcialpoo;
 
-import java.util.Scanner;
-
 /**
  *
  * @author karic <00002517>
