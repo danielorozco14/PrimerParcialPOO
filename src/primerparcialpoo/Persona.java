@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class Persona {
 
     protected String Nombre;
-    protected String FechaNacimiento; //ESTA WEA VA SERVIR PARA EL METODO DE FECHA. AUN NO ES NECESARIA!!
+    protected String FechaNacimiento; //ESTA WEA VA SERVIR PARA EL METODO DE FECHA. 
     protected String DUI;
     protected String Tarjeta;
     protected String Correo;
