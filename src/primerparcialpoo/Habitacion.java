@@ -53,7 +53,7 @@ public class Habitacion {
     }
 
     public void setVariacionTemporada(float VariacionTemporada) {
-        this.VariacionTemporada = VariacionTemporada;
+        //this.VariacionTemporada = VariacionTemporada;
     }
     
     public void VariacionTemporada(){
