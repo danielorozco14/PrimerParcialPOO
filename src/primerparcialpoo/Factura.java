@@ -17,7 +17,7 @@ import java.util.UUID; //ESTA IMPORTACION NOS AYUDARA PARA GENERAR DE MANERA RAN
 public class Factura {
 
     //ATRIBUTOS
-    private  Reservaciones reservacion;
+    private  Habitacion servicios;
     private  String idFactura;
     private double TotalAPagar;
 
@@ -27,10 +27,10 @@ public class Factura {
         
     }
 
-    public Factura(Reservaciones reservacion) {
+    public Factura(Habitacion servicios) {
         //GENERANDO DE FORMA RANDOM EL ID DE FACTURA
         this.idFactura = UUID.randomUUID().toString().toUpperCase().substring(0, 6);
-        this.reservacion = reservacion;
+        this.servicios = servicios;
     }
 
     //GETTER AND SETTER
@@ -49,7 +49,7 @@ public class Factura {
     //SACANDO TOTAL 
     public void TotalPagar() {
         //SUMANDO LOS SERVICIOS PARA SACAR UN TOTAL A PAGAR POR CUENTA DEL HUESPED
-        this.TotalAPagar += this.reservacion.getPrecioHabitacion();
+        this.TotalAPagar += this.servicios.getPrecioHabitacion()+this.servicios.getVariacionTemporada();
 
     }
 
