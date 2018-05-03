@@ -14,13 +14,13 @@ import java.util.Scanner;
  */
 //CLASE PERSONA
 public class Persona {
-
+    //ATRIBUTOS
     protected String Nombre;
     protected String FechaNacimiento; //ESTA WEA VA SERVIR PARA EL METODO DE FECHA 
     protected String DUI;
     protected ArrayList<Persona> Datos;
+    
     //CONSTRUCTOR PERSONA
-
     public Persona() {
         Datos = new ArrayList<>(); //INCIALIZAMOS LA LISTA DATOS
 
