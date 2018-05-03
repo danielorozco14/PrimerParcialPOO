@@ -22,7 +22,7 @@ public class Persona {
     //CONSTRUCTOR PERSONA
 
     public Persona() {
-        Datos = new ArrayList<>(); //INCIALIZACION DE LA LISTA
+        Datos = new ArrayList<>(); //INCIALIZAMOS LA LISTA DATOS
 
     }
 
