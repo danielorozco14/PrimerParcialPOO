@@ -23,6 +23,7 @@ public class Factura {
     
     //CONSTRUCTOR DE FACTURA
     public Factura ( Reservaciones reservacion){
+        //GENERANDO DE FORMA RANDOM EL ID DE FACTURA
         this.idFactura=UUID.randomUUID().toString().toUpperCase().substring(0, 6);
         this.reservacion = reservacion;
     }
@@ -42,6 +43,7 @@ public class Factura {
     }
     
     public void TotalPagar () {
+        //SUMANDO LOS SERVICIOS PARA SACAR UN TOTAL A PAGAR POR CUENTA DEL HUESPED
         this.TotalAPagar += this.reservacion.getPrecioHabitacion();
         
     }
