@@ -81,13 +81,13 @@ public class Validaciones {
                 aux = null;
                 for (i = i; i<=CorreoC.length; i++){
                     aux = new StringBuilder().append(aux).append(CorreoC[i]).toString();
-                    if (CorreoC[i] == '.'){
-                        System.out.println("Su correo no posee un dominio correcto");
-                        return false;
-                    }
                     if ("outlook".equals(aux) || "gmail".equals(aux) || "Outlook".equals(aux) || "Gmail".equals(aux) || "yahoo".equals(aux) || "Yahoo".equals(aux)){
                         System.out.println("Su correo es valido");
                         return true;
+                    }
+                    if (CorreoC[i] == '.'){
+                        System.out.println("Su correo no posee un dominio correcto");
+                        return false;
                     }
                     return true;
                 }
@@ -141,4 +141,13 @@ public class Validaciones {
         }
     return false;
     }
+    
+    public boolean ValidarFecha(String Fecha){
+        char[] FechaC = Fecha.toCharArray();
+        for (int i = 0; i<FechaC.length; i++){
+            
+        }
+        return false;
+    }
 }
+
