@@ -11,7 +11,7 @@ package primerparcialpoo;
  */
 
 //CLASE RESERVACIONES
-public class Reservaciones {
+public class Reservaciones extends Habitacion {
     private float PrecioHabitacion;
     private String Paquete;
     private String TipoHabitacion;
@@ -22,7 +22,8 @@ public class Reservaciones {
     //CONSTRUCTOR RESERVACIONES
     
     
-    public Reservaciones (){
+    public Reservaciones () {
+    
     }
 
     public Reservaciones(float PrecioHabitacion, String Paquete, String TipoHabitacion, String ServiciosHabitacion, char[] NumeroHabitacion) {
