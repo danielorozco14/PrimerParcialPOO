@@ -13,11 +13,11 @@ import java.util.UUID; //Esta madre sirve para generar codigos alfa numericos al
  *
  * @author Daniel Alejandro Orozco Orellana <00200617@uca.edu.sv>
  */
-public class Huesped { //extends Tarjeta{
+public class Huesped extends Tarjeta{
 
-    private String correo, telefono, idHuesped;
+    protected String correo, telefono, idHuesped;
 
-    private ArrayList<Huesped> contactos;//ARRAY QUE CONTIENE EL TELEFONO Y EL CORREO DEL HUESPED
+    protected ArrayList<Huesped> contactos;//ARRAY QUE CONTIENE EL TELEFONO Y EL CORREO DEL HUESPED
 
     public Huesped() {
         contactos = new ArrayList<>(); //Inicializando el ArrayList que contendra los contactos en el constructor
@@ -58,7 +58,7 @@ public class Huesped { //extends Tarjeta{
         Scanner infoContacto = new Scanner(System.in);
 
         System.out.println("\t\t----- Ingresar Datos de Contacto ----- ");
-
+        
         System.out.print("Ingrese su correo electronico: ");
         String Correo = infoContacto.nextLine();
 
