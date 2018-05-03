@@ -69,7 +69,7 @@ public class Menu {
                         System.out.println("Por favor ingrese una opcion valida");
                 }
             } catch (InputMismatchException e) {
-                System.err.println("Por favor, Ingrese un número");
+                System.err.println("Por favor, Ingrese un número: ");
                 leer.nextLine();
             }
         }
