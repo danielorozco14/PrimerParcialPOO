@@ -128,7 +128,8 @@ public class Validaciones {
                     System.out.println(auxN);
                     System.out.println("Valor de 9-i++");
                     System.out.println(9-i);
-                    acum =acum + (auxN * 9-i);//aqui vamos a tener el valor como entero de las partes del dui
+                    int prueba = 9-i;
+                    acum =acum + (auxN * prueba);//aqui vamos a tener el valor como entero de las partes del dui
                     System.out.println("Acum 2");
                     System.out.println(acum);
                     //i = i-1;//cambiar el 2 p[or 1 cuando elimines los sout de arriba
