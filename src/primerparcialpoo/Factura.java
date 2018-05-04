@@ -4,8 +4,6 @@ Clase Factura contendra el total monetario de de los servicios adquiridos por el
  */
 package primerparcialpoo;
 
-
-import java.util.Objects;
 import java.util.UUID; //ESTA IMPORTACION NOS AYUDARA PARA GENERAR DE MANERA RANDOM EL ID DE FACTURA,
 //YA QUE GENERA CODIGOS ALFANUMERICOS.
 
