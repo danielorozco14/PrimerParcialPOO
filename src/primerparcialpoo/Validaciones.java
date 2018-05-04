@@ -134,6 +134,13 @@ public class Validaciones {
             }
                 acum %= 10;
                 acum = 10-acum;
+                if (acum == 10){
+                    acum = 0;
+                    if (acum == Character.getNumericValue(DuiC[9])){
+                        System.out.println("Su dui es valido");
+                        return true;
+                    }
+                }
                 if (acum == Character.getNumericValue(DuiC[9])){
                     System.out.println("Su dui es valido");
                     return true;
