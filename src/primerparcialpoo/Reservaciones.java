@@ -13,21 +13,24 @@ public class Reservaciones extends Persona{
     private String tipoHab;
     private String numeroHab;
     private boolean paquete;
+    private String tipoPaquete;
     private String fechaIng;
     private String fechaSal;
 
     public Reservaciones() {
     }
 
-    public Reservaciones(String nombre, String apellido, String telefono, String dui, String tipoHab,String numeroHab, boolean paquete, String fechaIng, String fechaSal) {
+    public Reservaciones(String nombre, String apellido, String telefono, String dui, String tipoHab,String numeroHab, boolean paquete, String tipoPaquete, String fechaIng, String fechaSal) {
         
         super(nombre, apellido, telefono, dui);
         
         this.tipoHab = tipoHab;
         this.numeroHab = numeroHab;
         this.paquete = paquete;
+        this.tipoPaquete = tipoPaquete;
         this.fechaIng = fechaIng;
         this.fechaSal = fechaSal;
+        
     }
 
     public String getTipoHab() {
@@ -54,6 +57,14 @@ public class Reservaciones extends Persona{
         this.paquete = paquete;
     }
 
+    public String getTipoPaquete() {
+        return tipoPaquete;
+    }
+
+    public void setTipoPaquete(String tipoPaquete) {
+        this.tipoPaquete = tipoPaquete;
+    }
+    
     public String getFechaIng() {
         return fechaIng;
     }

@@ -75,19 +75,19 @@ public class Fecha {
             case 6:
             case 9:
             case 11:
-                System.out.println("El mes tiene 30 días.");
+                //System.out.println("El mes tiene 30 días.");
                 eDia = 1<=dia && dia<=30;
                 break;
             case 2:
                 if(Bisiesto())
                 {
-                    System.out.println("El mes tiene 29 días.");
+                    //System.out.println("El mes tiene 29 días.");
                     eDia = 1<=dia && dia<=29;
                     break;
                 }
                 else 
                 {
-                    System.out.println("El mes tiene 28 días.");
+                    //System.out.println("El mes tiene 28 días.");
                     eDia = 1<=dia && dia<=28;
                     break;
                 }

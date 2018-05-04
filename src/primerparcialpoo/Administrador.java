@@ -21,8 +21,8 @@ public class Administrador extends Reservaciones{
         this.password = password;
     }
 
-    public Administrador(String usuario, String password, String nombre, String apellido, String telefono, String dui, String tipoHab, String numeroHab, boolean paquete, String fechaIng, String fechaSal) {
-        super(nombre, apellido, telefono, dui, tipoHab, numeroHab, paquete, fechaIng, fechaSal);
+    public Administrador(String usuario, String password, String nombre, String apellido, String telefono, String dui, String tipoHab, String numeroHab, boolean paquete, String tipoPaquete, String fechaIng, String fechaSal) {
+        super(nombre, apellido, telefono, dui, tipoHab, numeroHab, paquete, tipoPaquete, fechaIng, fechaSal);
         this.usuario = usuario;
         this.password = password;
     }

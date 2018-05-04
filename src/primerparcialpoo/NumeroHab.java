@@ -10,28 +10,28 @@ package primerparcialpoo;
  * @author Roxana
  */
 public class NumeroHab {
-    private String HabS;
-    private String HabD;
+    private String habs;
+    private String habd;
 
-    public NumeroHab(String HabS, String HabD) {
-        this.HabS = HabS;
-        this.HabD = HabD;
+    public NumeroHab(String habs, String habd) {
+        this.habs = habs;
+        this.habd = habd;
     }
 
-    public String getHabS() {
-        return HabS;
+    public String getHabs() {
+        return habs;
     }
 
-    public void setHabS(String HabS) {
-        this.HabS = HabS;
+    public void setHabs(String habs) {
+        this.habs = habs;
     }
 
-    public String getHabD() {
-        return HabD;
+    public String getHabd() {
+        return habd;
     }
 
-    public void setHabD(String HabD) {
-        this.HabD = HabD;
+    public void setHabd(String habd) {
+        this.habd = habd;
     }
 
     

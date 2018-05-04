@@ -16,10 +16,6 @@ import java.util.Random;
 public class ListaReserva extends Fecha{
     private ArrayList<Reservaciones> reservaciones;
      
-    private static String habs;
-    private static String habd;
-    
-    
     public ListaReserva(int dia, int mes, int anio) {
         super(dia, mes, anio);
         reservaciones = new ArrayList<>();
@@ -71,10 +67,10 @@ public class ListaReserva extends Fecha{
         
         return lis;
     }
-    public static NumeroHab NumeroHab(String[][] listaI, String[][] listaP, String[][] lista,int opc){
+    public String NumeroHab(String[][] listaI, String[][] listaP, String[][] lista,int opc){
         
-        NumeroHab numeroh;
-        String habs = null,habd = null;
+        
+        String w = null;
         
         Random r = new Random();
         for(int a=0; a<6; a++){
@@ -86,13 +82,12 @@ public class ListaReserva extends Fecha{
                 if(opc==1)
                 {
                     System.out.println("El número de la habítación sencilla es: "+listaI[m1][n2]);
+                    w = listaI[m1][n2];
                 }
                 else if(opc==2)
                 {
                     System.out.println("El número de la habitación doble es: "+listaP[m1][n2]);
                 }
-                habs= listaI[m1][n2];
-                habd = listaP[m1][n2];
                 break;
             }
             break;
@@ -102,9 +97,23 @@ public class ListaReserva extends Fecha{
         //System.out.println(Arrays.deepToString(listaI));
         //System.out.println(Arrays.deepToString(listaP));
         
-       numeroh = new NumeroHab(habs, habd);
-       return numeroh;
+       
+       return w;
     }
+    public String TipH(int opc){
+        
+        String tipoHab;
+        if(opc==1)
+        {
+            tipoHab = "sencilla";
+        }
+        else if(opc==2)
+        {
+            tipoHab = "Doble";
+        }
+        return " ";
+    }
+    
     public int OpcionesHab(){
         System.out.println("Elegir el tipo de habitación.");
         System.out.println("1. Sencillo.");
@@ -135,10 +144,13 @@ public class ListaReserva extends Fecha{
         return 0;
     }
     
-    public void DiasR(){
+    public Fechas DiasR(){
         
+        Fechas fechas;
+                
         Scanner read = new Scanner(System.in);
         int d,m,a;
+        String fi, fs=null;
         
         System.out.println("Ingrese el dia a reservar.");
         d = read.nextInt();
@@ -148,6 +160,9 @@ public class ListaReserva extends Fecha{
         
         System.out.println("Ingrese el añio en que estara reservado.");
         a = read.nextInt();
+        
+        System.out.println("Fecha de ingreso al hotel:" + d+ "-" + m + "-"+a);
+        fi = Integer.toString(d)+"-"+Integer.toString(m)+"-"+Integer.toString(a);
         
         if(DiasXmes(d, m, a).iseDia()==false ||DiasXmes(d, m, a).iseMes()==false || DiasXmes(d, m, a).iseAnio()==false){
             System.out.println("La fecha no existe.");
@@ -172,15 +187,18 @@ public class ListaReserva extends Fecha{
                 o = DiaSig(d, m, a).getDia(); 
                 p = DiaSig(d, m, a).getMes();
                 q = DiaSig(d, m, a).getAnio();
-                System.out.print("Fecha de salida del hotel: ");
+                System.out.println("Fecha del último día de reservación:");
                 System.out.println((DiaSig(d, m, a).getDia()+cant-1)+"-"+DiaSig(d, m, a).getMes()+"-"+DiaSig(d, m, a).getAnio());
+                fs = Integer.toString(DiaSig(d, m, a).getDia()+cant-1)+"-"+Integer.toString(DiaSig(d, m, a).getMes())+"-"+Integer.toString(DiaSig(d, m, a).getAnio());
+                
             }
         }
-     
-        
+        fechas = new Fechas(fi,fs);
+        return fechas;
     }
     
-    public void TipoPaquete(){
+    public String TipoPaquete(){
+        String a = null;
         System.out.println("Selcionar el tipo de paquete.");
         System.out.println("1. PREMIUM.");
         System.out.println("2. BASICO.");
@@ -193,16 +211,30 @@ public class ListaReserva extends Fecha{
             switch(tipo){
                 case 1: 
                     System.out.println("El paquete del huésped seleccionado es PREMIUM.");
-                    
+                    a = "PREMION";
                     break;
                 case 2:
                     System.out.println("EL paquete del huésped seleecionado es BASICO.");
+                    a = "BASICO";
                     break;
                 default:
-                    System.out.println("elegir una opción valida.");
+                    System.out.println("Elegir una opción valida.");
                     break;
             }
         }
+        return a;
+    }
+    
+    public boolean Paq(int x ){
+        if(x==1)
+        {
+           return true; 
+        }
+        else if(x==2)
+        {
+            return false;
+        }
+       return false; 
     }
     
     public int Paquete(){
@@ -250,19 +282,41 @@ public class ListaReserva extends Fecha{
         System.out.print("Ingrese el número telefónico del huesped: ");
         reservar.setTelefono(read.nextLine());
         
-        System.out.print("Ingrese la fecha de ingreso al hotel: ");
-        reservar.setFechaIng(read.nextLine());
-        
-        System.out.print("Ingrese la fecha del último día de reservación: ");
-        reservar.setFechaSal(read.nextLine());
-        
         int x= OpcionesHab();
+        
+        reservar.setTipoHab(TipH(x));
         
         String a[][]=TipoHab(x).getListaI();
         String b[][]=TipoHab(x).getListaP();
         String c[][]=TipoHab(x).getLista();
         
-        NumeroHab(a,b,c,x);
+        reservar.setNumeroHab(NumeroHab(a,b,c,x));
         
+        reservar.setPaquete(Paq(Paquete()));
+        
+        reservar.setFechaIng(DiasR().getFi());
+        
+        reservar.setFechaSal(DiasR().getFs());
+        
+    }
+    public void mostrar(){
+        for(Reservaciones r: reservaciones){
+            System.out.println(r.toString());
+        }
+    }
+    
+    public void Eliminar(){
+        for(Reservaciones r: reservaciones){
+            int x= OpcionesHab();
+        
+            String a[][]=TipoHab(x).getListaI();
+            String b[][]=TipoHab(x).getListaP();
+            String c[][]=TipoHab(x).getLista();
+            
+            if(NumeroHab(a, b, c,x) == "D3")
+            {
+                reservaciones.remove(r);
+            }
+        }
     }
 }
