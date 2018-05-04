@@ -5,18 +5,28 @@
  */
 package primerparcialpoo;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.UUID; //Esta madre sirve para generar codigos alfa numericos aleatorios
-
+import java.util.Date; //Esta madre sirve para obtener la fecha del 
 /**
  *
  * @author Daniel Alejandro Orozco Orellana <00200617@uca.edu.sv>
  */
-public class Huesped extends Persona {
+public class Huesped extends Persona{
 
     protected String idHuesped;
+    protected String fechaRegistro;
     protected ArrayList<Huesped> DatosHuesped;
+
+    public String getFechaRegistro() {
+        return fechaRegistro;
+    }
+
+    public void setFechaRegistro(String fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
+    }
 
     public String getIdHuesped() {
         return idHuesped;
@@ -33,10 +43,11 @@ public class Huesped extends Persona {
 
     @Override
     public String toString() {
-        return "Huesped{" + "Nombre= " + super.getNombre() + ";ID Huesped=" + idHuesped + ";Fecha de Nacimiento= " + super.getFechaNacimiento() + ";DUI= " + super.getDUI() + ";Tarjeta de Cred.= " + super.getTarjeta() + ";Correo= " + super.getCorreo() + ";Telefono= " + super.getTelefono() + '}';
+        return "Huesped{" + "Nombre= " + super.getNombre() + ";ID Huesped=" + idHuesped + ";Fecha de Registro " + fechaRegistro + ";DUI= " + super.getDUI() + ";Tarjeta de Cred.= " + super.getTarjeta() + ";Correo= " + super.getCorreo() + ";Telefono= " + super.getTelefono() + '}';
     }
 
     public void ObtenerDatosHuesped() {
+        
         Validaciones Validar = new Validaciones();
         Huesped addDatos = new Huesped();
         Scanner infoHuesped = new Scanner(System.in);
@@ -45,20 +56,18 @@ public class Huesped extends Persona {
 
         System.out.print("INGRESE SU NOMBRE: ");
         String nombre = infoHuesped.nextLine();
-        addDatos.setNombre(nombre);
-//        if (Validar.ValidarCorreo(Correo) == true) {
-//            addDatos.setNombre(Correo);
-//        } 
-//        else {
-//            do 
-//            {
-//                System.out.print("Ingrese su correo electronico: ");
-//                Correo = infoHuesped.nextLine();
-//            } while (Validar.ValidarCorreo(Correo)!=true);
-//            
-//            addDatos.setCorreo(Correo);
-//
-//        }
+        //addDatos.setNombre(nombre);
+        if (Validar.ValidarNombre(nombre) == true) {
+            addDatos.setNombre(nombre);
+        } else {
+            do {
+                System.out.print("Ingrese su nombre correctamente: ");
+                nombre = infoHuesped.nextLine();
+            } while (Validar.ValidarNombre(nombre) != true);
+
+            addDatos.setNombre(nombre);
+
+        }
 
         System.out.print("INGRESE SU FECHA DE NACIMIENTO: ");
         String fechaNac = infoHuesped.nextLine();
@@ -135,6 +144,7 @@ public class Huesped extends Persona {
 
         }
         addDatos.setIdHuesped(UUID.randomUUID().toString().toUpperCase().substring(0, 6));
+        addDatos.setFechaRegistro(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));//SE AGREGA LA FECHA DEL REGISTRO DEL HUESPED
         DatosHuesped.add(addDatos);
 
     }
@@ -160,7 +170,7 @@ public class Huesped extends Persona {
             Scanner cambiar = new Scanner(System.in);
             if (huesped.getIdHuesped().equals(id) && cont == 0) {
 
-                System.out.println("Este huesped existe: " + "Nombre= " + huesped.getNombre() + " ; ID Huesped=" + huesped.getIdHuesped() + " ; Fecha de Nacimiento= " + huesped.getFechaNacimiento() + " ; DUI= " + huesped.getDUI() + " ; Tarjeta de Cred.= " + huesped.getTarjeta() + " ; Correo= " + huesped.getCorreo() + " ; Telefono= " + huesped.getTelefono());
+                 System.out.println("Este huesped existe: " + "Nombre= " + huesped.getNombre() + " ; ID Huesped=" + huesped.getIdHuesped() + " ; Fecha de Nacimiento= " + huesped.getFechaNacimiento() + " ; DUI= " + huesped.getDUI() + " ; Tarjeta de Cred.= " + huesped.getTarjeta() + " ; Correo= " + huesped.getCorreo() + " ; Telefono= " + huesped.getTelefono());
 
             } else if (huesped.getIdHuesped().equals(id) && cont != 0) {
                 System.out.println("Este huesped existe: " + "Nombre= " + huesped.getNombre() + " ; ID Huesped=" + huesped.getIdHuesped() + " ; Fecha de Nacimiento= " + huesped.getFechaNacimiento() + " ; DUI= " + huesped.getDUI() + " ; Tarjeta de Cred.= " + huesped.getTarjeta() + " ; Correo= " + huesped.getCorreo() + " ; Telefono= " + huesped.getTelefono());

@@ -64,7 +64,7 @@ public class Factura extends Huesped {
         System.out.println("\t\t***** FACTURA ***" +"\n\t\t ID Factura: "+UUID.randomUUID().toString().toUpperCase().substring(0, 6)+ "\n\t\tFecha: "+new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
         System.out.println("\tCliente: "+super.getNombre());
         System.out.println("\tID Huesped: "+super.getIdHuesped());
-        System.out.println("\tHabitacion: "+Arrays.toString(reservacion.getNumeroHabitacion()));
+        //System.out.println("\tHabitacion: "+Arrays.toString(reservacion.getNumeroHabitacion()));
         System.out.println("\tTOTAL A PAGAR: "+ TotalPagar());
         
         

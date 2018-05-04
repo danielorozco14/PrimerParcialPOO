@@ -210,7 +210,7 @@ public class Validaciones {
         int aux1, aux2;
         try{
             for (int i = 0; i < NombreC.length; i++){
-                for (int i2 = 0; i2 < Caracteres.length; i++){
+                for (int i2 = 0; i2 < Caracteres.length; i2++){
                     if (NombreC[i] == Caracteres[i2]){
                        return false;
                     } 

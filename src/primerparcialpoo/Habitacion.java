@@ -53,18 +53,20 @@ public class Habitacion {
     }
 
     public void setVariacionTemporada(float VariacionTemporada) {
-        //this.VariacionTemporada = VariacionTemporada;
+        this.VariacionTemporada = VariacionTemporada;
     }
     
     public void VariacionTemporada(){
+        Habitacion var = new Habitacion();//INSTANCIANDO LA CLASE HABITACION
+        
         System.out.println("Ingrese temporada del año en la que se encuentra la reservacion");
         Scanner Variacion = new Scanner(System.in);
         String Temporada = Variacion.nextLine();
         if ("Verano".equals(Temporada)){
-            setVariacionTemporada(15);
+            var.setVariacionTemporada(15);
         }
         else{
-            setVariacionTemporada(0);
+            var.setVariacionTemporada(0);
         }
     }
     public void PrecioHabitacion(){//precios por noche

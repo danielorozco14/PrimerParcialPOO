@@ -5,20 +5,29 @@ package primerparcialpoo;
  *
  * @author Roxana
  */
-public class Reservaciones extends Persona{
+//CLASE RESERVACIONES
+public class Reservaciones extends Habitacion {
+
+    private float PrecioHabitacion;
+    private String Paquete;
+    private String TipoHabitacion;
+    private String ServiciosIndividuales;
+    private char[] NumeroHabitacion = new char[2];
     private String tipoHab;
     private String numeroHab;
     private boolean paquete;
     private String fechaIng;
     private String fechaSal;
 
+    //CONSTRUCTOR RESERVACIONES
     public Reservaciones() {
+
     }
 
-    public Reservaciones(String nombre, String apellido, String telefono, String dui, String tipoHab,String numeroHab, boolean paquete, String fechaIng, String fechaSal) {
-        
-        super(nombre, apellido, telefono, dui);
-        
+    public Reservaciones(String nombre, String apellido, String telefono, String dui, String tipoHab, String numeroHab, boolean paquete, String fechaIng, String fechaSal) {
+
+        super();
+
         this.tipoHab = tipoHab;
         this.numeroHab = numeroHab;
         this.paquete = paquete;
