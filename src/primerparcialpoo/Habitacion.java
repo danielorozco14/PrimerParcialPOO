@@ -15,10 +15,10 @@ import java.util.Scanner;
         
 public class Habitacion {
     
-    protected String TipoHabitacion,EstadoHabitacion;
-    protected float PrecioHabitacion;
-    protected float VariacionTemporada;//Los precios varian por temporadas (seria en porcentages)
-    protected ArrayList<Habitacion> HabitacionA;
+    private String TipoHabitacion,EstadoHabitacion;
+    private float PrecioHabitacion;
+    private float VariacionTemporada;//Los precios varian por temporadas seria en porcentages
+    private final ArrayList<Habitacion> HabitacionA;
     
     public Habitacion(){
         HabitacionA = new ArrayList<>();

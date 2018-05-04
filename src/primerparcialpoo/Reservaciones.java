@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//solo la hice de prueba para ver si funcionaba la clase FACTURA, cuando ya este la verdadera se borrara esta
 package primerparcialpoo;
 
 /**
