@@ -10,6 +10,7 @@ package primerparcialpoo;
  * @author Roberto Alexander Rubio Castillo <00259517@uca.edu.sv>
  */
 //Hay que validar si la habitacion esta ocupada o no
+//Acordate de hacer el metodo para guardar que habitaciones estan ocupadas
 import java.util.ArrayList;
 import java.util.Scanner;
         
@@ -18,7 +19,6 @@ public class Habitacion {
     private String TipoHabitacion,EstadoHabitacion;
     private float PrecioHabitacion;
     private float VariacionTemporada;//Los precios varian por temporadas seria en porcentages
-    private final ArrayList<Habitacion> HabitacionA;
     
     public Habitacion(){
         HabitacionA = new ArrayList<>();
@@ -56,6 +56,11 @@ public class Habitacion {
         this.VariacionTemporada = VariacionTemporada;
     }
     
+    //Es String o boolean solo he dejado el void para que no de errores, esta vacia porque la tengo en proceso de hacer aun
+    public void EstadoHabitacion(String Habitacion){
+        
+    }
+    
     public void VariacionTemporada(){
         Habitacion var = new Habitacion();//INSTANCIANDO LA CLASE HABITACION
         
@@ -69,6 +74,7 @@ public class Habitacion {
             var.setVariacionTemporada(0);
         }
     }
+    
     public void PrecioHabitacion(){//precios por noche
         float Total;
         float Variacion;
