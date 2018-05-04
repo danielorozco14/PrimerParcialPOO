@@ -120,24 +120,35 @@ public class Validaciones {
         char[] DuiC = Dui.toCharArray();//TelefonoC es en caracteres
         if (DuiC.length == 10){
             String aux;
-            aux = null;
-            int acum =0;
-            for (int i = 0; i < 9; i++){
+            aux = "";
+            int acum = 0;
+            int auxN = 0;//Auxiliar numerico
+            for (int i = 0; i < 8; i++){
                 aux = new StringBuilder().append(aux).append(DuiC[i]).toString();
                 try{
                     int auxn = Integer.parseInt(aux);//Se convierte el numero del aux de string a int, auxn es el aux en int
-                    acum += Character.getNumericValue(DuiC[i]) * i++;//aqui vamos a tener el valor como entero de las partes del dui
+                    auxN = Character.getNumericValue(DuiC[i]);
+                    System.out.println(auxN);
+                    acum = auxN * i++;//aqui vamos a tener el valor como entero de las partes del dui
+                    i = i-1;
                 }
                 catch(NumberFormatException e){
                     System.out.println("\t\t***** Su dui no puede contener letras*****");
                     return false;
                 }
+            }
                 acum %= 10;
                 acum = 10-acum;
-                if (acum == Character.getNumericValue(DuiC[10])){
+                System.out.println("Acum");
+                System.out.println(acum);
+                if (acum == Character.getNumericValue(DuiC[9])){
+                    System.out.println("Su dui es valido");
                     return true;
                 }
-            }
+                else{
+                    System.out.println("Su dui es invalido");
+                    return false;
+                }
         }
     return false;
     }
@@ -145,27 +156,33 @@ public class Validaciones {
     public boolean ValidarFecha(String Fecha){
         char[] FechaC = Fecha.toCharArray();
         String aux;
-        aux = null;
-        for (int i = 0; i<2; i++){ 
+        aux = "";
+        for (int i = 0; i<2; i++){ //Dia
             aux = new StringBuilder().append(aux).append(FechaC[i]).toString();
+        }
             try{
                 if (Integer.parseInt(aux) > 0 && Integer.parseInt(aux) < 32){
-                    aux = null;
-                    for(i = 3; i < 6; i++){
+                    aux = "";
+                    for(int i = 3; i < 6; i++){//Mes
                         aux = new StringBuilder().append(aux).append(FechaC[i]).toString();
                         if(Integer.parseInt(aux) > 0 && Integer.parseInt(aux) < 13){
-                            aux = null;
-                            for(i = 7; i < 10; i++){
+                            aux = "";
+                            for(i = 6; i <= 10; i++){//Anio
                                 aux = new StringBuilder().append(aux).append(FechaC[i]).toString();
+                                if (Integer.parseInt(aux) < 2018){
+                                    System.out.println("Su fecha de nacimiento es valida");
+                                    return true;
+                                }
                             }
                         }
                     }
                 }
             }
             catch(NumberFormatException e){
-                
+                System.out.println("Su fecha de nacimiento debe contener solo numeros");
+                return false;
             }
-        }
+        
         return false;
     }
     
