@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.UUID; //Esta madre sirve para generar codigos alfa numericos aleatorios
-import java.util.Date; //Esta madre sirve para obtener la fecha del sistema :v
+import java.util.Date; //Esta madre sirve para obtener la fecha del 
 /**
  *
  * @author Daniel Alejandro Orozco Orellana <00200617@uca.edu.sv>
