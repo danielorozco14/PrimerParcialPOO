@@ -7,65 +7,172 @@ package primerparcialpoo;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.UUID;
+import java.util.UUID; //Esta madre sirve para generar codigos alfa numericos aleatorios
 
 /**
  *
  * @author Daniel Alejandro Orozco Orellana <00200617@uca.edu.sv>
  */
-public class Huesped { //extends Tarjeta{
+public class Huesped extends Persona {
 
-    public String contacto;
-    private String idHuesped;
+    protected String idHuesped;
+    protected ArrayList<Huesped> DatosHuesped;
 
-    private ArrayList<String> contactos;
-    private ArrayList<String> IDHuesped;
+    public String getIdHuesped() {
+        return idHuesped;
+    }
+
+    public void setIdHuesped(String idHuesped) {
+        this.idHuesped = idHuesped;
+    }
 
     public Huesped() {
-        contactos = new ArrayList<>(); //Inicializando el ArrayList que contendra los contactos en el constructor
-        IDHuesped = new ArrayList<>(); //Inicializando el ArrayList que contendra los ID en el constructor
+        super();//CON SUPER SE INICIALIZA LA CLASE PADRE Y YA SE PUEDE ACCEDER A TODOS LOS ATRIBUTOS O METODOS
+        DatosHuesped = new ArrayList<>();
     }
 
-    public String obtenerContacto() {
-
-        Scanner infoContacto = new Scanner(System.in);
-        for (int i = 0; i < 2; i++) {
-            System.out.println("\t\t----- Ingresar Datos de Contacto ----- ");
-
-            System.out.print("Ingrese su correo electronico: ");
-            contacto = infoContacto.nextLine();
-            contactos.add(contacto);
-
-            System.out.print("Ingrese su numero de telefono: ");
-            contacto = infoContacto.nextLine();
-            contactos.add(contacto);
-        }
-        String a = "hola";
-
-        return a;
-
+    @Override
+    public String toString() {
+        return "Huesped{" + "Nombre= " + super.getNombre() + ";ID Huesped=" + idHuesped + ";Fecha de Nacimiento= " + super.getFechaNacimiento() + ";DUI= " + super.getDUI() + ";Tarjeta de Cred.= " + super.getTarjeta() + ";Correo= " + super.getCorreo() + ";Telefono= " + super.getTelefono() + '}';
     }
 
-    public void generarIDHuesped() {
-        
-        
-        for(int i=0;i<contactos.size();i+=2){
-            String iDHuesped = UUID.randomUUID().toString().toUpperCase().substring(0, 6);
-            IDHuesped.add(iDHuesped);
-        
+    public void ObtenerDatosHuesped() {
+        Validaciones Validar = new Validaciones();
+        Huesped addDatos = new Huesped();
+        Scanner infoHuesped = new Scanner(System.in);
+
+        System.out.println("\t\t----- Ingresar Datos de Huesped ----- ");
+
+        System.out.print("INGRESE SU NOMBRE: ");
+        String nombre = infoHuesped.nextLine();
+        addDatos.setNombre(nombre);
+//        if (Validar.ValidarCorreo(Correo) == true) {
+//            addDatos.setNombre(Correo);
+//        } 
+//        else {
+//            do 
+//            {
+//                System.out.print("Ingrese su correo electronico: ");
+//                Correo = infoHuesped.nextLine();
+//            } while (Validar.ValidarCorreo(Correo)!=true);
+//            
+//            addDatos.setCorreo(Correo);
+//
+//        }
+
+        System.out.print("INGRESE SU FECHA DE NACIMIENTO: ");
+        String fechaNac = infoHuesped.nextLine();
+        //addDatos.setFechaNacimiento(fechaNac);
+        if (Validar.ValidarFecha(fechaNac) == true) {
+            addDatos.setFechaNacimiento(fechaNac);
+        } else {
+            do {
+                System.out.print("Ingrese su fecha de nacimiento correctamente: ");
+                fechaNac = infoHuesped.nextLine();
+            } while (Validar.ValidarFecha(fechaNac) != true);
+
+            addDatos.setFechaNacimiento(fechaNac);
+
         }
-        
+
+        System.out.print("INGRESE SU DUI: ");
+        String Dui = infoHuesped.nextLine();
+        //addDatos.setDUI(Dui);
+        if (Validar.ValidarDui(Dui) == true) {
+            addDatos.setDUI(Dui);
+        } else {
+            do {
+                System.out.print("Ingrese su DUI correctamente: ");
+                Dui = infoHuesped.nextLine();
+            } while (Validar.ValidarDui(Dui) != true);
+
+            addDatos.setDUI(Dui);
+
+        }
+
+        System.out.print("INGRESE SU TARJETA DE CREDITO: ");
+        String Tarjeta = infoHuesped.nextLine();
+        //addDatos.setTarjeta(Tarjeta);
+        if (Validar.ValidarTarjeta(Tarjeta) == true) {
+            addDatos.setTarjeta(Tarjeta);
+        } else {
+            do {
+                System.out.print("Ingrese su tarjeta de credito correctamente: ");
+                Tarjeta = infoHuesped.nextLine();
+            } while (Validar.ValidarTarjeta(Tarjeta) != true);
+
+            addDatos.setTarjeta(Tarjeta);
+
+        }
+
+        System.out.print("INGRESE SU TELEFONO: ");
+        String Telefono = infoHuesped.nextLine();
+        //addDatos.setTelefono(Telefono);
+        if (Validar.ValidarTelefono(Telefono) == true) {
+            addDatos.setTelefono(Telefono);
+        } else {
+            do {
+                System.out.print("Ingrese su telefono correctamente: ");
+                Telefono = infoHuesped.nextLine();
+            } while (Validar.ValidarTelefono(Telefono) != true);
+
+            addDatos.setTelefono(Telefono);
+
+        }
+
+        System.out.print("INGRESE SU CORREO ELECTRONICO: ");
+        String Correo = infoHuesped.nextLine();
+        //addDatos.setCorreo(Correo);
+        if (Validar.ValidarCorreo(Correo) == true) {
+            addDatos.setNombre(Correo);
+        } else {
+            do {
+                System.out.print("Ingrese su correo electronico correctamente: ");
+                Correo = infoHuesped.nextLine();
+            } while (Validar.ValidarCorreo(Correo) != true);
+
+            addDatos.setCorreo(Correo);
+
+        }
+        addDatos.setIdHuesped(UUID.randomUUID().toString().toUpperCase().substring(0, 6));
+        DatosHuesped.add(addDatos);
+
     }
 
     public void mostrarContactos() {
-        System.out.println();
-        int cont = 1;
-        int size = contactos.size();
-        for (int i = 0; i < size; i++) {
-            System.out.println("\t\t---Huesped " + (cont) + "---");
-            System.out.println("Correo Electronico: " + contactos.get(i) + "\nTelefono: " + contactos.get(++i));
+        System.out.println("\t\t----- Mostrando Contactos -----");
+        for (Huesped host : DatosHuesped) {
+            System.out.println(host.toString());
+        }
+
+    }
+
+    public void encontrarContactos() {
+        Huesped Search = new Huesped();
+        Scanner buscar = new Scanner(System.in);
+
+        System.out.println("Ingrese el ID del huesped a buscar: ");
+        String id = buscar.nextLine();
+
+        int cont = 0, cont1 = 0;
+
+        for (Huesped huesped : DatosHuesped) {
+            Scanner cambiar = new Scanner(System.in);
+            if (huesped.getIdHuesped().equals(id) && cont == 0) {
+
+                System.out.println("Este huesped existe: " + "Nombre= " + huesped.getNombre() + " ; ID Huesped=" + huesped.getIdHuesped() + " ; Fecha de Nacimiento= " + huesped.getFechaNacimiento() + " ; DUI= " + huesped.getDUI() + " ; Tarjeta de Cred.= " + huesped.getTarjeta() + " ; Correo= " + huesped.getCorreo() + " ; Telefono= " + huesped.getTelefono());
+
+            } else if (huesped.getIdHuesped().equals(id) && cont != 0) {
+                System.out.println("Este huesped existe: " + "Nombre= " + huesped.getNombre() + " ; ID Huesped=" + huesped.getIdHuesped() + " ; Fecha de Nacimiento= " + huesped.getFechaNacimiento() + " ; DUI= " + huesped.getDUI() + " ; Tarjeta de Cred.= " + huesped.getTarjeta() + " ; Correo= " + huesped.getCorreo() + " ; Telefono= " + huesped.getTelefono());
+
+            } else if (huesped.getIdHuesped().equals(id) == false) {
+                cont1++;
+                if (DatosHuesped.size() == cont1) {
+                    System.out.println("No existe este ID en el registro o el huesped aun  no ha sido registrado");
+                }
+            }
             cont++;
-            //System.out.println("Telefono: "+contactos.get(i+1));
         }
     }
+
 }

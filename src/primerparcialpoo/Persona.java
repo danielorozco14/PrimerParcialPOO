@@ -55,7 +55,5 @@ public class Persona {
 
     public void setDui(String dui) {
         this.dui = dui;
-    }
-
-    
+    }    
 }
