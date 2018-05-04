@@ -124,15 +124,8 @@ public class Validaciones {
                 try{
                     int auxn = Integer.parseInt(aux);//Se convierte el numero del aux de string a int, auxn es el aux en int
                     auxN = Character.getNumericValue(DuiC[i]);
-                    System.out.println("Valor de auxN");
-                    System.out.println(auxN);
-                    System.out.println("Valor de 9-i++");
-                    System.out.println(9-i);
-                    int prueba = 9-i;
+                    int prueba = 9-i;//variable para guardar el resultado de 9-i y no alterar valores de variable
                     acum =acum + (auxN * prueba);//aqui vamos a tener el valor como entero de las partes del dui
-                    System.out.println("Acum 2");
-                    System.out.println(acum);
-                    //i = i-1;//cambiar el 2 p[or 1 cuando elimines los sout de arriba
                 }
                 catch(NumberFormatException e){
                     System.out.println("\t\t***** Su dui no puede contener letras*****");
@@ -140,11 +133,7 @@ public class Validaciones {
                 }
             }
                 acum %= 10;
-                //System.out.println("Acum 1");
-                //System.out.println(acum);
                 acum = 10-acum;
-                //System.out.println("Acum");
-                //System.out.println(acum);
                 if (acum == Character.getNumericValue(DuiC[9])){
                     System.out.println("Su dui es valido");
                     return true;
