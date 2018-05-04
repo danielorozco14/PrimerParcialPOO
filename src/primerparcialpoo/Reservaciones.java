@@ -13,6 +13,11 @@ public class Reservaciones extends Habitacion {
     private String TipoHabitacion;
     private String ServiciosIndividuales;
     private char[] NumeroHabitacion = new char[2];
+    private String tipoHab;
+    private String numeroHab;
+    private boolean paquete;
+    private String fechaIng;
+    private String fechaSal;
 
     //CONSTRUCTOR RESERVACIONES
     public Reservaciones() {
@@ -21,7 +26,7 @@ public class Reservaciones extends Habitacion {
 
     public Reservaciones(String nombre, String apellido, String telefono, String dui, String tipoHab, String numeroHab, boolean paquete, String fechaIng, String fechaSal) {
 
-        super(nombre, apellido, telefono, dui);
+        super();
 
         this.tipoHab = tipoHab;
         this.numeroHab = numeroHab;
