@@ -5,8 +5,7 @@ Clase Factura contendra el total monetario de de los servicios adquiridos por el
 package primerparcialpoo;
 
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
+import java.util.Date; //NOS SERVIRA PARA EL MANEJO DE FECHAS.
 import java.util.UUID; //ESTA IMPORTACION NOS AYUDARA PARA GENERAR DE MANERA RANDOM EL ID DE FACTURA,
 //YA QUE GENERA CODIGOS ALFANUMERICOS.
 
