@@ -3,71 +3,66 @@ package primerparcialpoo;
 
 /**
  *
- * @author karicha <00002517>
+ * @author Roxana
  */
+public class Reservaciones extends Persona{
+    private String tipoHab;
+    private String numeroHab;
+    private boolean paquete;
+    private String fechaIng;
+    private String fechaSal;
 
-//CLASE RESERVACIONES
-public class Reservaciones {
-    private float PrecioHabitacion;
-    private String Paquete;
-    private String TipoHabitacion;
-    private String ServiciosIndividuales;
-    private char[] NumeroHabitacion = new char[2];
-    
-    
-    //CONSTRUCTOR RESERVACIONES
-    
-    
-    public Reservaciones (){
+    public Reservaciones() {
     }
 
-    public Reservaciones(float PrecioHabitacion, String Paquete, String TipoHabitacion, String ServiciosHabitacion, char[] NumeroHabitacion) {
-        this.PrecioHabitacion = PrecioHabitacion;
-        this.Paquete = Paquete;
-        this.TipoHabitacion = TipoHabitacion;
-        this.ServiciosIndividuales = ServiciosHabitacion;
-        this.NumeroHabitacion = NumeroHabitacion;
-    }
-    
-    //GETTER AND SETTER
-    public float getPrecioHabitacion() {
-        return PrecioHabitacion;
+    public Reservaciones(String nombre, String apellido, String telefono, String dui, String tipoHab,String numeroHab, boolean paquete, String fechaIng, String fechaSal) {
+        
+        super(nombre, apellido, telefono, dui);
+        
+        this.tipoHab = tipoHab;
+        this.numeroHab = numeroHab;
+        this.paquete = paquete;
+        this.fechaIng = fechaIng;
+        this.fechaSal = fechaSal;
     }
 
-    public void setPrecioHabitacion(float PrecioHabitacion) {
-        this.PrecioHabitacion = PrecioHabitacion;
+    public String getTipoHab() {
+        return tipoHab;
     }
 
-    public String getPaquete() {
-        return Paquete;
+    public void setTipoHab(String tipoHab) {
+        this.tipoHab = tipoHab;
     }
 
-    public void setPaquete(String Paquete) {
-        this.Paquete = Paquete;
+    public String getNumeroHab() {
+        return numeroHab;
     }
 
-    public String getTipoHabitacion() {
-        return TipoHabitacion;
+    public void setNumeroHab(String numeroHab) {
+        this.numeroHab = numeroHab;
     }
 
-    public void setTipoHabitacion(String TipoHabitacion) {
-        this.TipoHabitacion = TipoHabitacion;
+    public boolean isPaquete() {
+        return paquete;
     }
 
-    public String getServiciosIndividuales() {
-        return ServiciosIndividuales;
+    public void setPaquete(boolean paquete) {
+        this.paquete = paquete;
     }
 
-    public void setServiciosIndividuales(String ServiciosIndividuales) {
-        this.ServiciosIndividuales = ServiciosIndividuales;
+    public String getFechaIng() {
+        return fechaIng;
     }
 
-    public char[] getNumeroHabitacion() {
-        return NumeroHabitacion;
+    public void setFechaIng(String fechaIng) {
+        this.fechaIng = fechaIng;
     }
 
-    public void setNumeroHabitacion(char[] NumeroHabitacion) {
-        this.NumeroHabitacion = NumeroHabitacion;
+    public String getFechaSal() {
+        return fechaSal;
     }
-    
+
+    public void setFechaSal(String fechaSal) {
+        this.fechaSal = fechaSal;
+    }
 }

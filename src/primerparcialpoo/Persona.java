@@ -7,117 +7,53 @@ package primerparcialpoo;
 
 /**
  *
- * @author karic <00002517>
+ * @author Roxana
  */
-//CLASE PERSONA SOLO SERA UNA PLANTILLA 
 public class Persona {
-
-    protected String Nombre;
-    protected String FechaNacimiento; //SERVIRA PARA EL METODO DE FECHA. 
-    protected String DUI;
-    protected String Tarjeta;
-    protected String Correo;
-    protected String Telefono;
-    
-    //CONSTRUCTOR PERSONA
+    private String nombre;
+    private String apellido;
+    private String telefono;
+    private String dui;
 
     public Persona() {
-        
     }
 
-    //GETTER AND SETTER
+    public Persona(String nombre, String apellido, String telefono, String dui) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefono = telefono;
+        this.dui = dui;
+    }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getFechaNacimiento() {
-        return FechaNacimiento;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setFechaNacimiento(String FechaNacimiento) {
-        this.FechaNacimiento = FechaNacimiento;
-    }
-
-    public String getDUI() {
-        return DUI;
-    }
-
-    public void setDUI(String DUI) {
-        this.DUI = DUI;
-    }
-
-    public String getTarjeta() {
-        return Tarjeta;
-    }
-
-    public void setTarjeta(String Tarjeta) {
-        this.Tarjeta = Tarjeta;
-    }
-
-    public String getCorreo() {
-        return Correo;
-    }
-
-    public void setCorreo(String Correo) {
-        this.Correo = Correo;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getTelefono() {
-        return Telefono;
+        return telefono;
     }
 
-    public void setTelefono(String Telefono) {
-        this.Telefono = Telefono;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
-    
 
-   
-    //OBTENER DATOS DE PERSONA Y GUARDARLOS
-//    public void ObtenerDatos() {
-//        Validaciones validar = new Validaciones();
-//        Persona datosPersona = new Persona();
-//        Scanner obtenerDatos = new Scanner(System.in);
-//
-//        System.out.println("Ingrese su nombre por favor: ");
-//        datosPersona.setNombre(obtenerDatos.nextLine());
-//
-//        System.out.println("-----------------------------");
-//
-//        System.out.println("Ingrese su Fecha de Nacimiento por favor: ");
-//        datosPersona.setFechaNacimiento(obtenerDatos.nextLine());
-//
-//        System.out.println("------------------------------");
-//        System.out.println("Ingrese su documento único de identidad DUI por favor: ");
-//        String dui = obtenerDatos.nextLine();
-//        if (validar.ValidarDui(dui) == true) {
-//            System.out.println("AGREGACION EXITOSA");
-//            datosPersona.setDUI(dui);
-//
-//        } else {
-//            do {
-//                System.out.print("Ingrese su documento único de identidad DUI correctamente por favor: ");
-//                dui = obtenerDatos.nextLine();
-//            } while ((validar.ValidarDui(dui)) != true);
-//
-//            datosPersona.setDUI(dui);
-//        }
-//
-//        Datos.add(datosPersona);
-//
-//    }
-//
-//    //METODO MOSTRAR DATOS 
-//    public void mostrarDatos() {
-//        System.out.println("----- Mostrando datos de persona -----");
-//        for (Persona pers : Datos) {
-//            System.out.println(pers.toString());
-//        }
-//
-//    }
+    public String getDui() {
+        return dui;
+    }
+
+    public void setDui(String dui) {
+        this.dui = dui;
+    }    
 }
-
