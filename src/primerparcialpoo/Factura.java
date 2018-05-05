@@ -19,7 +19,9 @@ public class Factura extends Huesped {
     protected Reservaciones reservacion;
     protected String idFactura;
     protected double TotalAPagar;
+    protected boolean TienePaquete;
 
+  
     //CONSTRUCTOR DE FACTURA
     public Factura() {
         super();
@@ -43,15 +45,29 @@ public class Factura extends Huesped {
     public void setTotalAPagar(double TotalAPagar) {
         this.TotalAPagar = TotalAPagar;
     }
+    
+    public boolean isTienePaquete() {
+        return TienePaquete;
+    }
 
-    //SACANDO TOTAL 
-    public double TotalPagar() {
-        //SUMANDO LOS SERVICIOS PARA SACAR UN TOTAL A PAGAR POR CUENTA DEL HUESPED
-        return this.TotalAPagar += this.reservacion.getPrecioHabitacion();
-
+    public void setTienePaquete(boolean TienePaquete) {
+        this.TienePaquete = TienePaquete;
     }
     
     
+    //PREGUNTANDO SI EL HUESPED HA ADQUIRIDO ALGUN PAQUETE Y SI ES ASI SUMARSELO A FACTURA
+    public void TienePaquete (){
+        
+        
+    } 
+    
+    
+    //SACANDO TOTAL 
+    public double TotalPagar() {
+        //SUMANDO LOS SERVICIOS PARA SACAR UN TOTAL A PAGAR POR CUENTA DEL HUESPED
+        return this.TotalAPagar += this.reservacion.getPrecioHabitacion()+this.reservacion.getVariacionTemporada();
+
+    }
     
     public void GenerandoFactura(){
         Reservaciones reservacion = new Reservaciones();
