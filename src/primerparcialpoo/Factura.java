@@ -19,8 +19,7 @@ public class Factura extends Huesped {
     protected Reservaciones reservacion;
     protected String idFactura;
     protected double TotalAPagar;
-    protected boolean TienePaquete;
-
+    
   
     //CONSTRUCTOR DE FACTURA
     public Factura() {
@@ -46,21 +45,10 @@ public class Factura extends Huesped {
         this.TotalAPagar = TotalAPagar;
     }
     
-    public boolean isTienePaquete() {
-        return TienePaquete;
-    }
-
-    public void setTienePaquete(boolean TienePaquete) {
-        this.TienePaquete = TienePaquete;
-    }
+  
     
     
-    //PREGUNTANDO SI EL HUESPED HA ADQUIRIDO ALGUN PAQUETE Y SI ES ASI SUMARSELO A FACTURA
-    public void TienePaquete (){
-        
-        
-    } 
-    
+   
     
     //SACANDO TOTAL 
     public double TotalPagar() {
