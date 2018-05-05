@@ -11,7 +11,6 @@ package primerparcialpoo;
  */
 //Hay que validar si la habitacion esta ocupada o no
 //Acordate de hacer el metodo para guardar que habitaciones estan ocupadas
-import java.util.ArrayList;
 import java.util.Scanner;
         
 public class Habitacion {
