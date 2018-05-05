@@ -5,8 +5,7 @@ Clase Factura contendra el total monetario de de los servicios adquiridos por el
 package primerparcialpoo;
 
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
+import java.util.Date; //NOS SERVIRA PARA EL MANEJO DE FECHAS.
 import java.util.UUID; //ESTA IMPORTACION NOS AYUDARA PARA GENERAR DE MANERA RANDOM EL ID DE FACTURA,
 //YA QUE GENERA CODIGOS ALFANUMERICOS.
 
@@ -20,7 +19,8 @@ public class Factura extends Huesped {
     protected Reservaciones reservacion;
     protected String idFactura;
     protected double TotalAPagar;
-
+    
+  
     //CONSTRUCTOR DE FACTURA
     public Factura() {
         super();
@@ -44,15 +44,18 @@ public class Factura extends Huesped {
     public void setTotalAPagar(double TotalAPagar) {
         this.TotalAPagar = TotalAPagar;
     }
-
+    
+  
+    
+    
+   
+    
     //SACANDO TOTAL 
     public double TotalPagar() {
         //SUMANDO LOS SERVICIOS PARA SACAR UN TOTAL A PAGAR POR CUENTA DEL HUESPED
-        return this.TotalAPagar += this.reservacion.getPrecioHabitacion();
+        return this.TotalAPagar += this.reservacion.getPrecioHabitacion()+this.reservacion.getVariacionTemporada();
 
     }
-    
-    
     
     public void GenerandoFactura(){
         Reservaciones reservacion = new Reservaciones();

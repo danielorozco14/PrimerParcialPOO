@@ -187,15 +187,20 @@ public class Validaciones {
     }
     
     public boolean ValidarTarjeta(String Tarjeta){
-        try{
-            Integer.parseInt(Tarjeta);
-            System.out.println("Su tarjeta ha sido ingresada con exito");
-            return true;
+        char [] TarjetaC = Tarjeta.toCharArray();
+        for (int i = 0; i < TarjetaC.length; i++){
+            if (TarjetaC[i] != '-'){
+                try{
+                        Integer.parseInt(Tarjeta);
+                        System.out.println("Su tarjeta ha sido ingresada con exito");
+                    }
+                catch(NumberFormatException e){
+                    System.out.println("Su tarjeta no es valida");
+                    return false;
+                }
+            }
         }
-        catch(NumberFormatException e){
-            System.out.println("Su tarjeta no es valida");
-            return false;
-        }
+        return true;
     }
     
     public boolean ValidarNombre(String Nombre){

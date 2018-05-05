@@ -11,7 +11,6 @@ package primerparcialpoo;
  */
 //Hay que validar si la habitacion esta ocupada o no
 //Acordate de hacer el metodo para guardar que habitaciones estan ocupadas
-import java.util.ArrayList;
 import java.util.Scanner;
         
 public class Habitacion {
@@ -19,10 +18,11 @@ public class Habitacion {
     private String TipoHabitacion,EstadoHabitacion;
     private float PrecioHabitacion;
     private float VariacionTemporada;//Los precios varian por temporadas seria en porcentages
+    /*private HabitacionA = new ArrayList<Habitaciones>;
     
     public Habitacion(){
-        //HabitacionA = new ArrayList<>();
-    }
+        HabitacionA = new ArrayList<>();
+    }*/
     
     public String getTipoHabitacion() {
         return TipoHabitacion;
