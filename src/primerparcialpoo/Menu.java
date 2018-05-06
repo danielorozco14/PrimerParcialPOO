@@ -60,7 +60,7 @@ public class Menu {
                         break;
 
                     case 4:
-                        factura.TotalPagar();
+                        factura.Generar();
                         break;
 
                     default:
