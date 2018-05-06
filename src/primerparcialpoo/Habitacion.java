@@ -68,22 +68,55 @@ public class Habitacion {
         Scanner Variacion = new Scanner(System.in);
         String Temporada = Variacion.nextLine();
         if ("Verano".equals(Temporada)){
-            var.setVariacionTemporada(15);
+            var.setVariacionTemporada(15/100);
         }
         else{
             var.setVariacionTemporada(0);
         }
     }
     
-    public void PrecioHabitacion(){//precios por noche
-        float Total;
-        float Variacion;
+    public float VariacionParImpar(char[] NumHabitacion){//nomenclaturqa para habitaciones A1, B2 los numeros siempre iran en el 2do caracter
+        Habitacion var = new Habitacion();
+        Validaciones validar = new Validaciones();
+        float Precio, aux;
+        validar.HabitacionReservada(NumHabitacion);//nos aseguramos que exista la habitacion
+        Precio = var.getPrecioHabitacion();
+        for (int i = 0; i <6; i++){
+            if (NumHabitacion[1] == (2*i)){//Si es doble o sea par costara un 10% mas
+                aux = (10/100);
+                aux = Precio * aux;
+                Precio = Precio + aux;
+                return Precio;
+            }
+        }
+        return Precio;
+    }
+    
+    public float VariacionPiso(float Precio, char[] NumHabitacion){
+        if (NumHabitacion[0] == 'E' || NumHabitacion[0] == 'F'){//Si es de los ultimos pisos vale 10% mas aun
+            float aux = (10/100);
+            aux = (Precio * aux);
+            Precio = (Precio + aux);
+            return Precio;
+        }
+        return Precio;
+    }
+    
+    public float TotalNoche(char[] NumHabitacion){//Retornamos el total po noche
+        Habitacion var = new Habitacion();
+        var.VariacionTemporada();
+        float Precio = var.VariacionParImpar(NumHabitacion);
+        Precio = var.VariacionPiso(Precio, NumHabitacion);
+        float PrecioFinalNoche = Precio * var.getVariacionTemporada();
+        return PrecioFinalNoche;
+    }
+    
+    public void PrecioBaseHabitacion(){//precios por noche
+        Habitacion var = new Habitacion();
         float PrecioF;
         System.out.println("Ingrese un precio para su habitacion");
         Scanner Precio = new Scanner(System.in);
         PrecioF = Precio.nextFloat();
-        VariacionTemporada();
-        Variacion = getVariacionTemporada();
-        Total = PrecioF + ((Variacion/100) * PrecioF);
+        var.setPrecioHabitacion(PrecioF);
     }
 }
