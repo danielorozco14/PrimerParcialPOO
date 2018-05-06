@@ -74,7 +74,7 @@ public class Validaciones {
         for (int i=0; i<CorreoC.length; i++){
             if (CorreoC[i] == '@'){
                 String aux;
-                aux = null;
+                aux = "";
                 for (i = i; i<=CorreoC.length; i++){
                     aux = new StringBuilder().append(aux).append(CorreoC[i]).toString();
                     if ("outlook".equals(aux) || "gmail".equals(aux) || "Outlook".equals(aux) || "Gmail".equals(aux) || "yahoo".equals(aux) || "Yahoo".equals(aux)){
