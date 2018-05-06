@@ -14,7 +14,7 @@ import java.util.Date; //Esta madre sirve para obtener la fecha del
  *
  * @author Daniel Alejandro Orozco Orellana <00200617@uca.edu.sv>
  */
-public class Huesped extends Persona{
+public class Huesped extends Persona {
 
     protected String idHuesped;
     protected String fechaRegistro;
@@ -47,7 +47,7 @@ public class Huesped extends Persona{
     }
 
     public void ObtenerDatosHuesped() {
-        
+
         Validaciones Validar = new Validaciones();
         Huesped addDatos = new Huesped();
         Scanner infoHuesped = new Scanner(System.in);
@@ -101,18 +101,18 @@ public class Huesped extends Persona{
 
         System.out.print("INGRESE SU TARJETA DE CREDITO: ");
         String Tarjeta = infoHuesped.nextLine();
-        //addDatos.setTarjeta(Tarjeta);
-        if (Validar.ValidarTarjeta(Tarjeta) == true) {
-            addDatos.setTarjeta(Tarjeta);
-        } else {
-            do {
-                System.out.print("Ingrese su tarjeta de credito correctamente: ");
-                Tarjeta = infoHuesped.nextLine();
-            } while (Validar.ValidarTarjeta(Tarjeta) != true);
-
-            addDatos.setTarjeta(Tarjeta);
-
-        }
+        addDatos.setTarjeta(Tarjeta);
+//        if (Validar.ValidarTarjeta(Tarjeta) == true) {
+//            addDatos.setTarjeta(Tarjeta);
+//        } else {
+//            do {
+//                System.out.print("Ingrese su tarjeta de credito correctamente: ");
+//                Tarjeta = infoHuesped.nextLine();
+//            } while (Validar.ValidarTarjeta(Tarjeta) != true);
+//
+//            addDatos.setTarjeta(Tarjeta);
+//
+//        }
 
         System.out.print("INGRESE SU TELEFONO: ");
         String Telefono = infoHuesped.nextLine();
@@ -133,7 +133,7 @@ public class Huesped extends Persona{
         String Correo = infoHuesped.nextLine();
         //addDatos.setCorreo(Correo);
         if (Validar.ValidarCorreo(Correo) == true) {
-            addDatos.setNombre(Correo);
+            addDatos.setCorreo(Correo);
         } else {
             do {
                 System.out.print("Ingrese su correo electronico correctamente: ");
@@ -158,7 +158,7 @@ public class Huesped extends Persona{
     }
 
     public void encontrarContactos() {
-        Huesped Search = new Huesped();
+        //Huesped Search = new Huesped();
         Scanner buscar = new Scanner(System.in);
 
         System.out.println("Ingrese el ID del huesped a buscar: ");
@@ -167,14 +167,10 @@ public class Huesped extends Persona{
         int cont = 0, cont1 = 0;
 
         for (Huesped huesped : DatosHuesped) {
-            Scanner cambiar = new Scanner(System.in);
             if (huesped.getIdHuesped().equals(id) && cont == 0) {
-
-                 System.out.println("Este huesped existe: " + "Nombre= " + huesped.getNombre() + " ; ID Huesped=" + huesped.getIdHuesped() + " ; Fecha de Nacimiento= " + huesped.getFechaNacimiento() + " ; DUI= " + huesped.getDUI() + " ; Tarjeta de Cred.= " + huesped.getTarjeta() + " ; Correo= " + huesped.getCorreo() + " ; Telefono= " + huesped.getTelefono());
-
+                System.out.println("Este huesped existe: " + "Nombre= " + huesped.getNombre() + " ; ID Huesped=" + huesped.getIdHuesped() + " ; Fecha de Nacimiento= " + huesped.getFechaNacimiento() + " ; DUI= " + huesped.getDUI() + " ; Tarjeta de Cred.= " + huesped.getTarjeta() + " ; Correo= " + huesped.getCorreo() + " ; Telefono= " + huesped.getTelefono());
             } else if (huesped.getIdHuesped().equals(id) && cont != 0) {
                 System.out.println("Este huesped existe: " + "Nombre= " + huesped.getNombre() + " ; ID Huesped=" + huesped.getIdHuesped() + " ; Fecha de Nacimiento= " + huesped.getFechaNacimiento() + " ; DUI= " + huesped.getDUI() + " ; Tarjeta de Cred.= " + huesped.getTarjeta() + " ; Correo= " + huesped.getCorreo() + " ; Telefono= " + huesped.getTelefono());
-
             } else if (huesped.getIdHuesped().equals(id) == false) {
                 cont1++;
                 if (DatosHuesped.size() == cont1) {
@@ -183,6 +179,5 @@ public class Huesped extends Persona{
             }
             cont++;
         }
-    }
-
+    }  
 }
