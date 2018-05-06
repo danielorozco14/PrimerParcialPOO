@@ -5,7 +5,9 @@ Clase Factura contendra el total monetario de de los servicios adquiridos por el
 package primerparcialpoo;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date; //NOS SERVIRA PARA EL MANEJO DE FECHAS.
+import java.util.Scanner;
 import java.util.UUID; //ESTA IMPORTACION NOS AYUDARA PARA GENERAR DE MANERA RANDOM EL ID DE FACTURA,
 //YA QUE GENERA CODIGOS ALFANUMERICOS.
 
@@ -19,20 +21,19 @@ public class Factura extends Huesped {
     protected Reservaciones reservacion;
     protected String idFactura;
     protected double TotalAPagar;
-    
-  
+
     //CONSTRUCTOR DE FACTURA
     public Factura() {
         super();
+        super.DatosHuesped = new ArrayList<>();
         this.reservacion = reservacion;
     }
 
     //GETTER AND SETTER
-    public void setIdFactura(String idFactura){
-       this.idFactura = idFactura;
+    public void setIdFactura(String idFactura) {
+        this.idFactura = idFactura;
     }
-    
-    
+
     public String getIdFactura() {
         return idFactura;
     }
@@ -44,35 +45,53 @@ public class Factura extends Huesped {
     public void setTotalAPagar(double TotalAPagar) {
         this.TotalAPagar = TotalAPagar;
     }
-    
-  
-    
-    
-   
-    
+
     //SACANDO TOTAL 
     public double TotalPagar() {
         //SUMANDO LOS SERVICIOS PARA SACAR UN TOTAL A PAGAR POR CUENTA DEL HUESPED
-        return this.TotalAPagar += this.reservacion.getPrecioHabitacion()+this.reservacion.getVariacionTemporada();
+        return this.TotalAPagar += this.reservacion.getPrecioHabitacion() + this.reservacion.getVariacionTemporada();
 
     }
+
     
-    public void GenerandoFactura(){
-        Reservaciones reservacion = new Reservaciones();
-        Habitacion habitacion = new Habitacion();
-        Factura factura =new Factura();
+    public void Generar() {
+        Huesped host = new Huesped();
+        Scanner buscar = new Scanner(System.in);
+
+        System.out.println("Ingrese el ID del huesped a buscar: ");
+        String id = buscar.nextLine();
+
+        int cont = 0, cont1 = 0;
         
-        super.encontrarContactos();        
-        
-        System.out.println("\t\t***** FACTURA ***" +"\n\t\t ID Factura: "+UUID.randomUUID().toString().toUpperCase().substring(0, 6)+ "\n\t\tFecha: "+new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
-        System.out.println("\tCliente: "+super.getNombre());
-        System.out.println("\tID Huesped: "+super.getIdHuesped());
-        //System.out.println("\tHabitacion: "+Arrays.toString(reservacion.getNumeroHabitacion()));
-        System.out.println("\tTOTAL A PAGAR: "+ TotalPagar());
-        
+        for (Huesped huesped : host.DatosHuesped) {
+
+            //Scanner cambiar = new Scanner(System.in);
+            if (huesped.getIdHuesped().equals(id) && cont == 0) {
+                System.out.println("\t\t***** FACTURA *****" + "\nID Factura: " + UUID.randomUUID().toString().toUpperCase().substring(0, 6) + " \t\tFecha: " + new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
+                System.out.println("\t\tCliente: " + huesped.getNombre());
+                System.out.println("\t\tID Huesped: " + huesped.getIdHuesped());
+                
+
+            } else if (huesped.getIdHuesped().equals(id) && cont != 0) {
+                System.out.println("\t\t***** FACTURA *****" + "\nID Factura: " + UUID.randomUUID().toString().toUpperCase().substring(0, 6) + " \t\tFecha: " + new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
+                System.out.println("\t\tCliente: " + huesped.getNombre());
+                System.out.println("\t\tID Huesped: " + huesped.getIdHuesped());
+                
+            } else if (huesped.getIdHuesped().equals(id) == false) {
+                cont1++;
+
+                if (host.DatosHuesped.size() == cont1) {
+                    System.out.println("No existe este ID en el registro o el huesped aun  no ha sido registrado");
+                    
+                }
+            }
+            cont++;
+           
+        }
+        //System.out.println("Me mamo el for y tiro de un solo el false");
         
     }
-    
+
     
 
 }
