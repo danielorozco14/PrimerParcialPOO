@@ -88,7 +88,7 @@ public class Factura extends Huesped {
             cont++;
            
         }
-        //System.out.println("Me mamo el for y tiro de un solo el false");
+        
         
     }
 
