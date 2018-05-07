@@ -24,7 +24,7 @@ public class Factura extends Huesped {
 
     //CONSTRUCTOR DE FACTURA
     public Factura() {
-        super();
+        super(); //SE LLAMA AL CONSTRUCTOR SUPERIOR ATRAVES DE UNA LLAMADA super()
         super.DatosHuesped = new ArrayList<>();
         this.reservacion = reservacion;
     }
@@ -88,7 +88,7 @@ public class Factura extends Huesped {
             cont++;
            
         }
-        //System.out.println("Me mamo el for y tiro de un solo el false");
+        
         
     }
 
