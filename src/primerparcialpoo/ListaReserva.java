@@ -174,23 +174,28 @@ public class ListaReserva extends Fecha{
         else 
         {
             System.out.println("La fecha existe");
-            
-            int cant;
-            System.out.println("Ingrese la cantidad de dias de hospedaje: ");
-            cant= read.nextInt();
-            if(cant<=7)
-            {
+            boolean bandera = true;
+            while(bandera){
+                int cant;
+                System.out.println("Ingrese la cantidad de dias de hospedaje: ");
+                cant= read.nextInt();
+                if(cant<=7)
+                {
                 
-                DiaSig(d, m, a);
+                    DiaSig(d, m, a);
                 
-                int o, p, q;
-                o = DiaSig(d, m, a).getDia(); 
-                p = DiaSig(d, m, a).getMes();
-                q = DiaSig(d, m, a).getAnio();
-                System.out.println("Fecha del último día de reservación:");
-                System.out.println((DiaSig(d, m, a).getDia()+cant-1)+"-"+DiaSig(d, m, a).getMes()+"-"+DiaSig(d, m, a).getAnio());
-                fs = Integer.toString(DiaSig(d, m, a).getDia()+cant-1)+"-"+Integer.toString(DiaSig(d, m, a).getMes())+"-"+Integer.toString(DiaSig(d, m, a).getAnio());
-                
+                    int o, p, q;
+                    o = DiaSig(d, m, a).getDia(); 
+                    p = DiaSig(d, m, a).getMes();
+                    q = DiaSig(d, m, a).getAnio();
+                    System.out.println("Fecha del último día de reservación:");
+                    System.out.println((DiaSig(d, m, a).getDia()+cant-1)+"-"+DiaSig(d, m, a).getMes()+"-"+DiaSig(d, m, a).getAnio());
+                    fs = Integer.toString(DiaSig(d, m, a).getDia()+cant-1)+"-"+Integer.toString(DiaSig(d, m, a).getMes())+"-"+Integer.toString(DiaSig(d, m, a).getAnio());
+                    bandera = false;
+                }
+                else {
+                    System.out.println("La cantidad de dias en reservación permitida es menor o igual a 7.");
+                }
             }
         }
         fechas = new Fechas(fi,fs);
@@ -264,6 +269,12 @@ public class ListaReserva extends Fecha{
         }
         return 0;
     }
+    
+    public void CompararObjetos(){
+        Reservaciones reservar = new Reservaciones();
+        
+    
+    }
         
     public void add() {
         Reservaciones reservar = new Reservaciones();
@@ -277,7 +288,21 @@ public class ListaReserva extends Fecha{
         reservar.setApellido(read.nextLine());
         
         System.out.print("Ingrese la identificación del huesped: ");
-        reservar.setDui(read.nextLine());
+        int cont = 0;
+        for(Reservaciones r: reservaciones){
+            if(r.getDui()==reservar.getDui()){
+                cont = cont + 1;
+                if(cont<=2)
+                {
+                    reservar.setDui(read.nextLine());
+                }
+                else
+                {
+                    System.out.println("El máximo número de reservaciones por persona es 2.");
+                }
+            }
+        }
+        
         
         System.out.print("Ingrese el número telefónico del huesped: ");
         reservar.setTelefono(read.nextLine());
@@ -290,15 +315,25 @@ public class ListaReserva extends Fecha{
         String b[][]=TipoHab(x).getListaP();
         String c[][]=TipoHab(x).getLista();
         
-        reservar.setNumeroHab(NumeroHab(a,b,c,x));
-        
         reservar.setPaquete(Paq(Paquete()));
         
+        boolean bandera = true;
+        while(bandera){
+            for(Reservaciones r: reservaciones){
+                if(r.getNumeroHab()!=reservar.getNumeroHab()){
+
+                    reservar.setNumeroHab(NumeroHab(a,b,c,x));
+                    bandera = false;
+                }
+            }
+        }
+            
         reservar.setFechaIng(DiasR().getFi());
         
         reservar.setFechaSal(DiasR().getFs());
         
     }
+    
     public void mostrar(){
         for(Reservaciones r: reservaciones){
             System.out.println(r.toString());
@@ -306,6 +341,9 @@ public class ListaReserva extends Fecha{
     }
     
     public void Eliminar(){
+        
+        Scanner read = new Scanner(System.in);
+        
         for(Reservaciones r: reservaciones){
             int x= OpcionesHab();
         
@@ -313,9 +351,15 @@ public class ListaReserva extends Fecha{
             String b[][]=TipoHab(x).getListaP();
             String c[][]=TipoHab(x).getLista();
             
-            if(NumeroHab(a, b, c,x) == "D3")
+            String numero;
+            System.out.println("Ingrese el número de la habitación para eliminar la reservación: ");
+            numero = read.nextLine();
+            if(NumeroHab(a, b, c,x) == numero)
             {
                 reservaciones.remove(r);
+            }
+            else{
+                System.out.println("El número de la reservación no existe.");
             }
         }
     }
