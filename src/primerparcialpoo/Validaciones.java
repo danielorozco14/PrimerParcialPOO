@@ -1,18 +1,16 @@
-
 package primerparcialpoo;
-
 /**
  *
- * @author Roberto Alexander Rubio Castillo <00259517@uc a.edu.sv>
+ * @author Roberto Alexander Rubio Castillo <00259517@uca.edu.sv>
  */
 /*Validar
     -Un mismo cliente no puede reservar mas de 2 habitaciones
-    -El ingreso de datos de una habitacion no tiene que sobrepasar los limites del hotel, tampoco ser valores de habitaciones 0 o negativos
-    -La seleccion del paquete queda en la reservacion pero un cliente no puede escoger mas de un paquete
     -No puede existir campos vacios en una reservacion
-    -try catch por si los valores ingresados son incorrectos ejemplo un string en un int
 */
+
 //sintaxis para las fechas dd/mm/aaaa
+import java.util.ArrayList;
+
 public class Validaciones {
     
     public boolean MaximoTiempoReservacion(int CantDias){//Validacion de tiempo de reservacion
@@ -38,16 +36,22 @@ public class Validaciones {
         return true;
     }
     
+    public boolean HabitacionesReservadas(String Habitacion, ArrayList<String> Reservadas){
+        return !Reservadas.contains(Habitacion);
+    }
+    
     public boolean ValidarCantidadDeReservaciones(String Nombre, String FechaIngresada){// validador de cantidad de reservaciones, aun hay que cambiar parametros para que reciva la lista de reservaciones
         char[] FechaIngresadaC = FechaIngresada.toCharArray();//Fecha Ingresada se convierte en arreglo
         int DiaI, DiaE, MesI, MesE, AnioI, AnioE; //DiaI=DiaIngresado, DiaE=DiaExistente
         String aux, NombreE;//NombreE=Nombre que tenemos que tener en reservaciones
-        aux = new StringBuilder().append(FechaIngresadaC[0]).append(FechaIngresadaC[1]).toString();
-        DiaI = Integer.parseInt(aux);
-        aux = new StringBuilder().append(FechaIngresadaC[3]).append(FechaIngresadaC[4]).toString();
-        MesI = Integer.parseInt(aux);
-        aux = new StringBuilder().append(FechaIngresadaC[6]).append(FechaIngresadaC[7]).append(FechaIngresadaC[8]).append(FechaIngresadaC[9]).toString();
-        AnioI = Integer.parseInt(aux);
+        try{//Formato de fecha DD/MM/AAAA
+            aux = new StringBuilder().append(FechaIngresadaC[0]).append(FechaIngresadaC[1]).toString();
+            DiaI = Integer.parseInt(aux);
+            aux = new StringBuilder().append(FechaIngresadaC[3]).append(FechaIngresadaC[4]).toString();
+            MesI = Integer.parseInt(aux);
+            aux = new StringBuilder().append(FechaIngresadaC[6]).append(FechaIngresadaC[7]).append(FechaIngresadaC[8]).append(FechaIngresadaC[9]).toString();
+            AnioI = Integer.parseInt(aux);
+            
 /*      int cont = 0;
         While (Reservaciones){
             String nombre Reservaciones.getnombre;
@@ -58,7 +62,12 @@ public class Validaciones {
                     return false;
                 }
 */
-        return true;
+            return true;
+        }
+        catch(NumberFormatException e){
+            System.out.println("La fecha no puede contener letras");
+            return false;
+        }
     }
     
     public boolean ValidarPaquete(String Paquete){
@@ -74,7 +83,7 @@ public class Validaciones {
         for (int i=0; i<CorreoC.length; i++){
             if (CorreoC[i] == '@'){
                 String aux;
-                aux = null;
+                aux = "";
                 for (i = i; i<=CorreoC.length; i++){
                     aux = new StringBuilder().append(aux).append(CorreoC[i]).toString();
                     if ("outlook".equals(aux) || "gmail".equals(aux) || "Outlook".equals(aux) || "Gmail".equals(aux) || "yahoo".equals(aux) || "Yahoo".equals(aux)){
@@ -200,6 +209,9 @@ public class Validaciones {
                 }
             }
         }
+        if (TarjetaC.length != 19){
+            return false;
+        }
         return true;
     }
     
@@ -228,4 +240,3 @@ public class Validaciones {
         return true;
     }
 }
-
