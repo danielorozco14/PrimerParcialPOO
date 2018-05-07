@@ -145,39 +145,19 @@ public class Huesped extends Persona {
         }
         addDatos.setIdHuesped(UUID.randomUUID().toString().toUpperCase().substring(0, 6));
         addDatos.setFechaRegistro(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));//SE AGREGA LA FECHA DEL REGISTRO DEL HUESPED
-        DatosHuesped.add(addDatos);
+        
+        ListaHuesped.getInstance().addToArray(addDatos);// SE AGREGAN TODOS LOS VALORES A LA CLASE LISTA HUESPED.
 
     }
 
     public void mostrarContactos() {
         System.out.println("\t\t----- Mostrando Contactos -----");
-        for (Huesped host : DatosHuesped) {
-            System.out.println(host.toString());
-        }
-
+        ListaHuesped.getInstance().mostrarDatos();
     }
 
     public void encontrarContactos() {
         //Huesped Search = new Huesped();
-        Scanner buscar = new Scanner(System.in);
-
-        System.out.println("Ingrese el ID del huesped a buscar: ");
-        String id = buscar.nextLine();
-
-        int cont = 0, cont1 = 0;
-
-        for (Huesped huesped : DatosHuesped) {
-            if (huesped.getIdHuesped().equals(id) && cont == 0) {
-                System.out.println("Este huesped existe: " + "Nombre= " + huesped.getNombre() + " ; ID Huesped=" + huesped.getIdHuesped() + " ; Fecha de Nacimiento= " + huesped.getFechaNacimiento() + " ; DUI= " + huesped.getDUI() + " ; Tarjeta de Cred.= " + huesped.getTarjeta() + " ; Correo= " + huesped.getCorreo() + " ; Telefono= " + huesped.getTelefono());
-            } else if (huesped.getIdHuesped().equals(id) && cont != 0) {
-                System.out.println("Este huesped existe: " + "Nombre= " + huesped.getNombre() + " ; ID Huesped=" + huesped.getIdHuesped() + " ; Fecha de Nacimiento= " + huesped.getFechaNacimiento() + " ; DUI= " + huesped.getDUI() + " ; Tarjeta de Cred.= " + huesped.getTarjeta() + " ; Correo= " + huesped.getCorreo() + " ; Telefono= " + huesped.getTelefono());
-            } else if (huesped.getIdHuesped().equals(id) == false) {
-                cont1++;
-                if (DatosHuesped.size() == cont1) {
-                    System.out.println("No existe este ID en el registro o el huesped aun  no ha sido registrado");
-                }
-            }
-            cont++;
-        }
+        System.out.println("\t\t----- ENCONTRANDO DATOS -----");
+        ListaHuesped.getInstance().encontrarDatos();
     }  
 }

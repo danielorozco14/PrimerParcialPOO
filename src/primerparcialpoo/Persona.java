@@ -21,7 +21,7 @@ public class Persona {
     protected String Tarjeta;
     protected String Correo;
     protected String Telefono;
-    protected ArrayList<Huesped> DatosHuesped=new ArrayList<>();
+    //protected ArrayList<Huesped> DatosHuesped=new ArrayList<>();
     
     //CONSTRUCTOR PERSONA
 

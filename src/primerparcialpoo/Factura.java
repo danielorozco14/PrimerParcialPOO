@@ -4,7 +4,6 @@ Clase Factura contendra el total monetario de de los servicios adquiridos por el
  */
 package primerparcialpoo;
 
-import java.util.ArrayList;
 import java.text.SimpleDateFormat;
 import java.util.Date; //NOS SERVIRA PARA EL MANEJO DE FECHAS.
 import java.util.Scanner;
@@ -24,7 +23,7 @@ public class Factura {
 
     //CONSTRUCTOR DE FACTURA
     public Factura() {
-       
+
         //this.reservacion = reservacion;
     }
 
@@ -53,34 +52,32 @@ public class Factura {
     }
 
     public void Generar() {
-        Persona datosHuesped = new Persona();
-    
         Scanner buscar = new Scanner(System.in);
+        ListaHuesped.getInstance().getArray();
 
         System.out.println("Ingrese el ID del huesped a buscar: ");
         String id = buscar.nextLine();
 
         int cont = 0, cont1 = 0;
 
-        for (Persona huesped : datosHuesped.DatosHuesped) {
+        for (Huesped huesped : ListaHuesped.getInstance().getArray()) {
             if (huesped.getIdHuesped().equals(id) && cont == 0) {
                 System.out.println("\t\t***** FACTURA *****" + "\nID Factura: " + UUID.randomUUID().toString().toUpperCase().substring(0, 6) + " \t\tFecha: " + new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
                 System.out.println("\t\tCliente: " + huesped.getNombre());
                 System.out.println("\t\tID Huesped: " + huesped.getIdHuesped());
-            
             } else if (huesped.getIdHuesped().equals(id) && cont != 0) {
                 System.out.println("\t\t***** FACTURA *****" + "\nID Factura: " + UUID.randomUUID().toString().toUpperCase().substring(0, 6) + " \t\tFecha: " + new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
                 System.out.println("\t\tCliente: " + huesped.getNombre());
                 System.out.println("\t\tID Huesped: " + huesped.getIdHuesped());
-            
             } else if (huesped.getIdHuesped().equals(id) == false) {
                 cont1++;
-                if (datosHuesped.DatosHuesped.size() == cont1) {
+                if (ListaHuesped.getInstance().getArray().size() == cont1) {
                     System.out.println("No existe este ID en el registro o el huesped aun  no ha sido registrado");
                 }
             }
             cont++;
         }
-    }  
-        
+
+    }
+
 }
