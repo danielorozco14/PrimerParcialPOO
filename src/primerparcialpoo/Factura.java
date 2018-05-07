@@ -24,7 +24,7 @@ public class Factura extends Huesped {
 
     //CONSTRUCTOR DE FACTURA
     public Factura() {
-        super();
+        super(); //SE LLAMA AL CONSTRUCTOR SUPERIOR ATRAVES DE UNA LLAMADA super()
         super.DatosHuesped = new ArrayList<>();
         this.reservacion = reservacion;
     }
