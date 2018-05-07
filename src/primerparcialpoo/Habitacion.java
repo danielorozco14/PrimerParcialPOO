@@ -12,10 +12,12 @@ package primerparcialpoo;
 //Hay que validar si la habitacion esta ocupada o no
 //Acordate de hacer el metodo para guardar que habitaciones estan ocupadas
 import java.util.Scanner;
+import java.util.ArrayList;
         
 public class Habitacion {
     
-    private String TipoHabitacion,EstadoHabitacion;
+    private String TipoHabitacion;
+    private ArrayList<String> Reservada = new ArrayList();
     private float PrecioHabitacion;
     private float VariacionTemporada;//Los precios varian por temporadas seria en porcentages
     /*private HabitacionA = new ArrayList<Habitaciones>;
@@ -28,8 +30,8 @@ public class Habitacion {
         return TipoHabitacion;
     }
 
-    public String getEstadoHabitacion() {
-        return EstadoHabitacion;
+    public ArrayList<String> getReservada() {
+        return Reservada;
     }
 
     public float getPrecioHabitacion() {
@@ -44,8 +46,8 @@ public class Habitacion {
         this.TipoHabitacion = TipoHabitacion;
     }
 
-    public void setEstadoHabitacion(String EstadoHabitacion) {
-        this.EstadoHabitacion = EstadoHabitacion;
+    public void setReservada(ArrayList<String> Reservada) {
+        this.Reservada = Reservada;
     }
 
     public void setPrecioHabitacion(float PrecioHabitacion) {
@@ -55,11 +57,11 @@ public class Habitacion {
     public void setVariacionTemporada(float VariacionTemporada) {
         this.VariacionTemporada = VariacionTemporada;
     }
-    
+    /*
     //Es String o boolean solo he dejado el void para que no de errores, esta vacia porque la tengo en proceso de hacer aun
     public void EstadoHabitacion(String Habitacion){
         
-    }
+    }*/
     
     public void VariacionTemporada(){
         Habitacion var = new Habitacion();//INSTANCIANDO LA CLASE HABITACION
@@ -102,12 +104,30 @@ public class Habitacion {
         return Precio;
     }
     
+    public void AgregarReservada(char[] NumHabitacion){
+        Habitacion var = new Habitacion();
+        Validaciones Validar = new Validaciones();
+        String Habitacion;
+        ArrayList<String> Reservadas;
+        Reservadas = var.getReservada();
+        Habitacion = new StringBuilder().append(NumHabitacion[0]).append(NumHabitacion[1]).toString();
+        if (Validar.HabitacionesReservadas(Habitacion, Reservadas)== true){
+            Reservadas.add(Habitacion);
+            var.setReservada(Reservadas);
+        }
+        else{
+            System.out.println("Usted no puede reservar una habitacion ya reservada");
+            //metodo para iniciar denuevo la reserva
+        }
+    }
+
     public float TotalNoche(char[] NumHabitacion){//Retornamos el total po noche
         Habitacion var = new Habitacion();
         var.VariacionTemporada();
         float Precio = var.VariacionParImpar(NumHabitacion);
         Precio = var.VariacionPiso(Precio, NumHabitacion);
         float PrecioFinalNoche = Precio * var.getVariacionTemporada();
+        var.AgregarReservada(NumHabitacion);
         return PrecioFinalNoche;
     }
     
