@@ -13,6 +13,8 @@ package primerparcialpoo;
     -try catch por si los valores ingresados son incorrectos ejemplo un string en un int
 */
 //sintaxis para las fechas dd/mm/aaaa
+import java.util.ArrayList;
+
 public class Validaciones {
     
     public boolean MaximoTiempoReservacion(int CantDias){//Validacion de tiempo de reservacion
@@ -37,17 +39,25 @@ public class Validaciones {
         }
         return true;
     }
+    public boolean HabitacionesReservadas(String Habitacion, ArrayList<String> Reservadas){
+        if (Reservadas.contains(Habitacion)){
+            return false;
+        }
+        return true;
+    }
     
     public boolean ValidarCantidadDeReservaciones(String Nombre, String FechaIngresada){// validador de cantidad de reservaciones, aun hay que cambiar parametros para que reciva la lista de reservaciones
         char[] FechaIngresadaC = FechaIngresada.toCharArray();//Fecha Ingresada se convierte en arreglo
         int DiaI, DiaE, MesI, MesE, AnioI, AnioE; //DiaI=DiaIngresado, DiaE=DiaExistente
         String aux, NombreE;//NombreE=Nombre que tenemos que tener en reservaciones
-        aux = new StringBuilder().append(FechaIngresadaC[0]).append(FechaIngresadaC[1]).toString();
-        DiaI = Integer.parseInt(aux);
-        aux = new StringBuilder().append(FechaIngresadaC[3]).append(FechaIngresadaC[4]).toString();
-        MesI = Integer.parseInt(aux);
-        aux = new StringBuilder().append(FechaIngresadaC[6]).append(FechaIngresadaC[7]).append(FechaIngresadaC[8]).append(FechaIngresadaC[9]).toString();
-        AnioI = Integer.parseInt(aux);
+        try{//Formato de fecha DD/MM/AAAA
+            aux = new StringBuilder().append(FechaIngresadaC[0]).append(FechaIngresadaC[1]).toString();
+            DiaI = Integer.parseInt(aux);
+            aux = new StringBuilder().append(FechaIngresadaC[3]).append(FechaIngresadaC[4]).toString();
+            MesI = Integer.parseInt(aux);
+            aux = new StringBuilder().append(FechaIngresadaC[6]).append(FechaIngresadaC[7]).append(FechaIngresadaC[8]).append(FechaIngresadaC[9]).toString();
+            AnioI = Integer.parseInt(aux);
+            
 /*      int cont = 0;
         While (Reservaciones){
             String nombre Reservaciones.getnombre;
@@ -58,7 +68,12 @@ public class Validaciones {
                     return false;
                 }
 */
-        return true;
+            return true;
+        }
+        catch(NumberFormatException e){
+            System.out.println("La fecha no puede contener letras");
+            return false;
+        }
     }
     
     public boolean ValidarPaquete(String Paquete){
