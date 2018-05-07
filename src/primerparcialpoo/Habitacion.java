@@ -17,6 +17,7 @@ public class Habitacion {
     
     private String TipoHabitacion;
     private ArrayList<String> Reservada = new ArrayList();
+    private ArrayList<String> Habitaciones = new ArrayList();
     private float PrecioHabitacion;
     private float VariacionTemporada;//Los precios varian por temporadas seria en porcentages
 
@@ -46,6 +47,11 @@ public class Habitacion {
         return VariacionTemporada;
     }
 
+    public ArrayList<String> getHabitaciones() {
+        return Habitaciones;
+    }
+    
+
     public void setTipoHabitacion(String TipoHabitacion) {
         this.TipoHabitacion = TipoHabitacion;
     }
@@ -61,6 +67,12 @@ public class Habitacion {
     public void setVariacionTemporada(float VariacionTemporada) {
         this.VariacionTemporada = VariacionTemporada;
     }
+
+    public void setHabitaciones(ArrayList<String> Habitaciones) {
+        this.Habitaciones = Habitaciones;
+    }
+    
+    
     /*
     //Es String o boolean solo he dejado el void para que no de errores, esta vacia porque la tengo en proceso de hacer aun
     public void EstadoHabitacion(String Habitacion){
@@ -134,6 +146,69 @@ public class Habitacion {
         float PrecioFinalNoche = Precio * var.getVariacionTemporada();
         var.AgregarReservada(NumHabitacion);
         return PrecioFinalNoche;
+    }
+    public void HabitacionesDisponibles(){
+        Habitacion var = new Habitacion();
+        ArrayList<String> Habitaciones = new ArrayList();
+        String aux;
+        if (var.getHabitaciones() == null){
+            for (int i =0; i < 6; i++){
+                for (int O = 1; O < 11; O++){
+                    switch(i){
+                        case 1:
+                            aux = new StringBuilder().append('A').append(O).toString();
+                            Habitaciones.add(aux);
+                            break;
+                        case 2:
+                            aux = new StringBuilder().append('B').append(O).toString();
+                            Habitaciones.add(aux);
+                            break;
+                        case 3:
+                            aux = new StringBuilder().append('C').append(O).toString();
+                            Habitaciones.add(aux);
+                            break;
+                        case 4:
+                            aux = new StringBuilder().append('D').append(O).toString();
+                            Habitaciones.add(aux);
+                            break;
+                        case 5:
+                            aux = new StringBuilder().append('F').append(O).toString();
+                            Habitaciones.add(aux);
+                            break;
+                        default:
+                            break;
+                    
+                    /*if (i == 0){
+                        aux = new StringBuilder().append('A').append(O).toString();
+                        Habitaciones.add(aux);
+                    }
+                    if (i == 1){
+                        aux = new StringBuilder().append('B').append(O).toString();
+                        Habitaciones.add(aux);
+                    }
+                    if (i == 2){
+                        aux = new StringBuilder().append('C').append(O).toString();
+                        Habitaciones.add(aux);
+                    }
+                    if (i == 3){
+                        aux = new StringBuilder().append('D').append(O).toString();
+                        Habitaciones.add(aux);
+                    }
+                    if (i == 4){
+                        aux = new StringBuilder().append('E').append(O).toString();
+                        Habitaciones.add(aux);
+                    }
+                    if (i == 5){
+                        aux = new StringBuilder().append('F').append(O).toString();
+                        Habitaciones.add(aux);
+                    }*/
+                    }
+                }
+            }
+        }
+        else{
+            
+        }
     }
     
     public void PrecioBaseHabitacion(){//precios por noche
