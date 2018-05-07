@@ -7,10 +7,9 @@ package primerparcialpoo;
 
 /*
  *
- * @author Roberto Alexander Rubio Castillo <00259517@uca.edu.sv>
+ *  @author Roberto Alexander Rubio Castillo <00259517@uca.edu.sv>
  */
-//Hay que validar si la habitacion esta ocupada o no
-//Acordate de hacer el metodo para guardar que habitaciones estan ocupadas
+
 import java.util.Scanner;
 import java.util.ArrayList;
         
@@ -20,11 +19,16 @@ public class Habitacion {
     private ArrayList<String> Reservada = new ArrayList();
     private float PrecioHabitacion;
     private float VariacionTemporada;//Los precios varian por temporadas seria en porcentages
-    /*private HabitacionA = new ArrayList<Habitaciones>;
+
+    public Habitacion() {
     
-    public Habitacion(){
-        HabitacionA = new ArrayList<>();
-    }*/
+    }
+    
+    public Habitacion(String TipoHabitacion, float PrecioHabitacion, float VariacionTemporada) {
+        this.TipoHabitacion = TipoHabitacion;
+        this.PrecioHabitacion = PrecioHabitacion;
+        this.VariacionTemporada = VariacionTemporada;
+    }
     
     public String getTipoHabitacion() {
         return TipoHabitacion;
@@ -116,12 +120,13 @@ public class Habitacion {
             var.setReservada(Reservadas);
         }
         else{
+            Reservaciones Reservacion = new Reservaciones();
             System.out.println("Usted no puede reservar una habitacion ya reservada");
-            //metodo para iniciar denuevo la reserva
+            //Reservacion.Inicio por ejemplo, aqui ira el metodo que iniciara denuevo una reservacion
         }
     }
 
-    public float TotalNoche(char[] NumHabitacion){//Retornamos el total po noche
+    public float TotalNoche(char[] NumHabitacion){//Retornamos el total por noche
         Habitacion var = new Habitacion();
         var.VariacionTemporada();
         float Precio = var.VariacionParImpar(NumHabitacion);
