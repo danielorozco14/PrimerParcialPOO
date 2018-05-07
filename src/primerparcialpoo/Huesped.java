@@ -16,9 +16,9 @@ import java.util.Date; //Esta madre sirve para obtener la fecha del
  */
 public class Huesped extends Persona {
 
-    protected String idHuesped;
+    
     protected String fechaRegistro;
-    protected ArrayList<Huesped> DatosHuesped;
+    
 
     public String getFechaRegistro() {
         return fechaRegistro;
@@ -38,7 +38,7 @@ public class Huesped extends Persona {
 
     public Huesped() {
         super();//CON SUPER SE INICIALIZA LA CLASE PADRE Y YA SE PUEDE ACCEDER A TODOS LOS ATRIBUTOS O METODOS
-        DatosHuesped = new ArrayList<>();
+        //DatosHuesped = new ArrayList<>();
     }
 
     @Override

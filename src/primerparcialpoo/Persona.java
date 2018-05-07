@@ -5,6 +5,8 @@
  */
 package primerparcialpoo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author karic <00002517>
@@ -15,17 +17,28 @@ public class Persona {
     protected String Nombre;
     protected String FechaNacimiento; //SERVIRA PARA EL METODO DE FECHA. 
     protected String DUI;
+    protected String idHuesped;
     protected String Tarjeta;
     protected String Correo;
     protected String Telefono;
+    protected ArrayList<Huesped> DatosHuesped=new ArrayList<>();
     
     //CONSTRUCTOR PERSONA
 
     public Persona() {
         
     }
-
+    
     //GETTER AND SETTER
+
+    public String getIdHuesped() {
+        return idHuesped;
+    }
+
+    
+    public void setIdHuesped(String idHuesped) {
+        this.idHuesped = idHuesped;
+    }
 
     public String getNombre() {
         return Nombre;

@@ -38,6 +38,7 @@ public class Menu {
     public void mostrar() {
         int opcion = 6;
         Scanner leer = new Scanner(System.in);
+        Persona persona = new Persona();
         Huesped huesped = new Huesped();
         Factura factura = new Factura();
         while (opcion != 5) {
