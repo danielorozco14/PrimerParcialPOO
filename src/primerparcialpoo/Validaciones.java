@@ -1,17 +1,13 @@
-
 package primerparcialpoo;
-
 /**
  *
- * @author Roberto Alexander Rubio Castillo <00259517@uc a.edu.sv>
+ * @author Roberto Alexander Rubio Castillo <00259517@uca.edu.sv>
  */
 /*Validar
     -Un mismo cliente no puede reservar mas de 2 habitaciones
-    -El ingreso de datos de una habitacion no tiene que sobrepasar los limites del hotel, tampoco ser valores de habitaciones 0 o negativos
-    -La seleccion del paquete queda en la reservacion pero un cliente no puede escoger mas de un paquete
     -No puede existir campos vacios en una reservacion
-    -try catch por si los valores ingresados son incorrectos ejemplo un string en un int
 */
+
 //sintaxis para las fechas dd/mm/aaaa
 import java.util.ArrayList;
 
@@ -39,11 +35,9 @@ public class Validaciones {
         }
         return true;
     }
+    
     public boolean HabitacionesReservadas(String Habitacion, ArrayList<String> Reservadas){
-        if (Reservadas.contains(Habitacion)){
-            return false;
-        }
-        return true;
+        return !Reservadas.contains(Habitacion);
     }
     
     public boolean ValidarCantidadDeReservaciones(String Nombre, String FechaIngresada){// validador de cantidad de reservaciones, aun hay que cambiar parametros para que reciva la lista de reservaciones
@@ -243,4 +237,3 @@ public class Validaciones {
         return true;
     }
 }
-
