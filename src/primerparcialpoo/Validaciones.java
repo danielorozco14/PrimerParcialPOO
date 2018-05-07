@@ -209,6 +209,9 @@ public class Validaciones {
                 }
             }
         }
+        if (TarjetaC.length != 19){
+            return false;
+        }
         return true;
     }
     
