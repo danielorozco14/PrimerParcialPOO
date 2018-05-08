@@ -134,6 +134,7 @@ public class Habitacion {
     }
 
     public float TotalNoche(char[] NumHabitacion){//Retornamos el total por noche
+        
         Habitacion var = new Habitacion();
         var.VariacionTemporada();
         float Precio = var.VariacionParImpar(NumHabitacion);

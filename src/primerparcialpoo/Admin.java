@@ -34,17 +34,19 @@ public class Admin {
         System.out.println("\t\t2. Modificar Reservación");
         System.out.println("\t\t3. Cancelar Reservación");
         System.out.println("\t\t4. Mostrar todas las  Reservaciónes");
-        System.out.println("\t\t5. Mantenimiento de Hotel");
-        System.out.println("\t\t6. Configuracion de Precios");
+        System.out.println("\t\t5. Mostrar los datos de los Huespedes");
+        System.out.println("\t\t6. Mantenimiento de Hotel");
+        System.out.println("\t\t7. Configuracion de Precios");
     }
     
     public void mostrar() {
-        int opcion = 6;
+        int opcion = 8;
         Scanner leer = new Scanner(System.in);
         Persona persona = new Persona();
         Huesped huesped = new Huesped();
         Factura factura = new Factura();
-        while (opcion != 5) {
+        Reservaciones reservacion = new Reservaciones();
+        while (opcion != 7) {
             opciones();
             try {
                 opcion = leer.nextInt();
@@ -52,10 +54,11 @@ public class Admin {
                 switch (opcion) {
                     case 1:
                         huesped.ObtenerDatosHuesped();
-                        
                         break;
                     case 2:
-                        
+                        huesped.mostrarContactos();
+                        huesped.modificarReserva();
+//                        ListaReserva.getInstance().mostrarDatos();
                         break;
                     case 3:
                        
@@ -63,8 +66,12 @@ public class Admin {
                     case 4:
                         
                         break;
-
                     case 5:
+                        break;
+                    case 6:
+                        break;
+
+                    case 7:
                         System.out.println("\t\tPROGRAMA FINALIZADO");;
                         break;
 

@@ -15,10 +15,14 @@ public class PrimerParcialPOO {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Menu menu = Menu.getInstance();
-        menu.mostrar();
+//        Menu menu = Menu.getInstance();
+//        menu.mostrar();
+
+          Admin admin = Admin.getInstance();
+          admin.mostrar();
+          
         
-        // TODO code application logic here
+
     }
     
 }

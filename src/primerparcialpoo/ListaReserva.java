@@ -7,6 +7,7 @@ package primerparcialpoo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Random;
 
@@ -14,73 +15,79 @@ import java.util.Random;
  *
  * @author Roxana
  */
-public class ListaReserva extends Fecha{
-    private ArrayList<Reservaciones> reservaciones;
-     
-    public ListaReserva(int dia, int mes, int anio) {
-        super(dia, mes, anio);
-        reservaciones = new ArrayList<>();
-        
+public class ListaReserva {
+
+    private static ListaReserva listaReserva;
+    private ArrayList<Reservaciones> datosReserva = null;
+
+    public static ListaReserva getInstance() {
+        if (listaReserva == null) {
+            listaReserva = new ListaReserva();
+        }
+
+        return listaReserva;
     }
 
-    public ArrayList<Reservaciones> getReservaciones() {
-        return reservaciones;
+    private ListaReserva() {
+        datosReserva = new ArrayList<>();
+    }
+    // Se obtiene el array de donde sea 
+
+    public ArrayList<Reservaciones> getArray() {
+        return this.datosReserva;
+    }
+    //Añade elementos al array
+
+    public void addToArray(Reservaciones reservacion) {
+        datosReserva.add(reservacion);
     }
 
-    public void setReservaciones(ArrayList<Reservaciones> reservaciones) {
-        this.reservaciones = reservaciones;
-    }
+       
     
-    public Listas TipoHab(int opc){
-        
+    public Listas TipoHab(int opc) {
+
         Listas lis;
-        
+
         String hab[] = {"A", "B", "C", "D", "E", "F"};
         String numero[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
-        String[][] lista = new String [hab.length][numero.length];
-        String [][] listaI = new String [hab.length][(numero.length)/2];
-        String [][] listaP = new String [hab.length][(numero.length)/2];
-        
-        for(int i=0; i<hab.length; i++)
-        {
+        String[][] lista = new String[hab.length][numero.length];
+        String[][] listaI = new String[hab.length][(numero.length) / 2]; //Habitaciones Impares
+        String[][] listaP = new String[hab.length][(numero.length) / 2]; //Habitaciones Pares 
+
+        for (int i = 0; i < hab.length; i++) {
             //System.out.println("Se imprimio");
-            for(int j=0; j<numero.length; j++)
-            {
-                lista[i][j] = hab[i] + numero[j]; 
+            for (int j = 0; j < numero.length; j++) {
+                lista[i][j] = hab[i] + numero[j];
                 //System.out.println(Arrays.deepToString(lista));
                 //System.out.println(lista[i][j]);
-                
-                if (j%2==0 && opc==1 )
-                {
-                    listaI[i][j/2]=hab[i] + numero[j]; 
+
+                if (j % 2 == 0 && opc == 1) {
+                    listaI[i][j / 2] = hab[i] + numero[j];
                     //return listaI;
+                } else if (j % 2 != 0 && opc == 2) {
+                    listaP[i][j / 2] = hab[i] + numero[j];
+                    //return listaP;
                 }
-                else if(j%2!=0 && opc==2 )
-                {
-                   listaP[i][j/2]=hab[i] + numero[j];
-                   //return listaP;
-                }
-                
+
             }
-            
-        } 
-        lis = new Listas(listaI,listaP, lista);
-        
+
+        }
+        lis = new Listas(listaI, listaP, lista);
+
         return lis;
     }
-    
-    public String NumeroHab(String[][] listaI, String[][] listaP, String[][] lista,int opc){
-        
+
+    public String NumeroHab(String[][] listaI, String[][] listaP, String[][] lista, int opc) {
+
         Validaciones va;
-        
+
         System.out.println(lista);
         String w = null;
         boolean bandera;
         Scanner read = new Scanner(System.in);
         System.out.println("Elegir un número de habitacion: ");
         w = read.nextLine();
-        if(!Arrays.asList(lista).contains(w))
-        {
+        if (!Arrays.asList(lista).contains(w)) {
             System.out.println("No se puede reservar. La habitación que no existe");
         }
         /*
@@ -108,112 +115,118 @@ public class ListaReserva extends Fecha{
         //System.out.println(Arrays.deepToString(lista));
         //System.out.println(Arrays.deepToString(listaI));
         //System.out.println(Arrays.deepToString(listaP));
-        */
-       
-       return w;
+         */
+
+        return w;
     }
-    public String TipH(int opc){
-        
+
+    public String TipH(int opc) {
+
         String tipoHab;
-        if(opc==1)
-        {
+        if (opc == 1) {
             tipoHab = "sencilla";
-        }
-        else if(opc==2)
-        {
+        } else if (opc == 2) {
             tipoHab = "Doble";
         }
         return " ";
     }
     
-    public int OpcionesHab(){
+    
+
+    public int OpcionesHab() {
         System.out.println("Elegir el tipo de habitación.");
         System.out.println("1. Sencillo.");
         System.out.println("2. Doble.");
-        
-        int opc=0;
+
+        int opc = 0;
         Scanner read = new Scanner(System.in);
-        
-        while(opc != 2){
+
+        while (opc != 2) {
             
-            opc = read.nextInt();
-                
-            switch(opc){
-                
-                case 1:
-                    System.out.println("La habitación del huesped es sencilla.");
-                    return 1;
-                    
-                case 2:
-                    System.out.println("La habitación del huesped es doble.");
-                    return 2;
-                default:
-                    System.out.println("Por favor ingrese una opción válida.");
-                    break;
+            try {
+                opc = read.nextInt();
+
+                switch (opc) {
+
+                    case 1:
+                        System.out.println("La habitación del huesped es sencilla.");
+                        return 1;
+
+                    case 2:
+                        System.out.println("La habitación del huesped es doble.");
+                        return 2;
+                    default:
+                        System.out.println("Por favor ingrese una opción válida.");
+                        break;
+                }
+
+            }catch(InputMismatchException e){
+                System.out.println("INGRESE SOLO NUMEROS");
+                read.nextLine();                
             }
-          
+
         }
         return 0;
     }
-    
-    public Fechas DiasR(){
-        
-        Fechas fechas;
-                
-        Scanner read = new Scanner(System.in);
-        int d,m,a;
-        String fi, fs=null;
-        
-        System.out.println("Ingrese el dia a reservar.");
-        d = read.nextInt();
-        
-        System.out.println("Ingrese el mes en que estara reservado.");
-        m = read.nextInt();
-        
-        System.out.println("Ingrese el añio en que estara reservado.");
-        a = read.nextInt();
-        
-        System.out.println("Fecha de ingreso al hotel:" + d+ "-" + m + "-"+a);
-        fi = Integer.toString(d)+"-"+Integer.toString(m)+"-"+Integer.toString(a);
-        
-        if(DiasXmes(d, m, a).iseDia()==false ||DiasXmes(d, m, a).iseMes()==false || DiasXmes(d, m, a).iseAnio()==false){
-            System.out.println("La fecha no existe.");
-            while(DiasXmes(d, m, a).iseDia()==false ||DiasXmes(d, m, a).iseMes()==false || DiasXmes(d, m, a).iseAnio()==false)
-            {
-                DiasR();
-            }
-        }
-        else 
-        {
-            System.out.println("La fecha existe");
-            boolean bandera = true;
-            while(bandera){
-                int cant;
-                System.out.println("Ingrese la cantidad de dias de hospedaje: ");
-                cant= read.nextInt();
-                if(cant<=7)
-                {
-                
-                    DiaSig(d, m, a);
-                
-                    int o, p, q;
-                    o = DiaSig(d, m, a).getDia(); 
-                    p = DiaSig(d, m, a).getMes();
-                    q = DiaSig(d, m, a).getAnio();
-                    System.out.println("Fecha del último día de reservación:");
-                    System.out.println((DiaSig(d, m, a).getDia()+cant-1)+"-"+DiaSig(d, m, a).getMes()+"-"+DiaSig(d, m, a).getAnio());
-                    fs = Integer.toString(DiaSig(d, m, a).getDia()+cant-1)+"-"+Integer.toString(DiaSig(d, m, a).getMes())+"-"+Integer.toString(DiaSig(d, m, a).getAnio());
-                    bandera = false;
-                }
-                else {
-                    System.out.println("La cantidad de dias en reservación permitida es menor o igual a 7.");
-                }
-            }
-        }
-        fechas = new Fechas(fi,fs);
-        return fechas;
-    }
-    
+//    
+//    public Fechas DiasR(){
+//        
+//        Fechas fechas;
+//                
+//        Scanner read = new Scanner(System.in);
+//        int d,m,a;
+//        String fi, fs=null;
+//        
+//        System.out.println("Ingrese el dia a reservar.");
+//        d = read.nextInt();
+//        
+//        System.out.println("Ingrese el mes en que estara reservado.");
+//        m = read.nextInt();
+//        
+//        System.out.println("Ingrese el año en que estara reservado.");
+//        a = read.nextInt();
+//        
+//        System.out.println("Fecha de ingreso al hotel:" + d+ "-" + m + "-"+a);
+//        fi = Integer.toString(d)+"-"+Integer.toString(m)+"-"+Integer.toString(a);
+//        
+//        if(DiasXmes(d, m, a).iseDia()==false ||DiasXmes(d, m, a).iseMes()==false || DiasXmes(d, m, a).iseAnio()==false){
+//            System.out.println("La fecha no existe.");
+//            while(DiasXmes(d, m, a).iseDia()==false ||DiasXmes(d, m, a).iseMes()==false || DiasXmes(d, m, a).iseAnio()==false)
+//            {
+//                DiasR();
+//            }
+//        }
+//        else 
+//        {
+//            System.out.println("La fecha existe");
+//            boolean bandera = true;
+//            while(bandera){
+//                int cant;
+//                System.out.println("Ingrese la cantidad de dias de hospedaje: ");
+//                cant= read.nextInt();
+//                if(cant<=7)
+//                {
+//                
+//                    DiaSig(d, m, a);
+//                
+//                    int o, p, q;
+//                    o = DiaSig(d, m, a).getDia(); 
+//                    p = DiaSig(d, m, a).getMes();
+//                    q = DiaSig(d, m, a).getAnio();
+//                    System.out.println("Fecha del último día de reservación:");
+//                    System.out.println((DiaSig(d, m, a).getDia()+cant-1)+"-"+DiaSig(d, m, a).getMes()+"-"+DiaSig(d, m, a).getAnio());
+//                    fs = Integer.toString(DiaSig(d, m, a).getDia()+cant-1)+"-"+Integer.toString(DiaSig(d, m, a).getMes())+"-"+Integer.toString(DiaSig(d, m, a).getAnio());
+//                    bandera = false;
+//                }
+//                else {
+//                    System.out.println("La cantidad de dias en reservación permitida es menor o igual a 7.");
+//                }
+//            }
+//        }
+//        fechas = new Fechas(fi,fs);
+//        return fechas;
+//    }
+//    
     public String TipoPaquete(){
         String a = null;
         System.out.println("Selcionar el tipo de paquete.");
@@ -241,7 +254,7 @@ public class ListaReserva extends Fecha{
         }
         return a;
     }
-    
+//    
     public boolean Paq(int x ){
         if(x==1)
         {
@@ -255,7 +268,7 @@ public class ListaReserva extends Fecha{
     }
     
     public int Paquete(){
-        System.out.println("Selcionar.");
+        System.out.println("Seleccionar.");
         System.out.println("1. Paquete.");
         System.out.println("2. Sin paquete.");
         
@@ -340,36 +353,36 @@ public class ListaReserva extends Fecha{
 //        
 //    }
     
-    public void Mostrar(){
-        for(Reservaciones r: reservaciones){
-            System.out.println(r.toString());
-        }
-    }
+//    public void Mostrar(){
+//        for(Reservaciones r: reservaciones){
+//            System.out.println(r.toString());
+//        }
+//    }
     
-    public void Eliminar(){
-        
-        Scanner read = new Scanner(System.in);
-        
-        for(Reservaciones r: reservaciones){
-            int x= OpcionesHab();
-        
-            String a[][]=TipoHab(x).getListaI();
-            String b[][]=TipoHab(x).getListaP();
-            String c[][]=TipoHab(x).getLista();
-            
-            String numero;
-            System.out.println("Ingrese el número de la habitación para eliminar la reservación: ");
-            numero = read.nextLine();
-            if(NumeroHab(a, b, c,x) == numero)
-            {
-                reservaciones.remove(r);
-            }
-            else{
-                System.out.println("El número de la reservación no existe.");
-            }
-        }
-    }
-    
+//    public void Eliminar(){
+//        
+//        Scanner read = new Scanner(System.in);
+//        
+//        for(Reservaciones r: reservaciones){
+//            int x= OpcionesHab();
+//        
+//            String a[][]=TipoHab(x).getListaI();
+//            String b[][]=TipoHab(x).getListaP();
+//            String c[][]=TipoHab(x).getLista();
+//            
+//            String numero;
+//            System.out.println("Ingrese el número de la habitación para eliminar la reservación: ");
+//            numero = read.nextLine();
+//            if(NumeroHab(a, b, c,x) == numero)
+//            {
+//                reservaciones.remove(r);
+//            }
+//            else{
+//                System.out.println("El número de la reservación no existe.");
+//            }
+//        }
+//    }
+//    
 //    public void Modificar(){
 //        Reservaciones reservar = new Reservaciones();
 //        Scanner read = new Scanner(System.in);

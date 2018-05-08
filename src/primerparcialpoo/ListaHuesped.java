@@ -28,12 +28,12 @@ public class ListaHuesped {
     private ListaHuesped() {
         datosHuesped = new ArrayList<>();
     }
-    // retrieve array from anywhere
+    // Se obtiene el array de donde sea 
 
     public ArrayList<Huesped> getArray() {
         return this.datosHuesped;
     }
-    //Add element to array
+    //Añade elementos al array
 
     public void addToArray(Huesped value) {
         datosHuesped.add(value);
