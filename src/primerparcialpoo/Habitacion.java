@@ -1,16 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package primerparcialpoo;
 
-/**
+/*
  *
  *  @author Roberto Alexander Rubio Castillo <00259517@uca.edu.sv>
-
  */
-
 
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -179,37 +172,13 @@ public class Habitacion {
                             break;
                         default:
                             break;
-                    
-                    /*if (i == 0){
-                        aux = new StringBuilder().append('A').append(O).toString();
-                        Habitaciones.add(aux);
-                    }
-                    if (i == 1){
-                        aux = new StringBuilder().append('B').append(O).toString();
-                        Habitaciones.add(aux);
-                    }
-                    if (i == 2){
-                        aux = new StringBuilder().append('C').append(O).toString();
-                        Habitaciones.add(aux);
-                    }
-                    if (i == 3){
-                        aux = new StringBuilder().append('D').append(O).toString();
-                        Habitaciones.add(aux);
-                    }
-                    if (i == 4){
-                        aux = new StringBuilder().append('E').append(O).toString();
-                        Habitaciones.add(aux);
-                    }
-                    if (i == 5){
-                        aux = new StringBuilder().append('F').append(O).toString();
-                        Habitaciones.add(aux);
-                    }*/
                     }
                 }
             }
         }
         else{
-            
+            //comparar lista de habitaciones disponibles con la de ocupadas
+            //var.getReservada()
         }
     }
     
@@ -222,3 +191,4 @@ public class Habitacion {
         var.setPrecioHabitacion(PrecioF);
     }
 }
+
