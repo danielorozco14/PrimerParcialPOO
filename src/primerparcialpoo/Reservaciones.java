@@ -17,8 +17,7 @@ public class Reservaciones extends Persona{
     private String fechaIng;
     private String fechaSal;
 
-    public Reservaciones() {
-    }
+    public Reservaciones(){}
 
     public Reservaciones(String nombre, String apellido, String telefono, String dui, String tipoHab,String numeroHab, boolean paquete, String tipoPaquete, String fechaIng, String fechaSal) {
         

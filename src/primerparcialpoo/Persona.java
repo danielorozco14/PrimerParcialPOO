@@ -29,7 +29,8 @@ public class Persona {
     //protected ArrayList<Huesped> DatosHuesped=new ArrayList<>();
     
     //CONSTRUCTOR PERSONA
-
+    public Persona() {}
+    
     public Persona(String nombre, String apellido, String telefono, String dui) {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -79,4 +80,6 @@ public class Persona {
     public void setDui(String dui) {
         this.dui = dui;
     }
+
+    
 }

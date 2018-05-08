@@ -269,12 +269,6 @@ public class ListaReserva extends Fecha{
         }
         return 0;
     }
-    
-    public void CompararObjetos(){
-        Reservaciones reservar = new Reservaciones();
-        
-    
-    }
         
     public void add() {
         Reservaciones reservar = new Reservaciones();
@@ -334,7 +328,7 @@ public class ListaReserva extends Fecha{
         
     }
     
-    public void mostrar(){
+    public void Mostrar(){
         for(Reservaciones r: reservaciones){
             System.out.println(r.toString());
         }
@@ -361,6 +355,66 @@ public class ListaReserva extends Fecha{
             else{
                 System.out.println("El número de la reservación no existe.");
             }
+        }
+    }
+    
+    public void Modificar(){
+        Reservaciones reservar = new Reservaciones();
+        Scanner read = new Scanner(System.in);
+        int indice, x;
+        System.out.println("Ingrese el indice de la reservación que desee modificar: ");
+        indice = read.nextInt();
+        for(int y=0;y<reservaciones.size();y++) {
+            if(y== indice)
+            {
+                x = reservaciones.indexOf(indice);
+                
+                System.out.println("Ingrese el nuevo nombre del huesped:");
+                reservaciones.get(x).setNombre(read.nextLine());
+                
+                System.out.print("Ingrese el nuevo apellido del huesped: ");
+                reservaciones.get(x).setApellido(read.nextLine());
+        
+                System.out.print("Ingrese la identificación del huesped: ");
+                int cont = 0;
+                for(Reservaciones r: reservaciones){
+                    if(r.getDui()==reservar.getDui()){
+                        cont = cont + 1;
+                        if(cont<=2)
+                        {
+                            reservaciones.get(x).setDui(read.nextLine());
+                        }
+                        else
+                        {
+                            System.out.println("El máximo número de reservaciones por persona es 2.");
+                        }
+                    }
+                } 
+                System.out.print("Ingrese el número telefónico del huesped: ");
+                reservaciones.get(x).setTelefono(read.nextLine());
+                
+                reservaciones.get(x).setTelefono(TipH(x));
+        
+                String a[][]=TipoHab(x).getListaI();
+                String b[][]=TipoHab(x).getListaP();
+                String c[][]=TipoHab(x).getLista();
+        
+                reservaciones.get(x).setPaquete(Paq(Paquete()));
+        
+                boolean bandera = true;
+                while(bandera){
+                    for(Reservaciones r: reservaciones){
+                        if(r.getNumeroHab()!=reservar.getNumeroHab()){
+                            
+                            reservaciones.get(x).setNumeroHab(NumeroHab(a,b,c,x));
+                            bandera = false;
+                        }
+                    }
+                }
+            reservaciones.get(x).setNumeroHab(DiasR().getFi());
+            reservaciones.get(x).setNumeroHab(DiasR().getFs());
+            }
+            
         }
     }
 }
