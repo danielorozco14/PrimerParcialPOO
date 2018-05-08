@@ -1,238 +1,194 @@
 package primerparcialpoo;
-/**
+
+/*
  *
- * @author Roberto Alexander Rubio Castillo <00259517@uca.edu.sv>
+ *  @author Roberto Alexander Rubio Castillo <00259517@uca.edu.sv>
  */
-/*Validar
-    -Un mismo cliente no puede reservar mas de 2 habitaciones
-    -No puede existir campos vacios en una reservacion
-*/
 
-//sintaxis para las fechas dd/mm/aaaa
+import java.util.Scanner;
 import java.util.ArrayList;
-
-public class Validaciones {
-    
-    public boolean MaximoTiempoReservacion(int CantDias){//Validacion de tiempo de reservacion
-        if (CantDias > 7){
-            System.out.println("No puede registrarse por mas de 7 dias");
-            return false;
-        }
-        return true;
-    }
-    
-    public boolean HabitacionReservada(char[] Habitacion){//Validacion que la habitacion exista
-        char[] Pisos = {'A','B','C','D','E','F'};
-        for (int i=0; i<7; i++){
-            if (Habitacion[0] != Pisos[i]){
-                System.out.println("No puede reservar una habitacion en un piso que no existe");
-                return false;
-            }
-        }
-        if (Habitacion[1] <= 0 || Habitacion[1] > 10){
-            System.out.println("No puede ingresar ese numero de habitacion");
-            return false;
-        }
-        return true;
-    }
-    
-    public boolean HabitacionesReservadas(String Habitacion, ArrayList<String> Reservadas){
-        return !Reservadas.contains(Habitacion);
-    }
-    
-    public boolean ValidarCantidadDeReservaciones(String Nombre, String FechaIngresada){// validador de cantidad de reservaciones, aun hay que cambiar parametros para que reciva la lista de reservaciones
-        char[] FechaIngresadaC = FechaIngresada.toCharArray();//Fecha Ingresada se convierte en arreglo
-        int DiaI, DiaE, MesI, MesE, AnioI, AnioE; //DiaI=DiaIngresado, DiaE=DiaExistente
-        String aux, NombreE;//NombreE=Nombre que tenemos que tener en reservaciones
-        try{//Formato de fecha DD/MM/AAAA
-            aux = new StringBuilder().append(FechaIngresadaC[0]).append(FechaIngresadaC[1]).toString();
-            DiaI = Integer.parseInt(aux);
-            aux = new StringBuilder().append(FechaIngresadaC[3]).append(FechaIngresadaC[4]).toString();
-            MesI = Integer.parseInt(aux);
-            aux = new StringBuilder().append(FechaIngresadaC[6]).append(FechaIngresadaC[7]).append(FechaIngresadaC[8]).append(FechaIngresadaC[9]).toString();
-            AnioI = Integer.parseInt(aux);
-            
-/*      int cont = 0;
-        While (Reservaciones){
-            String nombre Reservaciones.getnombre;
-            if(Nombre == nombre){
-                cont++;   
-            if (Nombre == NombreE && DiaI == DiaE && MesI == MesE && AnioI == AnioE && cont >= 2){
-                    System.out.println("Usted no puede tener mas de dos reservaciones continuas");
-                    return false;
-                }
-*/
-            return true;
-        }
-        catch(NumberFormatException e){
-            System.out.println("La fecha no puede contener letras");
-            return false;
-        }
-    }
-    
-    public boolean ValidarPaquete(String Paquete){
-        if ("Premium".equals(Paquete) || "Basico".equals(Paquete) || "Sin paquete".equals(Paquete)){
-            return true;
-        }
-        System.out.println("Usted no ha escogido un paquete valido");
-        return false;
-    }
-    
-    public boolean ValidarCorreo(String Correo){
-        char[] CorreoC = Correo.toCharArray();//Correo simplificado a caracteres
-        for (int i=0; i<CorreoC.length; i++){
-            if (CorreoC[i] == '@'){
-                String aux;
-                aux = "";
-                for (i = i; i<=CorreoC.length; i++){
-                    aux = new StringBuilder().append(aux).append(CorreoC[i]).toString();
-                    if ("outlook".equals(aux) || "gmail".equals(aux) || "Outlook".equals(aux) || "Gmail".equals(aux) || "yahoo".equals(aux) || "Yahoo".equals(aux)){
-                        System.out.println("Su correo es valido");
-                        return true;
-                    }
-                    if (CorreoC[i] == '.'){
-                        System.out.println("Su correo no posee un dominio correcto");
-                        return false;
-                    }
-                    return true;
-                }
-            }
-        }
-        System.out.println("Su correo no es valido");
-        return false;
-    }
-    
-    public boolean ValidarTelefono(String Telefono){
-        char[] TelefonoC = Telefono.toCharArray();//TelefonoC es en caracteres
-        try{
-            int TelefonoI = Integer.parseInt(Telefono);//Telefono I es el telefono en enteros
-            if ( TelefonoC.length > 8 || TelefonoC.length < 8){
-                
-                System.out.println("\t\t***** Ingrese un numero de telefono valido (8 digitos) *****");
-                return false;
-            }
-            return true;
-        }
-        catch(NumberFormatException e){
-            System.out.println("\t\t***** Su telefono tiene que contener solo numeros.Intente de nuevo *****");
-            return false;
-        }
-
-    }
-    
-    public boolean ValidarDui(String Dui){
-        char[] DuiC = Dui.toCharArray();//TelefonoC es en caracteres
-        if (DuiC.length == 10){
-            String aux;
-            aux = "";
-            int acum = 0;
-            int auxN = 0;//Auxiliar numerico
-            for (int i = 0; i < 8; i++){
-                aux = new StringBuilder().append(aux).append(DuiC[i]).toString();
-                try{
-                    int auxn = Integer.parseInt(aux);//Se convierte el numero del aux de string a int, auxn es el aux en int
-                    auxN = Character.getNumericValue(DuiC[i]);
-                    int prueba = 9-i;//variable para guardar el resultado de 9-i y no alterar valores de variable
-                    acum =acum + (auxN * prueba);//aqui vamos a tener el valor como entero de las partes del dui
-                }
-                catch(NumberFormatException e){
-                    System.out.println("\t\t***** Su dui no puede contener letras*****");
-                    return false;
-                }
-            }
-                acum %= 10;
-                acum = 10-acum;
-                if (acum == 10){
-                    acum = 0;
-                    if (acum == Character.getNumericValue(DuiC[9])){
-                        System.out.println("Su dui es valido");
-                        return true;
-                    }
-                }
-                if (acum == Character.getNumericValue(DuiC[9])){
-                    System.out.println("Su dui es valido");
-                    return true;
-                }
-                else{
-                    System.out.println("Su dui es invalido");
-                    return false;
-                }
-        }
-    return false;
-    }
-    
-    public boolean ValidarFecha(String Fecha){
-        char[] FechaC = Fecha.toCharArray();
-        String aux;
-        aux = "";
-        for (int i = 0; i<2; i++){ //Dia
-            aux = new StringBuilder().append(aux).append(FechaC[i]).toString();
-        }
-            try{
-                if (Integer.parseInt(aux) > 0 && Integer.parseInt(aux) < 32){
-                    aux = "";
-                    for(int i = 3; i < 6; i++){//Mes
-                        aux = new StringBuilder().append(aux).append(FechaC[i]).toString();
-                        if(Integer.parseInt(aux) > 0 && Integer.parseInt(aux) < 13){
-                            aux = "";
-                            for(i = 6; i <= 10; i++){//Anio
-                                aux = new StringBuilder().append(aux).append(FechaC[i]).toString();
-                                if (Integer.parseInt(aux) < 2018){
-                                    System.out.println("Su fecha de nacimiento es valida");
-                                    return true;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            catch(NumberFormatException e){
-                System.out.println("Su fecha de nacimiento debe contener solo numeros");
-                return false;
-            }
         
-        return false;
+public class Habitacion {
+    
+    private String TipoHabitacion;
+    private ArrayList<String> Reservada = new ArrayList();
+    private ArrayList<String> Habitaciones = new ArrayList();
+    private float PrecioHabitacion;
+    private float VariacionTemporada;//Los precios varian por temporadas seria en porcentages
+
+    public Habitacion() {
+    
     }
     
-    public boolean ValidarTarjeta(String Tarjeta){
-        char [] TarjetaC = Tarjeta.toCharArray();
-        for (int i = 0; i < TarjetaC.length; i++){
-            if (TarjetaC[i] != '-'){
-                try{
-                    Character.getNumericValue(TarjetaC[i]);
+    public Habitacion(String TipoHabitacion, float PrecioHabitacion, float VariacionTemporada) {
+        this.TipoHabitacion = TipoHabitacion;
+        this.PrecioHabitacion = PrecioHabitacion;
+        this.VariacionTemporada = VariacionTemporada;
+    }
+    
+    public String getTipoHabitacion() {
+        return TipoHabitacion;
+    }
+
+    public ArrayList<String> getReservada() {
+        return Reservada;
+    }
+
+    public float getPrecioHabitacion() {
+        return PrecioHabitacion;
+    }
+
+    public float getVariacionTemporada() {
+        return VariacionTemporada;
+    }
+
+    public ArrayList<String> getHabitaciones() {
+        return Habitaciones;
+    }
+    
+
+    public void setTipoHabitacion(String TipoHabitacion) {
+        this.TipoHabitacion = TipoHabitacion;
+    }
+
+    public void setReservada(ArrayList<String> Reservada) {
+        this.Reservada = Reservada;
+    }
+
+    public void setPrecioHabitacion(float PrecioHabitacion) {
+        this.PrecioHabitacion = PrecioHabitacion;
+    }
+
+    public void setVariacionTemporada(float VariacionTemporada) {
+        this.VariacionTemporada = VariacionTemporada;
+    }
+
+    public void setHabitaciones(ArrayList<String> Habitaciones) {
+        this.Habitaciones = Habitaciones;
+    }
+    
+    
+    /*
+    //Es String o boolean solo he dejado el void para que no de errores, esta vacia porque la tengo en proceso de hacer aun
+    public void EstadoHabitacion(String Habitacion){
+        
+    }*/
+    
+    public void VariacionTemporada(){
+        Habitacion var = new Habitacion();//INSTANCIANDO LA CLASE HABITACION
+        
+        System.out.println("Ingrese temporada del año en la que se encuentra la reservacion");
+        Scanner Variacion = new Scanner(System.in);
+        String Temporada = Variacion.nextLine();
+        if ("Verano".equals(Temporada)){
+            var.setVariacionTemporada(15/100);
+        }
+        else{
+            var.setVariacionTemporada(0);
+        }
+    }
+    
+    public float VariacionParImpar(char[] NumHabitacion){//nomenclaturqa para habitaciones A1, B2 los numeros siempre iran en el 2do caracter
+        Habitacion var = new Habitacion();
+        Validaciones validar = new Validaciones();
+        float Precio, aux;
+        validar.HabitacionReservada(NumHabitacion);//nos aseguramos que exista la habitacion
+        Precio = var.getPrecioHabitacion();
+        for (int i = 0; i <6; i++){
+            if (NumHabitacion[1] == (2*i)){//Si es doble o sea par costara un 10% mas
+                aux = (10/100);
+                aux = Precio * aux;
+                Precio = Precio + aux;
+                return Precio;
+            }
+        }
+        return Precio;
+    }
+    
+    public float VariacionPiso(float Precio, char[] NumHabitacion){
+        if (NumHabitacion[0] == 'E' || NumHabitacion[0] == 'F'){//Si es de los ultimos pisos vale 10% mas aun
+            float aux = (10/100);
+            aux = (Precio * aux);
+            Precio = (Precio + aux);
+            return Precio;
+        }
+        return Precio;
+    }
+    
+    public void AgregarReservada(char[] NumHabitacion){
+        Habitacion var = new Habitacion();
+        Validaciones Validar = new Validaciones();
+        String Habitacion;
+        ArrayList<String> Reservadas;
+        Reservadas = var.getReservada();
+        Habitacion = new StringBuilder().append(NumHabitacion[0]).append(NumHabitacion[1]).toString();
+        if (Validar.HabitacionesReservadas(Habitacion, Reservadas)== true){
+            Reservadas.add(Habitacion);
+            var.setReservada(Reservadas);
+        }
+        else{
+            Reservaciones Reservacion = new Reservaciones();
+            System.out.println("Usted no puede reservar una habitacion ya reservada");
+            //Reservacion.Inicio por ejemplo, aqui ira el metodo que iniciara denuevo una reservacion
+        }
+    }
+
+    public float TotalNoche(char[] NumHabitacion){//Retornamos el total por noche
+        Habitacion var = new Habitacion();
+        var.VariacionTemporada();
+        float Precio = var.VariacionParImpar(NumHabitacion);
+        Precio = var.VariacionPiso(Precio, NumHabitacion);
+        float PrecioFinalNoche = Precio * var.getVariacionTemporada();
+        var.AgregarReservada(NumHabitacion);
+        return PrecioFinalNoche;
+    }
+    public void HabitacionesDisponibles(){
+        Habitacion var = new Habitacion();
+        ArrayList<String> Habitaciones = new ArrayList();
+        String aux;
+        if (var.getHabitaciones() == null){
+            for (int i =0; i < 6; i++){
+                for (int O = 1; O < 11; O++){
+                    switch(i){
+                        case 1:
+                            aux = new StringBuilder().append('A').append(O).toString();
+                            Habitaciones.add(aux);
+                            break;
+                        case 2:
+                            aux = new StringBuilder().append('B').append(O).toString();
+                            Habitaciones.add(aux);
+                            break;
+                        case 3:
+                            aux = new StringBuilder().append('C').append(O).toString();
+                            Habitaciones.add(aux);
+                            break;
+                        case 4:
+                            aux = new StringBuilder().append('D').append(O).toString();
+                            Habitaciones.add(aux);
+                            break;
+                        case 5:
+                            aux = new StringBuilder().append('F').append(O).toString();
+                            Habitaciones.add(aux);
+                            break;
+                        default:
+                            break;
                     }
-                catch(NumberFormatException e){
-                    System.out.println("Su tarjeta no es valida, por favor ingrese solo numeros enteros y los guiones respectivos en formato XXXX-XXXX-XXXX-XXXX");
-                    return false;
                 }
             }
         }
-        System.out.println("Su tarjeta ha sido ingresada con exito");
-        return TarjetaC.length == 19;
+        else{
+            //comparar lista de habitaciones disponibles con la de ocupadas
+            //var.getReservada()
+        }
     }
     
-    public boolean ValidarNombre(String Nombre){
-        char[] Caracteres = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '!', '@', '#', '$',
-                            '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}',
-                            ':', ';', '"', '<', '>', ',', '.', '/', '?', '|', '`', '~'};
-        char[] NombreC = Nombre.toCharArray();
-        int aux1, aux2;
-        try{
-            for (int i = 0; i < NombreC.length; i++){
-                for (int i2 = 0; i2 < Caracteres.length; i2++){
-                    if (NombreC[i] == Caracteres[i2]){
-                       return false;
-                    } 
-                }
-            }
-        }
-        catch(ArrayIndexOutOfBoundsException e){
-            aux1 = NombreC[NombreC.length] -1;
-            aux2 = Caracteres[Caracteres.length] -1;
-            if (aux1 == aux2){
-                return false;
-            }
-        }
-        return true;
+    public void PrecioBaseHabitacion(){//precios por noche
+        Habitacion var = new Habitacion();
+        float PrecioF;
+        System.out.println("Ingrese un precio para su habitacion");
+        Scanner Precio = new Scanner(System.in);
+        PrecioF = Precio.nextFloat();
+        var.setPrecioHabitacion(PrecioF);
     }
 }
+
