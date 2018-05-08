@@ -5,58 +5,47 @@
  */
 package primerparcialpoo;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.UUID;
-
+import java.util.UUID; //Esta madre sirve para generar codigos alfa numericos aleatorios
+import java.util.Date; //Esta madre sirve para obtener la fecha del 
 /**
  *
  * @author Daniel Alejandro Orozco Orellana <00200617@uca.edu.sv>
  */
 public class Huesped extends Persona {
 
-    public String contacto;
-    private String idHuesped;
     
     protected String fechaRegistro;
+    
 
-    private ArrayList<String> contactos;
-    private ArrayList<String> IDHuesped;
+    public String getFechaRegistro() {
+        return fechaRegistro;
+    }
+
+    public void setFechaRegistro(String fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
+    }
+
+    public String getIdHuesped() {
+        return idHuesped;
+    }
+
+    public void setIdHuesped(String idHuesped) {
+        this.idHuesped = idHuesped;
+    }
 
     public Huesped() {
         super();//CON SUPER SE INICIALIZA LA CLASE PADRE Y YA SE PUEDE ACCEDER A TODOS LOS ATRIBUTOS O METODOS
-        contactos = new ArrayList<>(); //Inicializando el ArrayList que contendra los contactos en el constructor
-        IDHuesped = new ArrayList<>(); //Inicializando el ArrayList que contendra los ID en el constructor
         //DatosHuesped = new ArrayList<>();
     }
 
-    public String obtenerContacto() {
-
-        Scanner infoContacto = new Scanner(System.in);
-        for (int i = 0; i < 2; i++) {
-            System.out.println("\t\t----- Ingresar Datos de Contacto ----- ");
-
-            System.out.print("Ingrese su correo electronico: ");
-            contacto = infoContacto.nextLine();
-            contactos.add(contacto);
-
-            System.out.print("Ingrese su numero de telefono: ");
-            contacto = infoContacto.nextLine();
-            contactos.add(contacto);
-        }
-        String a = "hola";
-
-        return a;
-
+    @Override
+    public String toString() {
+        return "Huesped{" + "Nombre= " + super.getNombre() + ";ID Huesped=" + idHuesped + ";Fecha de Registro " + fechaRegistro + ";DUI= " + super.getDUI() + ";Tarjeta de Cred.= " + super.getTarjeta() + ";Correo= " + super.getCorreo() + ";Telefono= " + super.getTelefono() + '}';
     }
 
-    public void generarIDHuesped() {  
-        for(int i=0;i<contactos.size();i+=2){
-            String iDHuesped = UUID.randomUUID().toString().toUpperCase().substring(0, 6);
-            IDHuesped.add(iDHuesped);
-        }
-    }
-        
     public void ObtenerDatosHuesped() {
 
         Validaciones Validar = new Validaciones();
@@ -79,20 +68,21 @@ public class Huesped extends Persona {
             addDatos.setNombre(nombre);
 
         }
-        System.out.print("INGRESE SU FECHA DE NACIMIENTO: ");
-        String fechaNac = infoHuesped.nextLine();
-        //addDatos.setFechaNacimiento(fechaNac);
-        if (Validar.ValidarFecha(fechaNac) == true) {
-            addDatos.setFechaNacimiento(fechaNac);
-        } else {
-            do {
-                System.out.print("Ingrese su fecha de nacimiento correctamente: ");
-                fechaNac = infoHuesped.nextLine();
-            } while (Validar.ValidarFecha(fechaNac) != true);
 
-            addDatos.setFechaNacimiento(fechaNac);
-
-        }
+//        System.out.print("INGRESE SU FECHA DE NACIMIENTO: ");
+//        String fechaNac = infoHuesped.nextLine();
+//        //addDatos.setFechaNacimiento(fechaNac);
+//        if (Validar.ValidarFecha(fechaNac) == true) {
+//            addDatos.setFechaNacimiento(fechaNac);
+//        } else {
+//            do {
+//                System.out.print("Ingrese su fecha de nacimiento correctamente: ");
+//                fechaNac = infoHuesped.nextLine();
+//            } while (Validar.ValidarFecha(fechaNac) != true);
+//
+//            addDatos.setFechaNacimiento(fechaNac);
+//
+//        }
 
         System.out.print("INGRESE SU DUI: ");
         String Dui = infoHuesped.nextLine();
@@ -157,7 +147,6 @@ public class Huesped extends Persona {
         addDatos.setFechaRegistro(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));//SE AGREGA LA FECHA DEL REGISTRO DEL HUESPED
         
         ListaHuesped.getInstance().addToArray(addDatos);// SE AGREGAN TODOS LOS VALORES A LA CLASE LISTA HUESPED.
-
 
     }
 

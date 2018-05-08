@@ -45,11 +45,11 @@ public class Factura {
     }
 
     //SACANDO TOTAL 
-    public double TotalPagar() {
-        //SUMANDO LOS SERVICIOS PARA SACAR UN TOTAL A PAGAR POR CUENTA DEL HUESPED
-        return this.TotalAPagar += this.reservacion.getPrecioHabitacion() + this.reservacion.getVariacionTemporada();
-
-    }
+//    public double TotalPagar() {
+//        //SUMANDO LOS SERVICIOS PARA SACAR UN TOTAL A PAGAR POR CUENTA DEL HUESPED
+//        return this.TotalAPagar += this.reservacion.getPrecioHabitacion() + this.reservacion.getVariacionTemporada();
+//
+//    }
 
     public void Generar() {
         Scanner buscar = new Scanner(System.in);
@@ -78,9 +78,6 @@ public class Factura {
             cont++;
         }
 
-        
     }
 
-    }
-
-
+}

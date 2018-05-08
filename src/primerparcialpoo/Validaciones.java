@@ -110,7 +110,7 @@ public class Validaciones {
         }
     }
 
-    }
+    
     
     public boolean ValidarDui(String Dui){
         char[] DuiC = Dui.toCharArray();//TelefonoC es en caracteres

@@ -17,20 +17,22 @@ public class Reservaciones extends Persona{
     private String fechaIng;
     private String fechaSal;
 
-    public Reservaciones(){}
-
-    public Reservaciones(String nombre, String apellido, String telefono, String dui, String tipoHab,String numeroHab, boolean paquete, String tipoPaquete, String fechaIng, String fechaSal) {
-        
-        super(nombre, apellido, telefono, dui);
-        
-        this.tipoHab = tipoHab;
-        this.numeroHab = numeroHab;
-        this.paquete = paquete;
-        this.tipoPaquete = tipoPaquete;
-        this.fechaIng = fechaIng;
-        this.fechaSal = fechaSal;
-        
+    public Reservaciones(){
+        super();
     }
+
+//    public Reservaciones(String nombre, String apellido, String telefono, String dui, String tipoHab,String numeroHab, boolean paquete, String tipoPaquete, String fechaIng, String fechaSal) {
+//        
+//        //super(nombre, apellido, telefono, dui);
+//        
+//        this.tipoHab = tipoHab;
+//        this.numeroHab = numeroHab;
+//        this.paquete = paquete;
+//        this.tipoPaquete = tipoPaquete;
+//        this.fechaIng = fechaIng;
+//        this.fechaSal = fechaSal;
+//        
+//    }
 
     public String getTipoHab() {
         return tipoHab;
