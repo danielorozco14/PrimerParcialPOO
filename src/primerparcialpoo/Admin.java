@@ -12,6 +12,7 @@ import java.util.Scanner;
  *
  * @author Daniel Alejandro Orozco Orellana <00200617@uca.edu.sv>
  * @Colaborador Roberto Alexander Rubio Castillo <00259517@uca.edu.sv>
+ * @Colaborador Karicha Valesska Romero Lovato <00002517@uca.edu.sv>
  */
 public class Admin {
     
