@@ -6,6 +6,7 @@
 package primerparcialpoo;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Random;
 
@@ -70,13 +71,18 @@ public class ListaReserva extends Fecha{
     
     public String NumeroHab(String[][] listaI, String[][] listaP, String[][] lista,int opc){
         
-        System.out.println(listaI);
+        Validaciones va;
+        
+        System.out.println(lista);
         String w = null;
         boolean bandera;
         Scanner read = new Scanner(System.in);
         System.out.println("Elegir un número de habitacion: ");
         w = read.nextLine();
-        
+        if(!Arrays.asList(lista).contains(w))
+        {
+            System.out.println("No se puede reservar. La habitación que no existe");
+        }
         /*
         Random r = new Random();
         for(int a=0; a<6; a++){
