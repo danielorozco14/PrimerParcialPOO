@@ -67,11 +67,17 @@ public class ListaReserva extends Fecha{
         
         return lis;
     }
+    
     public String NumeroHab(String[][] listaI, String[][] listaP, String[][] lista,int opc){
         
-        
+        System.out.println(listaI);
         String w = null;
+        boolean bandera;
+        Scanner read = new Scanner(System.in);
+        System.out.println("Elegir un número de habitacion: ");
+        w = read.nextLine();
         
+        /*
         Random r = new Random();
         for(int a=0; a<6; a++){
             for(int b=0; b<5;b++){
@@ -96,7 +102,7 @@ public class ListaReserva extends Fecha{
         //System.out.println(Arrays.deepToString(lista));
         //System.out.println(Arrays.deepToString(listaI));
         //System.out.println(Arrays.deepToString(listaP));
-        
+        */
        
        return w;
     }
