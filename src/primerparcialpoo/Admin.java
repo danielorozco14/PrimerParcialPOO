@@ -11,6 +11,8 @@ import java.util.Scanner;
 /**
  *
  * @author Daniel Alejandro Orozco Orellana <00200617@uca.edu.sv>
+ * @Colaborador Roberto Alexander Rubio Castillo <00259517@uca.edu.sv>
+ * @Colaborador Karicha Valesska Romero Lovato <00002517@uca.edu.sv>
  */
 public class Admin {
     
@@ -37,6 +39,7 @@ public class Admin {
         System.out.println("\t\t5. Mostrar los datos de los Huespedes");
         System.out.println("\t\t6. Mantenimiento de Hotel");
         System.out.println("\t\t7. Configuracion de Precios");
+        System.out.println("\t\t8. Generar factura cliente");
     }
     
     public void mostrar() {
@@ -46,6 +49,7 @@ public class Admin {
         Huesped huesped = new Huesped();
         Factura factura = new Factura();
         Reservaciones reservacion = new Reservaciones();
+        Habitacion Habitacion = new Habitacion();
         while (opcion != 7) {
             opciones();
             try {
@@ -57,22 +61,25 @@ public class Admin {
                         break;
                     case 2:
                         huesped.mostrarContactos();
-                        huesped.modificarReserva();
-//                        ListaReserva.getInstance().mostrarDatos();
+//                      ListaReserva.getInstance().mostrarDatos();
                         break;
                     case 3:
-                       
+                        huesped.modificarReserva();
                         break;
                     case 4:
-                        
                         break;
                     case 5:
+                        
                         break;
                     case 6:
                         break;
 
                     case 7:
-                        System.out.println("\t\tPROGRAMA FINALIZADO");;
+                        Habitacion.PrecioBaseHabitacion();
+                        break;
+                    case 8:
+                        System.out.println("Generando...");
+                        factura.Generar();
                         break;
 
                     default:
