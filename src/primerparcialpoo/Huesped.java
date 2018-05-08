@@ -16,6 +16,7 @@ import java.util.Date; //Esta madre sirve para obtener la fecha del
  *
  * @author Daniel Alejandro Orozco Orellana <00200617@uca.edu.sv>
  */
+
 public class Huesped extends Persona {
 
     protected String tipoHab;
