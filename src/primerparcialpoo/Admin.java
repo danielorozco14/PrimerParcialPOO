@@ -38,6 +38,7 @@ public class Admin {
         System.out.println("\t\t5. Mostrar los datos de los Huespedes");
         System.out.println("\t\t6. Mantenimiento de Hotel");
         System.out.println("\t\t7. Configuracion de Precios");
+        System.out.println("\t\t8. Generar factura cliente");
     }
     
     public void mostrar() {
@@ -75,6 +76,10 @@ public class Admin {
 
                     case 7:
                         System.out.println("\t\tPROGRAMA FINALIZADO");;
+                        break;
+                    case 8:
+                        System.out.println("Generando...");
+                        factura.Generar();
                         break;
 
                     default:
