@@ -48,11 +48,6 @@ public class Admin {
         Factura factura = new Factura();
         Reservaciones reservacion = new Reservaciones();
         Habitacion Habitacion = new Habitacion();
-        System.out.println("/////**** Ingrese una opcion entre 1 y 6");
-        System.out.println("1. Ingrese un huesped");
-        System.out.println("2. Mostrar Huesped");
-        System.out.println("3. Modificar reservaciones");
-        System.out.println("4. Colocar un precio de habitacion");
         while (opcion != 7) {
             opciones();
             try {
