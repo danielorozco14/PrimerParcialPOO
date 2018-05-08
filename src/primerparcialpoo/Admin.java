@@ -66,7 +66,6 @@ public class Admin {
                         huesped.modificarReserva();
                         break;
                     case 4:
-                        Habitacion.PrecioBaseHabitacion();
                         break;
                     case 5:
                         
@@ -75,7 +74,7 @@ public class Admin {
                         break;
 
                     case 7:
-                        System.out.println("\t\tPROGRAMA FINALIZADO");;
+                        Habitacion.PrecioBaseHabitacion();
                         break;
                     case 8:
                         System.out.println("Generando...");
