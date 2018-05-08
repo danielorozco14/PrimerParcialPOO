@@ -133,14 +133,14 @@ public class Habitacion {
         }
     }
 
-    public float TotalNoche(char[] NumHabitacion){//Retornamos el total por noche
-        
+    public float TotalNoche(String NumHabitacion){//Retornamos el total por noche
+        char[] NumHabitacionC = NumHabitacion.toCharArray();
         Habitacion var = new Habitacion();
         var.VariacionTemporada();
-        float Precio = var.VariacionParImpar(NumHabitacion);
-        Precio = var.VariacionPiso(Precio, NumHabitacion);
+        float Precio = var.VariacionParImpar(NumHabitacionC);
+        Precio = var.VariacionPiso(Precio, NumHabitacionC);
         float PrecioFinalNoche = Precio * var.getVariacionTemporada();
-        var.AgregarReservada(NumHabitacion);
+        var.AgregarReservada(NumHabitacionC);
         return PrecioFinalNoche;
     }
     public void HabitacionesDisponibles(){

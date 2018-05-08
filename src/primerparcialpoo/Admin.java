@@ -56,15 +56,13 @@ public class Admin {
                         huesped.ObtenerDatosHuesped();
                         break;
                     case 2:
-                        huesped.mostrarContactos();
                         huesped.modificarReserva();
-//                        ListaReserva.getInstance().mostrarDatos();
                         break;
                     case 3:
-                       
+                        huesped.cancelarReservacion();
                         break;
                     case 4:
-                        
+                        huesped.mostrarContactos();
                         break;
                     case 5:
                         break;

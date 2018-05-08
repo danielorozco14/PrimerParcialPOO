@@ -14,7 +14,7 @@ import java.util.UUID; //ESTA IMPORTACION NOS AYUDARA PARA GENERAR DE MANERA RAN
  * @author karicha <00002517@uca.edu.sv>
  */
 //CLASE FACTURA
-public class Factura {
+public class Factura extends Huesped{
 
     //ATRIBUTOS
     protected Reservaciones reservacion;
@@ -45,11 +45,18 @@ public class Factura {
     }
 
     //SACANDO TOTAL 
-//    public double TotalPagar() {
-//        //SUMANDO LOS SERVICIOS PARA SACAR UN TOTAL A PAGAR POR CUENTA DEL HUESPED
-//        return this.TotalAPagar += this.reservacion.getPrecioHabitacion() + this.reservacion.getVariacionTemporada();
-//
-//    }
+    public double TotalPagar() {
+        //SUMANDO LOS SERVICIOS PARA SACAR UN TOTAL A PAGAR POR CUENTA DEL HUESPED
+        Habitacion total= new Habitacion();
+        Huesped habitacion = new Huesped();
+        
+        total.setPrecioHabitacion(15);
+        
+        total.TotalNoche(numeroHab);
+        
+        return this.TotalAPagar += total.getPrecioHabitacion() + total.getVariacionTemporada();
+
+    }
 
     public void Generar() {
         Scanner buscar = new Scanner(System.in);

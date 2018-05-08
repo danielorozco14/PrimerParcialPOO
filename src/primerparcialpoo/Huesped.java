@@ -96,16 +96,21 @@ public class Huesped extends Persona {
 
     public Huesped() {
         super();//CON SUPER SE INICIALIZA LA CLASE PADRE Y YA SE PUEDE ACCEDER A TODOS LOS ATRIBUTOS O METODOS
-        //DatosHuesped = new ArrayList<>();
     }
 
     @Override
     public String toString() {
 
-        return "Huesped{" + "Nombre= " + super.getNombre() + ";ID Huesped=" + idHuesped
-                + ";Fecha de Registro " + fechaRegistro + ";DUI= " + super.getDUI()
-                + ";Tarjeta de Cred.= " + super.getTarjeta() + ";Correo= " + super.getCorreo()
-                + ";Telefono= " + super.getTelefono() + ";Numero de Habitacion: " + numeroHab + ";Tipo de Paquete: " + tipoPaquete + '}';
+        return "\t\t*********** Huesped ***********" 
+                +"\n\t\tNombre= " + super.getNombre() 
+                +"\n\t\tID Huesped=" + idHuesped
+                + "\n\t\tFecha de Registro= " + fechaRegistro 
+                + "\n\t\tDUI= " + super.getDUI()
+                + "\n\t\tTarjeta de Cred.= " + super.getTarjeta() 
+                + "\n\t\tCorreo= " + super.getCorreo()
+                + "\n\t\tTelefono= " + super.getTelefono() 
+                + "\n\t\tNumero de Habitacion= " + numeroHab 
+                + "\n\t\tTipo de Paquete= " + tipoPaquete +"\n";
     }
 
     public void ObtenerDatosHuesped() {
@@ -118,7 +123,6 @@ public class Huesped extends Persona {
 
         System.out.print("INGRESE SU NOMBRE: ");
         String nombre = infoHuesped.nextLine();
-        //addDatos.setNombre(nombre);
         if (Validar.ValidarNombre(nombre) == true) {
             addDatos.setNombre(nombre);
         } else {
@@ -131,23 +135,9 @@ public class Huesped extends Persona {
 
         }
 
-//        System.out.print("INGRESE SU FECHA DE NACIMIENTO: ");
-//        String fechaNac = infoHuesped.nextLine();
-//        //addDatos.setFechaNacimiento(fechaNac);
-//        if (Validar.ValidarFecha(fechaNac) == true) {
-//            addDatos.setFechaNacimiento(fechaNac);
-//        } else {
-//            do {
-//                System.out.print("Ingrese su fecha de nacimiento correctamente: ");
-//                fechaNac = infoHuesped.nextLine();
-//            } while (Validar.ValidarFecha(fechaNac) != true);
-//
-//            addDatos.setFechaNacimiento(fechaNac);
-//
-//        }
+
         System.out.print("INGRESE SU DUI: ");
         String Dui = infoHuesped.nextLine();
-        //addDatos.setDUI(Dui);
         if (Validar.ValidarDui(Dui) == true) {
             addDatos.setDUI(Dui);
         } else {
@@ -212,14 +202,15 @@ public class Huesped extends Persona {
 
         System.out.println("\t\t****** ELIJA EL PAQUETE QUE DESEE ****** ");
         System.out.println("\t\t1. BASICO \t2.PREMIUM \t3. NINGUNO");
+        
+        try{
+        
         String paquete = infoHuesped.nextLine();
 
         switch (paquete) {
             case "1":
                 addDatos.setTipoPaquete("BASICO");
                 break;
-//
-//        ListaHuesped.getInstance().addToArray(reserva);// SE AGREGAN TODOS LOS VALORES A LA CLASE LISTA HUESPED.
             case "2":
                 addDatos.setTipoPaquete("PREMIUM");
                 break;
@@ -229,6 +220,10 @@ public class Huesped extends Persona {
             default:
                 System.out.println("Ingrese Solamente Numeros!");
                 break;
+        }
+        }catch(InputMismatchException e){
+            System.err.println("Por favor, Ingrese un número");
+            infoHuesped.nextLine();
         }
 
         addDatos.setIdHuesped(UUID.randomUUID().toString().toUpperCase().substring(0, 6));
@@ -268,8 +263,6 @@ public class Huesped extends Persona {
                     case "1":
                         mod.setTipoPaquete("BASICO");
                         break;
-//
-//        ListaHuesped.getInstance().addToArray(reserva);// SE AGREGAN TODOS LOS VALORES A LA CLASE LISTA HUESPED.
                     case "2":
                         mod.setTipoPaquete("PREMIUM");
                         break;
@@ -284,6 +277,7 @@ public class Huesped extends Persona {
                 mod.setNombre(huesped.getNombre());
                 mod.setCorreo(huesped.getCorreo());
                 mod.setDUI(huesped.getDUI());
+                mod.setFechaRegistro((new SimpleDateFormat("dd-MM-yyyy").format(new Date())));
                 mod.setIdHuesped(huesped.getIdHuesped());
                 mod.setTarjeta(huesped.getTarjeta());
                 mod.setTelefono(huesped.getTelefono());
@@ -304,8 +298,6 @@ public class Huesped extends Persona {
                     case "1":
                         mod.setTipoPaquete("BASICO");
                         break;
-//
-//        ListaHuesped.getInstance().addToArray(reserva);// SE AGREGAN TODOS LOS VALORES A LA CLASE LISTA HUESPED.
                     case "2":
                         mod.setTipoPaquete("PREMIUM");
                         break;
@@ -318,6 +310,7 @@ public class Huesped extends Persona {
                 }
                 
                 mod.setNombre(huesped.getNombre());
+                mod.setFechaRegistro((new SimpleDateFormat("dd-MM-yyyy").format(new Date())));
                 mod.setCorreo(huesped.getCorreo());
                 mod.setDUI(huesped.getDUI());
                 mod.setIdHuesped(huesped.getIdHuesped());
@@ -336,7 +329,53 @@ public class Huesped extends Persona {
         }
         
     }
+    
+    
+    public void cancelarReservacion(){
+        Scanner buscar = new Scanner(System.in);
+        Huesped mod = new Huesped();
+        ListaHuesped.getInstance().getArray(); 
+        
+        System.out.println("Ingrese el ID del huesped a buscar: ");
+        String id = buscar.nextLine();
 
+        int cont = 0, cont1 = 0;
+
+         for (Huesped huesped : ListaHuesped.getInstance().getArray()) {
+            if (huesped.getIdHuesped().equals(id) && cont == 0) {
+              System.out.println("¿Desea eliminar la reservacion y todos los datos del huesped? S/N?");
+                String opcion = buscar.nextLine();
+
+                if (opcion.equals("S") || opcion.equals("s")) {
+                    ListaHuesped.getInstance().getArray().remove(cont);
+                    System.out.println("\t\tReservacion Eliminada");
+                } else {
+                    System.out.println("\t\tSaliendo de Eliminacion");
+                }
+                break;
+            } else if (huesped.getIdHuesped().equals(id) && cont != 0) {
+
+                System.out.println("¿Desea eliminar la reservacion y todos los datos del huesped? S/N?");
+                String opcion = buscar.nextLine();
+
+                if (opcion.equals("S") || opcion.equals("s")) {
+                    ListaHuesped.getInstance().getArray().remove(cont);
+                    System.out.println("\t\tReservacion Eliminada");
+                } else {
+                    System.out.println("\t\tSaliendo de Eliminacion");
+                }
+                break;
+            } else if (huesped.getIdHuesped().equals(id) == false) {
+                cont1++;
+                if (ListaHuesped.getInstance().getArray().size() == cont1) {
+                    System.out.println("No existe este ID de Huesped en el registro o la reservacion no ha sido realizada");
+                }
+            }
+            cont++;
+         }
+    }
+         
+    
     public void mostrarContactos() {
         System.out.println("\t\t----- Mostrando Contactos -----");
         ListaHuesped.getInstance().mostrarDatos();
