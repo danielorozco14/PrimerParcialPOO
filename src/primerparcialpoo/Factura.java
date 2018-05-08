@@ -47,7 +47,7 @@ public class Factura {
     //SACANDO TOTAL 
     public double TotalPagar() {
         //SUMANDO LOS SERVICIOS PARA SACAR UN TOTAL A PAGAR POR CUENTA DEL HUESPED
-        return this.TotalAPagar += this.reservacion.getPrecioHabitacion() + this.reservacion.getVariacionTemporada();
+        return this.TotalAPagar += this.reservacion.TotalNoche();
 
     }
 
