@@ -1,13 +1,9 @@
 package primerparcialpoo;
 /**
  *
- * @author Roberto Alexander Rubio Castillo <00259517@uca.edu.sv> todos los comits y aportes hechos por el usuario "Roberto" en git pertenecen a este 
- * @autor
- */
-/*Validar
-    -Un mismo cliente no puede reservar mas de 2 habitaciones
-    -No puede existir campos vacios en una reservacion
-*/
+ * @author Roberto Alexander Rubio Castillo <00259517@uca.edu.sv>  */
+
+
 
 //sintaxis para las fechas dd/mm/aaaa
 import java.util.ArrayList;
