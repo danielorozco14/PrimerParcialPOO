@@ -46,7 +46,6 @@ public class Admin {
         Persona persona = new Persona();
         Huesped huesped = new Huesped();
         Factura factura = new Factura();
-        Reservaciones reservacion = new Reservaciones();
         Habitacion Habitacion = new Habitacion();
         while (opcion != 7) {
             opciones();

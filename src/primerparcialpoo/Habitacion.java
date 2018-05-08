@@ -128,7 +128,6 @@ public class Habitacion {
             var.setReservada(Reservadas);
         }
         else{
-            Reservaciones Reservacion = new Reservaciones();
             System.out.println("Usted no puede reservar una habitacion ya reservada");
             //Reservacion.Inicio por ejemplo, aqui ira el metodo que iniciara denuevo una reservacion
         }

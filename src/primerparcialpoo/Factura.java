@@ -17,7 +17,6 @@ import java.util.UUID; //ESTA IMPORTACION NOS AYUDARA PARA GENERAR DE MANERA RAN
 public class Factura extends Huesped{
 
     //ATRIBUTOS
-    protected Reservaciones reservacion;
     protected String idFactura;
     protected double TotalAPagar;
 
