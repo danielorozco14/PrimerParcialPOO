@@ -13,6 +13,7 @@ import java.util.UUID;
  *
  * @author Daniel Alejandro Orozco Orellana <00200617@uca.edu.sv>
  */
+
 public class Huesped extends Persona {
 
     public String contacto;
