@@ -1,7 +1,7 @@
 package primerparcialpoo;
 /**
  *
- * @author Roberto
+ * @author Roberto Alexander Rubio Castillo <00259517@uca.edu.sv>
  */
 /*Validar
     -Un mismo cliente no puede reservar mas de 2 habitaciones
@@ -12,20 +12,26 @@ package primerparcialpoo;
 import java.util.ArrayList;
 
 public class Validaciones {
-    char[] Pisos = {'A','B','C','D','E','F'};
-    public boolean MaximoTiempoReservacion(int CantDias){
+    
+    public boolean MaximoTiempoReservacion(int CantDias){//Validacion de tiempo de reservacion
         if (CantDias > 7){
             System.out.println("No puede registrarse por mas de 7 dias");
             return false;
         }
         return true;
     }
-    public boolean HabitacionReservada(char[] Habitacion){
+    
+    public boolean HabitacionReservada(char[] Habitacion){//Validacion que la habitacion exista
+        char[] Pisos = {'A','B','C','D','E','F'};
         for (int i=0; i<7; i++){
             if (Habitacion[0] != Pisos[i]){
-                System.out.println("No puede reservar una habitacion que no existe");
+                System.out.println("No puede reservar una habitacion en un piso que no existe");
                 return false;
             }
+        }
+        if (Habitacion[1] <= 0 || Habitacion[1] > 10){
+            System.out.println("No puede ingresar ese numero de habitacion");
+            return false;
         }
         return true;
     }
@@ -95,20 +101,22 @@ public class Validaciones {
         System.out.println("Su correo no es valido");
         return false;
     }
+    
     public boolean ValidarTelefono(String Telefono){
         char[] TelefonoC = Telefono.toCharArray();//TelefonoC es en caracteres
-        if (8 > TelefonoC.length){
-            return false;
-        }
         try{
             int TelefonoI = Integer.parseInt(Telefono);//Telefono I es el telefono en enteros
+            if ( TelefonoC.length > 8 || TelefonoC.length < 8){
+                
+                System.out.println("\t\t***** Ingrese un numero de telefono valido (8 digitos) *****");
+                return false;
+            }
             return true;
         }
         catch(NumberFormatException e){
-            System.out.println("Su telefono tiene que contener solo numeros intente denuevo");
+            System.out.println("\t\t***** Su telefono tiene que contener solo numeros.Intente de nuevo *****");
             return false;
         }
-    }
 
     }
     
@@ -191,19 +199,16 @@ public class Validaciones {
         for (int i = 0; i < TarjetaC.length; i++){
             if (TarjetaC[i] != '-'){
                 try{
-                        Integer.parseInt(Tarjeta);
-                        System.out.println("Su tarjeta ha sido ingresada con exito");
+                    Character.getNumericValue(TarjetaC[i]);
                     }
                 catch(NumberFormatException e){
-                    System.out.println("Su tarjeta no es valida");
+                    System.out.println("Su tarjeta no es valida, por favor ingrese solo numeros enteros y los guiones respectivos en formato XXXX-XXXX-XXXX-XXXX");
                     return false;
                 }
             }
         }
-        if (TarjetaC.length != 19){
-            return false;
-        }
-        return true;
+        System.out.println("Su tarjeta ha sido ingresada con exito");
+        return TarjetaC.length == 19;
     }
     
     public boolean ValidarNombre(String Nombre){
