@@ -16,6 +16,7 @@ import java.util.Date; //Esta madre sirve para obtener la fecha del
  *
  * @author Daniel Alejandro Orozco Orellana <00200617@uca.edu.sv>
  */
+
 public class Huesped extends Persona {
 
     protected String tipoHab;
@@ -116,6 +117,7 @@ public class Huesped extends Persona {
     public void ObtenerDatosHuesped() {
 
         Validaciones Validar = new Validaciones();
+        Habitacion Habitaciones = new Habitacion();
         Huesped addDatos = new Huesped();
         Scanner infoHuesped = new Scanner(System.in);
 
@@ -196,7 +198,8 @@ public class Huesped extends Persona {
         }
 
         System.out.println("\t\t****** ELIJA LA HABITACION QUE DESEE ****** ");
-        System.out.print("\t\tHabitacion: ");
+        System.out.print("\t\tHabitaciones disponibles: ");
+        Habitaciones.HabitacionesDisponibles();
         String Habitacion = infoHuesped.nextLine();
         addDatos.setNumeroHab(Habitacion);
 

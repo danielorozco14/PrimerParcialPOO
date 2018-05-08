@@ -7,6 +7,7 @@ package primerparcialpoo;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.ListIterator;
         
 public class Habitacion {
     
@@ -143,9 +144,11 @@ public class Habitacion {
         var.AgregarReservada(NumHabitacionC);
         return PrecioFinalNoche;
     }
+    
     public void HabitacionesDisponibles(){
         Habitacion var = new Habitacion();
         ArrayList<String> Habitaciones = new ArrayList();
+        ArrayList<String> Reservado = new ArrayList();
         String aux;
         if (var.getHabitaciones() == null){
             for (int i =0; i < 6; i++){
@@ -179,7 +182,15 @@ public class Habitacion {
         }
         else{
             //comparar lista de habitaciones disponibles con la de ocupadas
-            //var.getReservada()
+            Reservado = var.getReservada();
+            ListIterator<String> Aux = Reservado.listIterator();
+            while (Aux.hasNext()){
+                if (Habitaciones.contains(Aux.next())){
+                    Habitaciones.remove(Aux.next());
+                }
+            }
+            System.out.println("Las habitaciones disponibles");
+            System.out.println(Habitaciones);
         }
     }
     
