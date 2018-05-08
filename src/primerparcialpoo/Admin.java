@@ -15,13 +15,12 @@ import java.util.Scanner;
  * @Colaborador Karicha Valesska Romero Lovato <00002517@uca.edu.sv>
  */
 public class Admin {
-    
+
     private static Admin administrador;
-    
-        
-    private Admin(){        
+
+    private Admin() {
     }
-    
+
     public static Admin getInstance() {
         if (administrador == null) {
             administrador = new Admin();
@@ -29,19 +28,18 @@ public class Admin {
 
         return administrador;
     }
-    
-    public void opciones(){
+
+    public void opciones() {
         System.out.println("\t\t********** HOTEL RAFIÑA **********");
         System.out.println("\t\t1. Añadir Reservación");
         System.out.println("\t\t2. Modificar Reservación");
         System.out.println("\t\t3. Cancelar Reservación");
         System.out.println("\t\t4. Mostrar todas las  Reservaciónes");
-        System.out.println("\t\t5. Mostrar los datos de los Huespedes");
-        System.out.println("\t\t6. Mantenimiento de Hotel");
-        System.out.println("\t\t7. Configuracion de Precios");
-        System.out.println("\t\t8. Generar factura cliente");
+        System.out.println("\t\t5. Configuracion de Precios");
+        System.out.println("\t\t6. Generar factura cliente");
+        System.out.println("\t\t7. SALIR");
     }
-    
+
     public void mostrar() {
         int opcion = 8;
         Scanner leer = new Scanner(System.in);
@@ -69,17 +67,16 @@ public class Admin {
                         huesped.mostrarContactos();
                         break;
                     case 5:
-                        
+                        Habitacion.PrecioBaseHabitacion();
                         break;
                     case 6:
+                        System.out.println("Generando...");
+                        factura.Generar();
+
                         break;
 
                     case 7:
-                        Habitacion.PrecioBaseHabitacion();
-                        break;
-                    case 8:
-                        System.out.println("Generando...");
-                        factura.Generar();
+                        System.out.println("\t\t********** PROGRAMA FINALIZADO **********");
                         break;
 
                     default:
