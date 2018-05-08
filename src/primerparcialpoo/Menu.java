@@ -25,7 +25,7 @@ public class Menu {
         }
         return menu;
     }
-
+    
     public void opciones() {
         System.out.println("----- Menu -----");
         System.out.println("1. Agregar Huesped");
@@ -42,7 +42,7 @@ public class Menu {
         Huesped huesped = new Huesped();
         Factura factura = new Factura();
         while (opcion != 5) {
-            opciones();
+            opciones();/// LLAMADA AL METODO QUE IMPRIME LAS OPCIONES
             try {
                 opcion = leer.nextInt();
 

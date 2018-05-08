@@ -118,9 +118,9 @@ public class Validaciones {
             System.out.println("\t\t***** Su telefono tiene que contener solo numeros.Intente de nuevo *****");
             return false;
         }
-
     }
-    
+
+        
     public boolean ValidarDui(String Dui){
         char[] DuiC = Dui.toCharArray();//TelefonoC es en caracteres
         if (DuiC.length == 10){
@@ -158,8 +158,7 @@ public class Validaciones {
                     System.out.println("Su dui es invalido");
                     return false;
                 }
-        }
-    return false;
+        }    return false;
     }
     
     public boolean ValidarFecha(String Fecha){

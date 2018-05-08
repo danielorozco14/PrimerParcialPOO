@@ -9,29 +9,31 @@ package primerparcialpoo;
  *
  * @author Roxana
  */
-public class Reservaciones extends Persona{
-    private String tipoHab;
-    private String numeroHab;
-    private boolean paquete;
-    private String tipoPaquete;
-    private String fechaIng;
-    private String fechaSal;
+public class Reservaciones extends Huesped {
 
-    public Reservaciones(){}
+    protected String tipoHab;
+    protected String numeroHab;
+    protected boolean paquete;
+    protected String tipoPaquete;
+    protected String fechaIng;
+    protected String fechaSal;
 
-    public Reservaciones(String nombre, String apellido, String telefono, String dui, String tipoHab,String numeroHab, boolean paquete, String tipoPaquete, String fechaIng, String fechaSal) {
-        
-        super(nombre, apellido, telefono, dui);
-        
-        this.tipoHab = tipoHab;
-        this.numeroHab = numeroHab;
-        this.paquete = paquete;
-        this.tipoPaquete = tipoPaquete;
-        this.fechaIng = fechaIng;
-        this.fechaSal = fechaSal;
-        
+    public Reservaciones() {
+        super();
     }
 
+//    public Reservaciones(String nombre, String apellido, String telefono, String dui, String tipoHab,String numeroHab, boolean paquete, String tipoPaquete, String fechaIng, String fechaSal) {
+//        
+//        //super(nombre, apellido, telefono, dui);
+//        
+//        this.tipoHab = tipoHab;
+//        this.numeroHab = numeroHab;
+//        this.paquete = paquete;
+//        this.tipoPaquete = tipoPaquete;
+//        this.fechaIng = fechaIng;
+//        this.fechaSal = fechaSal;
+//        
+//    }
     public String getTipoHab() {
         return tipoHab;
     }
@@ -63,7 +65,7 @@ public class Reservaciones extends Persona{
     public void setTipoPaquete(String tipoPaquete) {
         this.tipoPaquete = tipoPaquete;
     }
-    
+
     public String getFechaIng() {
         return fechaIng;
     }
@@ -79,9 +81,5 @@ public class Reservaciones extends Persona{
     public void setFechaSal(String fechaSal) {
         this.fechaSal = fechaSal;
     }
-    
-    
-    
-    
-    
+
 }
